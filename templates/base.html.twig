@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Groupe Interface{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <meta name="description"
+                  content="Le centre de formation professionnelle privé de tunisie interface formation ou encore interface training est un centre de formation privé situé en plein coeur de Tunis(LAFAYETTE). les formations proposées sont des formations initiales ainsi que des formations continues et accélérées dans des domaines différents: centre de formation en Génie Civil - Batiment et dérivés, centre de formation en Tourisme, centre de formation en Informatique, centre de formation en Gestion, centre de formation en Art décoration et Design, centre de formation en Commerce, centre de formation en Comptabilité, centre de formation en Multimédia, centre de formation en Langues...">
+            <meta name="keywords"
+                  content="centre de formation en tunisie, centre de formation professionnelle, formation batiment, formation tourisme, formation informatique, formation gestion, formation art et design, formation Multimedia, formation langues, formation commerce, formation comptabilité, formation accélérée, formation continue, formation professionnelle">
+            <meta name="author" content="Interface Formation">
+
+            <!-- Favicon -->
+            <link href="{{ asset('img/favicon.ico') }}" rel="icon">
+
+            <!-- Google Font -->
+            <link href="{{ asset('https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@200;300;400&display=swap') }}"
+                  rel="stylesheet">
+
+            <!-- CSS Libraries -->
+            <link href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+            <!-- Template Stylesheet -->
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        {% endblock %}
+
+        {% block javascripts %}
+            <!-- JavaScript Libraries -->
+            <script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}"></script>
+            <script src="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+            <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+            <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+            <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
+
+            <!-- Contact Javascript File -->
+            <script src="{{ asset('mail/jqBootstrapValidation.min.js') }}"></script>
+            <script src="{{ asset('mail/contact.js') }}"></script>
+
+            <!-- Template Javascript -->
+            <script src="{{ asset('js/main.js') }}"></script>
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+
+            <div class="top-bar d-none d-md-block">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="top-bar-left">
+                                <div class="text">
+                                    <i class="far fa-clock"></i>
+                                    <h2>8:00 - 9:00</h2>
+                                    <p>Mon - Fri</p>
+                                </div>
+                                <div class="text">
+                                    <i class="fa fa-phone-alt"></i>
+                                    <h2>(+216)71 833 400</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="top-bar-right">
+                                <div class="social">
+                                    <!-- <a href=""><i class="fab fa-twitter"></i></a>-->
+                                    <a href="https://www.facebook.com/interfaceformation"><i class="fab fa-facebook-f"></i></a>
+                                    <!--<a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <a href="index.html" class="navbar-brand">Interface</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto">
+                            <a href="{{ path('acceuil')}}" class="nav-item nav-link active">Accueil</a>
+                            <a href="#" class="nav-item nav-link">Groupe Interface</a>
+                            <a href="{{ path('formation')}}" class="nav-item nav-link">Formations</a>
+                            <a href="{{ path('diplome')}}" class="nav-item nav-link">Diplômes</a>
+                            <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
+                            <a href="{{ path('pre_inscription')}}" class="nav-item nav-link">Pré-Inscription</a>
+                            <a href="#" class="nav-item nav-link">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endblock %}
+
+
+        {% block content %}
+        {% endblock %}
+
+
+        {% block footer %}
+
+            <!-- Blog Start -->
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3194.264041294211!2d10.180688315525146!3d36.81219227472386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd34635d9c7c4d%3A0x736498c709b4c871!2sInterface+Training!5e0!3m2!1sfr!2stn!4v1545665832831"
+                    width="100%" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            <!-- Blog End -->
+
+
+            <!-- Footer Start -->
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="footer-contact">
+                                        <h2>Our Head Office</h2>
+                                        <p><i class="fa fa-map-marker-alt"></i>44, RUE NELSON MANDELA, 2ÈME ÉTAGE LAFAYETTE 1002
+                                            TUNIS</p>
+                                        <p><i class="fa fa-phone-alt"></i>(+216) 71 833 400 - (+216) 71 833 700</p>
+                                        <p><i class="fa fa-phone-alt"></i>GSM (+216) 98364577 - (+216) 52364577 - (+216)
+                                            50833406 - (+216) 50833403</p>
+                                        <p><i class="fa fa-envelope"></i>INTERFACE.TRAINING@PLANET.TN</p>
+                                        <div class="footer-social">
+                                            <a href=""><i class="fab fa-twitter"></i></a>
+                                            <a href=""><i class="fab fa-facebook-f"></i></a>
+                                            <a href=""><i class="fab fa-youtube"></i></a>
+                                            <a href=""><i class="fab fa-instagram"></i></a>
+                                            <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="footer-newsletter">
+                                <h2>INTERFACE : UN GRAND CENTRE DE FORMATION À TUNIS [QUALITÉ & SUCCÈS]</h2>
+                                <p><a href="#" style="color: white;" title="Centre de Formation Continue - Tunisie">Centre de
+                                        <strong>Formation
+                                            Continue</strong></a><br> <a href="#" style="color: white;"
+                                                                         title="Centre de Formation Accélérées - Tunisie">Centre de <strong>Formation Acceleree
+                                        </strong></a> <br> <a href="#" style="color: white;"
+                                                              title="Centre Formation Langues - Tunisie">Centre de<strong> Formation
+                                            Langues</strong></a><br> <a href="#" style="color: white;"
+                                                                        title="Centre Formation Initiale - Tunisie">Centre de <strong>Formation
+                                            Initiale</strong>/<strong>Formation Professionnelle Diplomante</strong></a> : <br> (
+                                    <a href="#" style="color: white;" title="Centre Formation Bâtiment - Tunisie">Centre
+                                        <strong>Formation Genie
+                                            Civil/Formation Batiment</strong> Tunisie</a> <br> <a href="#" style="color: white;"
+                                                                                                  title="Centre Formation Gestion - Tunisie">Centre
+                                        <strong>Formation Gestion</strong>Tunisie</a> <br> <a href="#" style="color: white;"
+                                                                                              title="Centre Formation Informatique">Centre <strong>Formation Informatique</strong>
+                                        Tunisie</a> <br> <a href="#" style="color: white;"
+                                                            title="Centre Formation Commerce - Tunisie">Centre <strong>Formation Commerce</strong>
+                                        Tunisie</a> <br> <a href="#" style="color: white;"
+                                                            title="Centre Formation Comptabilité - Tunisie">Centre <strong>Formation
+                                            Comptabilite</strong> Tunisie</a> <br> <a href="#" style="color: white;"
+                                                                                      title="Centre Formation Tourisme - Tunisie">Centre <strong>Formation Tourisme</strong>
+                                        Tunisie</a> <br> <a href="#" style="color: white;"
+                                                            title="Centre Formation Art et Design - Tunisie">Centre <strong>Formation Art et
+                                            Design</strong> Tunisie</a>) </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container copyright">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>&copy; <a href="#">Groupe Interface</a>, All Right Reserved.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+            <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        {% endblock %}
+    </body>
+</html>
+
