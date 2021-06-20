@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationLangueController!{% endblock %}
+
+{% block content %}
+<div class="single mt-125">
+    <div class="container">
+        <div class="section-header">
+
+            <p>Formation Langues</p>
+            <h2>Formations Linguistique</h2>
+            <div style="text-align: right" class="col-1"><img src="{{ asset('img/icon/diplomes-homologues-Tunisie.jpg')}}" width="20" height="50"
+                                                              title="interface Formation Tunisie - Diplomes Homologués"
+                                                              alt="Diplomes Homologués - centre  formation Tunis"> </div></h2>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <img src="{{ asset('img/formation-langues-tunisie.jpg') }}" alt="Image">
+
+                <p>
+                    Les langues sont des fenêtres sur le monde extérieur. INTERFACE propose des cours intensifs, de grandes qualités, centrées sur les exigences et les besoins spécifiques des professionnels, permettant la transition d'un niveau de compétences de départ vers des niveaux supérieurs.
+
+
+
+                    Formation Langues Individuel ou en Groupes
+                </p>
+                <table width="100%" border="2" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td width="337"><p align="center"><strong>Langues</strong></p></td>
+                        <td width="177"> </td>
+                        <td width="117"><p><strong>Durée</strong></p></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Formation <strong>Anglais</strong></div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Formation <strong>Français</strong></div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Formation <strong>Espagnol</strong></div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Formation <strong>Allemand</strong></div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Formation <strong>Russe</strong></div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Formation <strong>Chinois</strong></div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Formation <strong>Italien</strong></div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="contact">
+                    <div class="container">
+                        <div class="contact-form">
+                            <div id="success"></div>
+                            <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                <div>
+                                    <a href="{{ path('demande_formation')}}" class="btn" type="submit" id="sendMessageButton">>> DEMANDER UNE FORMATION</a>
+                                </div>
+                                <div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    {% endblock %}
+

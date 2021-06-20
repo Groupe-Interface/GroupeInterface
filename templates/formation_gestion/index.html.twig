@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationGestionController!{% endblock %}
+
+{% block content %}
+    <!-- Single Page Start -->
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+                <p>Formation gestion</p>
+
+                <h2>Diplômes Homologués en gestion</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/interface-formations-Tunisie.jpg') }}" alt="Image">
+
+                    <p>
+                        Le centre de formation de Tunis INTERFACE Formation offre des formations professionnelles en gestion (BTS-BTP):</p>
+                    <div class="service mt-125">
+                        <div class="container">
+                            <div class="section-header">
+                                <h2>Nos Formations </h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION COMMERCE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_commerce')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION COMPTABILITE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_comptabilite')}}">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

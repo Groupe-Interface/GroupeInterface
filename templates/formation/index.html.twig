@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationController!{% endblock %}
+
+{% block content%}
+    <!-- Single Page Start -->
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+
+                <h2>Formations</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/interface-formations-Tunisie.jpg') }}" alt="Image">
+
+                    <p>
+                        Fournit aux demandeurs de formation des informations exhaustives, diversifiées se rapportant aux métiers visés par la formation.
+                        Forme aux métiers les plus demandés au plan national et international, en vue de à leur assurer une évolution constante dans le cheminement professionnelavec des moyens constamment innovés.
+                        La formation initiale est sanctionnée par des diplômes homologués dans différents domaines . </p>
+                    <div class="service mt-125">
+                        <div class="container">
+                            <div class="section-header">
+                                <h2>Nos Formations </h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION INITIALE <br> (BTS-BTP-CAP)</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_initiale')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION ACCÉlÉRÉE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION<br> LANGUE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION CONTINUE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

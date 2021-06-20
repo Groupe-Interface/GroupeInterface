@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationContinueController!{% endblock %}
+
+{% block content %}
+    <!-- Single Page Start -->
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+                <p>Formation Continue</p>
+
+
+                <h2>Liste des Formations Continues</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/formation-continue-tunisie.jpg') }}" alt="Image">
+
+                    <p>
+                        Développe les connaissances et les compétences professionnelles des travailleurs dans les différents secteurs économiques,
+                        Améliore la productivité et renforce la compétitivité des entreprises.
+                        Assure aux travailleurs les conditions de promotion professionnelle, leur permettant de progresser dans l'échelle des qualifications.
+                    </p>
+                    <div class="contact">
+                        <div class="container">
+                            <div class="contact-form">
+                                <div id="success"></div>
+                                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                    <div>
+                                        <a href="{{ path('demande_formation')}}" class="btn" type="submit" id="sendMessageButton">INSCRITPION EN LIGNE</a>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationCommerceController!{% endblock %}
+
+{% block content %}
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+
+                <p>Formation Commerce</p>
+                <h2>Diplômes Homologués en Commerce</h2>
+                <div style="text-align: right" class="col-1"><img src="{{ asset('img/icon/diplomes-homologues-Tunisie.jpg')}}" width="20" height="50"
+                                                                  title="interface Formation Tunisie - Diplomes Homologués"
+                                                                  alt="Diplomes Homologués - centre  formation Tunis"> </div></h2>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/interface-Formation-diplome.jpg') }}" alt="Image">
+
+                    <p>
+                        Le centre de formation de Tunis INTERFACE Formation offre des formations professionnelles en Commerce (BTS-BTP):
+                    </p>
+                    <div class="section-header">
+
+                        <h2>Formation BTS Commerce (2 ans)</h2>
+                        <h3> Filière</h3>
+
+                        <h3> BTS Commerce International</h3>
+                    </div>
+                    <div class="section-header">
+
+                        <h2>Formation BTP Commerce (2 ans)</h2>
+                        <h3> Filière</h3>
+
+                        <h3> BTP Commerce de Distribution</h3>
+
+                        <h3> BTP Formalités douanières</h3>
+
+                        <h3>BTP Vente des Produits tourstiques</h3>
+                    </div>
+                    <div class="contact">
+                        <div class="container">
+                            <div class="contact-form">
+                                <div id="success"></div>
+                                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                    <div>
+                                        <a  href="{{ path('admission')}}" class="btn" type="submit" id="sendMessageButton">ADMISSION</a>
+                                        <a href="{{ path('pre_inscription')}}" class="btn" type="submit" id="sendMessageButton">INSCRITPION EN LIGNE</a>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Single Page End -->
+    <br>
+    <hr>
+    <br>
+{% endblock %}

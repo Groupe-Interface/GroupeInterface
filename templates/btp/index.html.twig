@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BtpController!{% endblock %}
+
+{% block content %}
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+
+                <p>Formation BTP</p>
+                <h2> Diplomes BTP - Brevet de Technicien Professionnel</h2>
+                <div style="text-align: right" class="col-1"><img src="{{ asset('img/icon/diplomes-homologues-Tunisie.jpg')}}" width="20" height="50"
+                                                                  title="interface Formation Tunisie - Diplomes Homologués"
+                                                                  alt="Diplomes Homologués - centre  formation Tunis"> </div></h2>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/interface-Formation-diplome.jpg') }}" alt="Image">
+
+                    <p>
+                        Le centre de formation de Tunis INTERFACE Formation vous offre des formations professionnelles pour obtenir votre diplome homologué en BTP (Durée 2 ans):
+                    </p>
+                    <div class="section-header">
+
+                        <h2>Formation BTP (Génie Civil) Bâtiment et dérivés</h2>
+
+
+                        <h3>BTP Dessinateur Projeteur en Architecture</h3>
+
+                        <h3>BTP Métreur Vérificateur en Bâtiment</h3>
+
+                        <h3>BTP CHEF Chantier en Bâtiment</h3>
+
+                        <h3>BTP Froid et Climatisation</h3>
+
+                    </div>
+
+                    <div class="section-header">
+                        <h2> Formation BTP Informatique</h2>
+                        <h3>  BTP PAO</h3>
+                        <h3>BTP Technicien de Maintenances en Micro Système Informatique</h3>
+                        <h3>BTP Multimédia</h3>
+                    </div>
+
+                    <div class="section-header">
+                        <h2> Formation BTP Gestion - Commerce</h2>
+                        <h3>BTP Commerce de Distribution</h3>
+                        <h3>BTP Formalités douanières</h3>
+                        <h3>BTP Vente des Produits tourstiques</h3>
+                    </div>
+                    <div class="section-header">
+                        <h2>Formation BTP Gestion - Comptabilité</h2>
+                        <h3>BTP Comptable d’Entreprise</h3>
+                        <h3>BTP Formalités douanières</h3>
+                    </div>
+                    <div class="section-header">
+                        <h2> Formation BTP Tourisme</h2>
+                        <h3> BTP Vente des Produits tourstiques</h3>
+                    </div>
+                    <div class="contact">
+                        <div class="container">
+                            <div class="contact-form">
+                                <div id="success"></div>
+                                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                    <div>
+                                        <a  href="{{ path('admission')}}" class="btn" type="submit" id="sendMessageButton">ADMISSION</a>
+                                        <a href="{{ path('pre_inscription')}}" class="btn" type="submit" id="sendMessageButton">INSCRITPION EN LIGNE</a>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Single Page End -->
+    <br>
+    <hr>
+    <br>
+{% endblock %}
+

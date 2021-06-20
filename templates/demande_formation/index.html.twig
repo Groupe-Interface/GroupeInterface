@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DemandeFormationController!{% endblock %}
+
+{% block content %}
+    <div class="carousel">
+        <div class="container-fluid">
+            <div class="carousel-item">
+                <div class="carousel-img">
+                    <img src="{{ asset('img/carousel-2.jpg') }}" alt="Image">
+                </div>
+                <div class="carousel-text">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1>Demander une Formation</h1>
+                    <div class="col-md-12">
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="control-group">
+                                <input type="text" class="form-control" id="name" placeholder="Nom et Prénom"
+                                       required="required" data-validation-required-message="Il faut saisir le Nom" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control" id="email" placeholder="Téléphone"
+                                       required="required"
+                                       data-validation-required-message="Il faut saisir le num de telephone" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="email" class="form-control" id="subject" placeholder="Email"
+                                       required="required" data-validation-required-message="Il faut saisir l'email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control" id="pays" placeholder="Pays"
+                                       required="required"
+                                       data-validation-required-message="Il faut saisir une pays" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                    <textarea class="form-control" id="message" placeholder="Message"
+                                              required="required"
+                                              data-validation-required-message="Il faut saisir le Message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div style="text-align: center;">
+                                <button class="btn" type="submit" id="sendMessageButton">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
