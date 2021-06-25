@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationGenieCivilController!{% endblock %}
+
+{% block content %}
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+
+                <p>Formation Génie Civil : Bâtiment et Dérivés</p>
+                <h2>Diplômes Homologués en Bâtiment et Dérivés - Génie Civil</h2>
+                <div style="text-align: right" class="col-1"><img src="{{ asset('img/icon/diplomes-homologues-Tunisie.jpg')}}" width="20" height="50"
+                                                                  title="interface Formation Tunisie - Diplomes Homologués"
+                                                                  alt="Diplomes Homologués - centre  formation Tunis"> </div></h2>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/interface-Formation-diplome.jpg') }}" alt="Image">
+
+                    <p>
+                        Le centre de formation de Tunis INTERFACE Formation offre des formations professionnelles en Génie Civil - Bâtiment et Dérivés (BTS-BTP-CAP):
+                    </p>
+                    <div class="section-header">
+
+                        <h2>Formation BTS Bâtiments et dérives (2 ans)</h2>
+                        <h3> Filière</h3>
+
+                        <h3> BTS Conducteur de travaux en bâtiment</h3>
+
+                        <h3>BTS Conducteur de travaux publics</h3>
+
+                        <h3>BTS Magasinier de matériels</h3>
+                    </div>
+                    <div class="section-header">
+
+                        <h2>Formation BTP Bâtiments et dérives (2 ans)</h2>
+                        <h3> Filière</h3>
+                        <h3>BTP Dessinateur Projeteur en Architecture</h3>
+
+                        <h3>BTP Métreur Vérificateur en Bâtiment</h3>
+
+                        <h3>BTP CHEF Chantier en Bâtiment</h3>
+
+                        <h3>BTP Froid et Climatisation</h3>
+
+                    </div>
+                    <div class="section-header">
+
+                        <h2>Formation CAP Bâtiments et dérives (1 an)</h2>
+                        <h3> Filière</h3>
+                        <h3>CAP Froid et Climatisation</h3>
+                    </div>
+                    <div class="contact">
+                        <div class="container">
+                            <div class="contact-form">
+                                <div id="success"></div>
+                                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                    <div>
+                                        <a  href="{{ path('admission')}}" class="btn" type="submit" id="sendMessageButton">ADMISSION</a>
+                                        <a href="{{ path('pre_inscription')}}" class="btn" type="submit" id="sendMessageButton">INSCRITPION EN LIGNE</a>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Single Page End -->
+    <br>
+    <hr>
+    <br>
+{% endblock %}

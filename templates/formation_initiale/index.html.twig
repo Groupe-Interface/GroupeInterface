@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationInitialController!{% endblock %}
+
+{% block content %}
+    <!-- Single Page Start -->
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+
+                <h2>Formations</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/interface-formations-Tunisie.jpg') }}" alt="Image">
+
+                    <p>
+                        Interface Formation offre des formations diplomantes, continues et accélérées qui vous garantis
+                        des nouvelles perspectives de croissance. Le programme de la formation comporte plusieurs choix
+                        de cours du jour mais aussi du soir ouverts à tous, dans différents domaines. </p>
+                    <div class="service mt-125">
+                        <div class="container">
+                            <div class="section-header">
+                                <h2>Nos Formations </h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION GENIE CIVILE <br> (BATIMENTS ET DERIVES)</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_genie_civil')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION INFORMATIQUE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_informatique')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION </br>GESTION</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_gestion')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION COMMERCE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_commerce')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION COMPTABILITE</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_comptabilite')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION TOURISME</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_tourisme')}}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="service-item">
+                                        <h3>FORMATION ART ET DESIGN</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
+                                        </p>
+                                        <a href="{{ path('formation_art_design')}}">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

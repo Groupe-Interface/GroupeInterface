@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormationArtDesignController!{% endblock %}
+
+{% block content %}
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+
+                <p>Formation Art et Design</p>
+                <h2> Diplômes Homologués en Art et Design</h2>
+                <div style="text-align: right" class="col-1"><img src="{{ asset('img/icon/diplomes-homologues-Tunisie.jpg')}}" width="20" height="50"
+                                                                  title="interface Formation Tunisie - Diplomes Homologués"
+                                                                  alt="Diplomes Homologués - centre  formation Tunis"> </div></h2>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('img/interface-Formation-diplome.jpg') }}" alt="Image">
+
+                    <p>
+                        Le centre de formation de Tunis INTERFACE Formation offre des formations professionnelles en Art et Design (BTS):
+                    </p>
+                    <div class="section-header">
+
+                        <h2>Formation BTS Art et Design (2 ans)</h2>
+                        <h3> Filière</h3>
+
+                        <h3> BTS Décoration et Design d'intérieur</h3>
+                    </div>
+                    <div class="contact">
+                        <div class="container">
+                                <div class="contact-form">
+                                    <div id="success"></div>
+                                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                        <div>
+                                            <a  href="{{ path('admission')}}" class="btn" type="submit" id="sendMessageButton">ADMISSION</a>
+                                            <a href="{{ path('pre_inscription')}}" class="btn" type="submit" id="sendMessageButton">INSCRITPION EN LIGNE</a>
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Single Page End -->
+    <br>
+    <hr>
+    <br>
+{% endblock %}
