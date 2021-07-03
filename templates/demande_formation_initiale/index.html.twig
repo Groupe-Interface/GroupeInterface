@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DemandeFormationInitialeController!{% endblock %}
+{% block menu %}
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Interface</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <a href="{{ path('acceuil')}}" class="nav-item nav-link">Accueil</a>
+                    <a href="{{path('groupe_interface')}}" class="nav-item nav-link">Groupe Interface</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Formations</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('formation_initiale')}}" class="dropdown-item ">FORMATION INITIALE (BTS-BTP-CAP)</a>
+                            <a href="{{ path('formation_accelere')}}" class="dropdown-item">FORMATION ACCÉLÉRÉE</a>
+                            <a href="{{ path('formation_langue')}}" class="dropdown-item">FORMATION LANGUE</a>
+                            <a href="{{ path('formation_continue')}}" class="dropdown-item">FORMATION CONTINUE</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="{{ path('diplome')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Diplômes</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('bts')}}" class="dropdown-item ">DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</a>
+                            <a href="{{ path('btp')}}" class="dropdown-item">DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</a>
+                            <a href="{{ path('cap')}}" class="dropdown-item">DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</a>
+                        </div>
+                    </div>
+
+
+                    <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
+                    <a href="{{ path('pre_inscription')}}" class="nav-item nav-link">Pré-Inscription</a>
+                    <a href="{{ path('contact')}}" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="single mt-125">
+        <div class="container">
+            <div class="section-header">
+                <h2>Inscription en Ligne</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="container">
+                        <div class="contact-form">
+                            <div class="contact">
+                                <div class="container">
+                                    <div class="contact-form">
+                                        <form action="Inscription-formations-Tunisie.php" method="post" class="Style2 centrage" id="sendemail">
+
+
+                                            <div >
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                    <label class="form-check-label" for="inlineRadio1">Avec bac</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                    <label class="form-check-label" for="inlineRadio2">Sans bac</label>
+                                                </div>
+                                                <div ><span>Formation Demandée :</span></div>
+                                                <div>
+                                                    <p>
+                                                        <select   id="aics_name" name="aics_formation" class="text"  >
+                                                            <option value="Formation Diplomante" class="input_text">Séléctionner une Formation</option>
+                                                            <option value="Bâtiments et dérives" disabled>- Diplomes Génie Civil (Bâtiments et dérives) : </option>
+                                                            <option value="BTS Conducteur de travaux en bâtiment">BTS Conducteur de travaux en bâtiment</option>
+                                                            <option value="BTS Conducteur de travaux publics">BTS Conducteur de travaux publics</option>
+                                                            <option value="BTS Magasinier de matériels">BTS Magasinier de matériels</option>
+                                                            <option value="BTP Dessinateur Projeteur en Architecture">BTP Dessinateur Projeteur en Architecture</option>
+                                                            <option value="BTP Métreur Vérificateur en Bâtiment">BTP Métreur Vérificateur en Bâtiment</option>
+                                                            <option value="BTP CHEF Chantier en Bâtiment">BTP CHEF Chantier en Bâtiment</option>
+                                                            <option value="BTP Froid et Climatisation">BTP Froid et Climatisation</option>
+                                                            <option value="CAP Froid et Climatisation">CAP Froid et Climatisation</option>
+
+                                                            <option value="Diplomes Informatique" disabled>- Diplomes Informatique</option>
+                                                            <option value="BTS Réseaux et sécurité informatique">BTS Réseaux et sécurité informatique</option>
+                                                            <option value="BTP PAO">BTP PAO</option>
+                                                            <option value="BTP Technicien de Maintenances en Micro Système Informatique ">BTP Technicien de Maintenances en Micro Système Informatique </option>
+                                                            <option value="BTP Multimédia">BTP Multimédia</option>
+                                                            <option value="Diplomes GESTION" disabled>- Diplomes GESTION</option>
+                                                            <option value="BTS Commerce International">BTS Commerce International</option>
+                                                            <option value="BTS Comptabilité et Finance">BTS Comptabilité et Finance</option>
+
+                                                            <option value="BTP Commerce de Distribution">BTP Commerce de Distribution</option>
+                                                            <option value="BTP Formalités douanières">BTP Formalités douanières</option>
+                                                            <option value="BTP Vente des Produits tourstiques">BTP Vente des Produits tourstiques (en cours)</option>
+                                                            <option value="Diplomes ART et DESIGN" disabled>- Diplomes ART et DESIGN</option>
+                                                            <option value="BTS Décoration et Design d intérieur">BTS Décoration et Design d'intérieur</option>
+
+                                                        </select>
+
+
+                                                    </p>
+
+                                                </div>
+                                                <div >Nom et Prénom :</div>
+
+                                                <div>
+                                                    <p>
+                                                        <input   name="aics_name" id="aics_name" class="text" />
+                                                    </p>
+                                                </div>
+                                                <div>Téléphone :</div>
+
+                                                <div>
+                                                    <p>
+                                                        <input name="aics_phone" id="aics_phone" class="text" />
+                                                    </p>
+                                                </div>
+                                                <div>Email :</div>
+                                                <div>
+                                                    <p>
+                                                        <input name="aics_email" id="aics_email" class="text" />
+                                                    </p>
+                                                    <div>
+                                                        <div>Pays :</div>
+                                                        <div>
+                                                            <input name="aics_pays" id="aics_pays" class="text" value="Tunisie" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>Ville :</div>
+                                                <div>
+                                                    <p>
+                                                        <input name="aics_ville" id="aics_ville" class="text" />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="centrage">
+                                                <a  href="#" class="btn" type="submit" id="sendMessageButton">Envoyer</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
