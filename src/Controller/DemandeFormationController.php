@@ -13,7 +13,7 @@ class DemandeFormationController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('demande_formation/index.html.twig', [
+        return $this->render('Front/demande_formation/index.html.twig', [
             'controller_name' => 'DemandeFormationController',
         ]);
     }

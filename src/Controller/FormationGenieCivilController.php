@@ -13,7 +13,7 @@ class FormationGenieCivilController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_genie_civil/index.html.twig', [
+        return $this->render('Front/formation_genie_civil/index.html.twig', [
             'controller_name' => 'FormationGenieCivilController',
         ]);
     }

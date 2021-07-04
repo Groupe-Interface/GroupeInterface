@@ -13,7 +13,7 @@ class PreInscriptionController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('pre_inscription/index.html.twig', [
+        return $this->render('Front/pre_inscription/index.html.twig', [
             'controller_name' => 'PreInscriptionController',
         ]);
     }

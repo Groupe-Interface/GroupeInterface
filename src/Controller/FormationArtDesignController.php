@@ -13,7 +13,7 @@ class FormationArtDesignController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_art_design/index.html.twig', [
+        return $this->render('Front/formation_art_design/index.html.twig', [
             'controller_name' => 'FormationArtDesignController',
         ]);
     }

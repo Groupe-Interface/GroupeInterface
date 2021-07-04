@@ -13,7 +13,7 @@ class FormationContinueController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_continue/index.html.twig', [
+        return $this->render('Front/formation_continue/index.html.twig', [
             'controller_name' => 'FormationContinueController',
         ]);
     }

@@ -13,7 +13,7 @@ class FormationAccelereController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_accelere/index.html.twig', [
+        return $this->render('Front/formation_accelere/index.html.twig', [
             'controller_name' => 'FormationAccelereController',
         ]);
     }

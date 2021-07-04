@@ -13,7 +13,7 @@ class FormationLangueController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_langue/index.html.twig', [
+        return $this->render('Front/formation_langue/index.html.twig', [
             'controller_name' => 'FormationLangueController',
         ]);
     }

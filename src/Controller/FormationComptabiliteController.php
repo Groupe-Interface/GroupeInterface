@@ -13,7 +13,7 @@ class FormationComptabiliteController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_comptabilite/index.html.twig', [
+        return $this->render('Front/formation_comptabilite/index.html.twig', [
             'controller_name' => 'FormationComptabiliteController',
         ]);
     }

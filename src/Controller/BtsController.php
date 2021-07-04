@@ -13,7 +13,7 @@ class BtsController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('bts/index.html.twig', [
+        return $this->render('Front/bts/index.html.twig', [
             'controller_name' => 'BtsController',
         ]);
     }

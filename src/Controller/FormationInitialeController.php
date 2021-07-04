@@ -13,7 +13,7 @@ class FormationInitialeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_initiale/index.html.twig', [
+        return $this->render('Front/formation_initiale/index.html.twig', [
             'controller_name' => 'FormationInitialeController',
         ]);
     }

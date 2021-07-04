@@ -13,7 +13,7 @@ class FormationGestionController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_gestion/index.html.twig', [
+        return $this->render('Front/formation_gestion/index.html.twig', [
             'controller_name' => 'FormationGestionController',
         ]);
     }

@@ -13,7 +13,7 @@ class GroupeInterfaceController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('groupe_interface/index.html.twig', [
+        return $this->render('Front/groupe_interface/index.html.twig', [
             'controller_name' => 'GroupeInterfaceController',
         ]);
     }

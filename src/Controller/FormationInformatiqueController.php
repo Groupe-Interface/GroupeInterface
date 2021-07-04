@@ -13,7 +13,7 @@ class FormationInformatiqueController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_informatique/index.html.twig', [
+        return $this->render('Front/formation_informatique/index.html.twig', [
             'controller_name' => 'FormationInformatiqueController',
         ]);
     }

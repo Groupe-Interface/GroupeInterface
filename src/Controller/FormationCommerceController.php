@@ -13,7 +13,7 @@ class FormationCommerceController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('formation_commerce/index.html.twig', [
+        return $this->render('Front/formation_commerce/index.html.twig', [
             'controller_name' => 'FormationCommerceController',
         ]);
     }

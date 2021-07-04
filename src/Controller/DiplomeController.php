@@ -13,7 +13,7 @@ class DiplomeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('diplome/index.html.twig', [
+        return $this->render('Front/diplome/index.html.twig', [
             'controller_name' => 'DiplomeController',
         ]);
     }

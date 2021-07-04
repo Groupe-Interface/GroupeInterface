@@ -13,7 +13,7 @@ class AdmissionController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('admission/index.html.twig', [
+        return $this->render('Front/admission/index.html.twig', [
             'controller_name' => 'AdmissionController',
         ]);
     }

@@ -13,7 +13,7 @@ class CapController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('cap/index.html.twig', [
+        return $this->render('Front/cap/index.html.twig', [
             'controller_name' => 'CapController',
         ]);
     }
