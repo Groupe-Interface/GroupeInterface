@@ -1,0 +1,148 @@
+{% extends 'Front/baseFront.html.twig' %}
+
+{% block title %}Hello FormationAccelereController!{% endblock %}
+{% block menu %}
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Interface</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <a href="{{ path('acceuil')}}" class="nav-item nav-link">Accueil</a>
+                    <a href="{{path('groupe_interface')}}" class="nav-item nav-link">Groupe Interface</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Formations</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('formation_initiale')}}" class="dropdown-item ">FORMATION INITIALE (BTS-BTP-CAP)</a>
+                            <a href="{{ path('formation_accelere')}}" class="dropdown-item">FORMATION ACCÉLÉRÉE</a>
+                            <a href="{{ path('formation_langue')}}" class="dropdown-item">FORMATION LANGUE</a>
+                            <a href="{{ path('formation_continue')}}" class="dropdown-item">FORMATION CONTINUE</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="{{ path('diplome')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Diplômes</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('bts')}}" class="dropdown-item ">DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</a>
+                            <a href="{{ path('btp')}}" class="dropdown-item">DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</a>
+                            <a href="{{ path('cap')}}" class="dropdown-item">DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</a>
+                        </div>
+                    </div>
+
+
+                    <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
+                    <a href="{{ path('pre_inscription')}}" class="nav-item nav-link">Pré-Inscription</a>
+                    <a href="{{ path('contact')}}" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+<div class="single mt-125">
+    <div class="container">
+        <div class="section-header">
+
+            <p>Formation Accélérée</p>
+            <h2>Liste des Formations Accélérées</h2>
+            <div style="text-align: right" class="col-1"><img src="{{ asset('img/icon/diplomes-homologues-Tunisie.jpg')}}" width="20" height="50"
+                                                              title="interface Formation Tunisie - Diplomes Homologués"
+                                                              alt="Diplomes Homologués - centre  formation Tunis"> </div></h2>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <img src="{{ asset('img/formation-acceleree-tunisie.jpg') }}" alt="Image">
+
+                <p>
+                    Des formations à courte duré ciblées et répondent à l'attente du demandeur et sanctionnées par une attestation de suivi des cours concernés. Ces formations consolident le C.V. du demandeur à la recherche d'un meilleur emploi.
+                </p>
+                <table width="100%" border="2" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td width="337"><p align="center"><strong>Spécialités</strong> (Entre Autres)</p></td>
+                        <td width="177"> </td>
+                        <td width="117"><p><strong>Durée</strong></p></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Informatique Bureautique (MS Office)</div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">20 H</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">20 H</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">AutoCad</div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">15 H</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">15 H</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">3Ds Max</div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">20 H</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">20 H</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Sage</div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">20 H</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">20 H</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Comptabilité</div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">30 H</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">30 H</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" valign="top"><div align="center">Ressources Humaines</div></td>
+                        <td valign="top">Formation en Groupe</td>
+                        <td valign="top">-</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Formation Individuelle</td>
+                        <td valign="top">-</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+                <h4  style="color:red;"> + d'autres Formations Sur Mesure</h4>
+                <div class="contact">
+                    <div class="container">
+                        <div class="contact-form">
+
+                            <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                <div class="centrage">
+                                    <a href="{{ path('demande_formation')}}" class="btn" type="submit" id="sendMessageButton">>> DEMANDER UNE FORMATION</a>
+                                </div>
+                                <div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    {% endblock %}
