@@ -1,0 +1,38 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content%}
+    <h1>Reclamation</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">
+            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                <i class="fa fa-edit"></i>
+            </button></a>
+        {{ include('Back/reclamation/_delete_form.html.twig') }}
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>TitleReclamation</th>
+                <td>{{ reclamation.titleReclamation }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionReclamation</th>
+                <td>{{ reclamation.descriptionReclamation }}</td>
+            </tr>
+            <tr>
+                <th>DateReclamation</th>
+                <td>{{ reclamation.dateReclamation ? reclamation.dateReclamation|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path("reclamation_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+
+{% endblock %}

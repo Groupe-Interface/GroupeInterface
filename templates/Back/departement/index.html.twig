@@ -1,0 +1,35 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+    <h1>La liste des separtement </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomDepartement</th>
+                <th>AbDepartement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for departement in departements %}
+            <tr>
+                <td>{{ departement.id }}</td>
+                <td>{{ departement.nomDepartement }}</td>
+                <td>{{ departement.abDepartement }}</td>
+                <td>
+                    <a href="{{ path('departement_show', {'id': departement.id}) }}">show</a>
+                    <a href="{{ path('departement_edit', {'id': departement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('departement_new') }}">Create new</a>
+{% endblock %}

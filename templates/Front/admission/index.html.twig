@@ -1,0 +1,105 @@
+{% extends 'Front/baseFront.html.twig' %}
+
+{% block title %}Hello AdmissionController!{% endblock %}
+{% block menu %}
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Interface</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <a href="{{ path('acceuil')}}" class="nav-item nav-link">Accueil</a>
+                    <a href="{{path('groupe_interface')}}" class="nav-item nav-link">Groupe Interface</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Formations</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('formation_initiale')}}" class="dropdown-item ">FORMATION INITIALE (BTS-BTP-CAP)</a>
+                            <a href="{{ path('formation_accelere')}}" class="dropdown-item">FORMATION ACCÉLÉRÉE</a>
+                            <a href="{{ path('formation_langue')}}" class="dropdown-item">FORMATION LANGUE</a>
+                            <a href="{{ path('formation_continue')}}" class="dropdown-item">FORMATION CONTINUE</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="{{ path('diplome')}}" class="nav-link dropdown-toggle active" data-toggle="dropdown">Diplômes</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('bts')}}" class="dropdown-item ">DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</a>
+                            <a href="{{ path('btp')}}" class="dropdown-item">DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</a>
+                            <a href="{{ path('cap')}}" class="dropdown-item">DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</a>
+                        </div>
+                    </div>
+
+
+                    <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
+                    <a href="{{ path('pre_inscription')}}" class="nav-item nav-link">Pré-Inscription</a>
+                    <a href="{{ path('contact')}}" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+<!-- Single Page Start -->
+<div class="single mt-125">
+    <div class="container">
+        <div class="section-header">
+
+            <h2>Admission  </h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <img src="{{ asset('img/interface-formations-Tunisie.jpg') }}" alt="Image">
+
+                <p>
+                    Fournit aux demandeurs de formation des informations exhaustives, diversifiées se rapportant aux métiers visés par la formation.
+                    Forme aux métiers les plus demandés au plan national et international, en vue de à leur assurer une évolution constante dans le cheminement professionnelavec des moyens constamment innovés.
+                    La formation initiale est sanctionnée par des diplômes homologués dans différents domaines . </p>
+                <div class="service mt-125">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2>Admission</h2>
+                            <h1> Admission - Formation en BTS</h1>
+                            <strong>Ceux qui sont titulaires du diplôme de baccalauréat ou titulaire d’un diplôme BTP ou un diplôme admis en équivalence avec étude du dossier peuvent s'inscrire en 1ère année BTS</strong>
+
+                            <h1> Admission - Formation en BTP</h1>
+                            <strong> Ceux qui ont le niveau e 2ème année secondaire (accomplie) ou un diplôme de CAP peuvent s'inscrire en 1ère année BTP</strong>
+
+                            <h1>  Admission - Formation en CAP</h1>
+                            <strong>Ceux qui ont le niveau de 9ème année de base accomplie, soit l’équivalent de 9 ans d’études (accomplies) peuvent s'inscrire en CAP .</strong>
+                        </div>
+                        <div class="section-header">
+                            <h2> Pièces à Fournir</h2>
+                            <h1>Etudiants Tunisiens</h1>
+
+                            <u> Pièces à  fournir pour l’inscription:</u>
+                            <ul class="ul-group">
+
+                                <li>2 Photocopies certifiée conforme à l’attestation scolaire ou diplôme. (les attestations scolaires et diplômes délivrés par l’établissement privé doivent porter le cachet et la signature de la délégation régionale de l’éducation).</li>
+                                <li>2 Extraits de naissance.</li>
+                                <li>2 photos d’identité (avec nom et prénom du candidat en verso).</li>
+                                <li>2 Photocopies de la CIN ou passeport</li>
+                                <li>Le règlement intérieur et la déclaration sur l’honneur dument remplis avec signature légalisée.</li>
+                            </ul>
+                            <h1>Etudiants Internationaux</h1>
+                            <u> Pièces à  fournir pour l’inscription :</u>
+                            <ul class="ul-group">
+                                <li>2 copies certifiées conformes à l’original attestant de votre niveau scolaire</li>
+                                <li>2 copies des 3 premières pages du passeport</li>
+                                <li>4 photos d’identité portant au verso votre nom</li>
+                                <li>2 extraits de naissance</li>
+                            </ul>
+                            <p  style="color:red;">NB:</p>
+                            <p>La deuxième tranche de paiement devra être versée  avant le démarrage du deuxième semestre.</p>
+
+                            <p>Nous vous remettrons à les originaux des attestations d’inscription et de paiement avec un reçu.</p>
+                            <p>Vous pourrez alors présenter votre demande pour l’obtention de carte de séjour qui, une fois obtenue, vous permettra de recevoir votre carte d’étudiant.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}
