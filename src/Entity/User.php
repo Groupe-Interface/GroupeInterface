@@ -54,17 +54,13 @@ class User
      */
     private $commentaires;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="idUser")
-     */
-    private $avis;
 
     public function __construct()
     {
         $this->reclamations = new ArrayCollection();
         $this->publications = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
-        $this->avis = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -204,36 +200,6 @@ class User
             // set the owning side to null (unless already changed)
             if ($commentaire->getIdUser() === $this) {
                 $commentaire->setIdUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Avis[]
-     */
-    public function getAvis(): Collection
-    {
-        return $this->avis;
-    }
-
-    public function addAvi(Avis $avi): self
-    {
-        if (!$this->avis->contains($avi)) {
-            $this->avis[] = $avi;
-            $avi->setIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAvi(Avis $avi): self
-    {
-        if ($this->avis->removeElement($avi)) {
-            // set the owning side to null (unless already changed)
-            if ($avi->getIdUser() === $this) {
-                $avi->setIdUser(null);
             }
         }
 

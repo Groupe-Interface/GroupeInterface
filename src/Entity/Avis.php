@@ -34,10 +34,6 @@ class Avis
 
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="avis")
-     */
-    private $idUser;
 
     public function getId(): ?int
     {
@@ -81,15 +77,5 @@ class Avis
     }
 
 
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
 
-    public function setIdUser(?User $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
 }

@@ -3,7 +3,11 @@
 {% block content %}
     <h1>Create new Avis</h1>
 
-    {{ include('avis/_form.html.twig') }}
+    {{ include('Back/avis/_form.html.twig') }}
 
-    <a href="{{ path('avis_index') }}">back to list</a>
+    <a href="{{ path("avis_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
 {% endblock %}

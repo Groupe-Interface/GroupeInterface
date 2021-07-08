@@ -1,35 +1,45 @@
 {% extends 'Back/baseBack.html.twig' %}
 
 {% block content %}
-    <h1>La liste des separtement </h1>
+    <h1>La liste des département</h1>
+    </br>
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>NomDepartement</th>
+                        <th>AbDepartement</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for departement in departements %}
+                        <tr>
+                            <td>{{ departement.id }}</td>
+                            <td>{{ departement.nomDepartement }}</td>
+                            <td>{{ departement.abDepartement }}</td>
+                            <td>
+                                <a href="{{ path('departement_show', {'id': departement.id}) }}"><i class="fa fa-eye"></i> </a>
+                                <a href="{{ path('departement_edit', {'id': departement.id}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('departement_delete', {'id': departement.id}) }}"><i class="fa fa-trash-o"></i></a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NomDepartement</th>
-                <th>AbDepartement</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for departement in departements %}
-            <tr>
-                <td>{{ departement.id }}</td>
-                <td>{{ departement.nomDepartement }}</td>
-                <td>{{ departement.abDepartement }}</td>
-                <td>
-                    <a href="{{ path('departement_show', {'id': departement.id}) }}">show</a>
-                    <a href="{{ path('departement_edit', {'id': departement.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div style="width: 100%; display:flex; justify-content: flex-end">
+                    <a href="{{ path('departement_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                </div>
 
-    <a href="{{ path('departement_new') }}">Create new</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

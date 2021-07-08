@@ -2,7 +2,13 @@
 
 {% block content%}
     <h1>Departement</h1>
-
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        <a href="{{ path('departement_edit', {'id': departement.id}) }}">
+            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                <i class="fa fa-edit"></i>
+            </button></a>
+        {{ include('Back/departement/_delete_form.html.twig') }}
+    </div>
     <table class="table">
         <tbody>
             <tr>
@@ -19,10 +25,9 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('departement_index') }}">back to list</a>
-
-    <a href="{{ path('departement_edit', {'id': departement.id}) }}">edit</a>
-
-    {{ include('Back/departement/_delete_form.html.twig') }}
+    <a href="{{ path("departement_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
 {% endblock %}

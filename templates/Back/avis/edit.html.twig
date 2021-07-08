@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+{% extends 'Back/baseBack.html.twig' %}
 
-<title>Edit Avis</title>
-
-{% block body %}
+{% block content%}
     <h1>Edit Avis</h1>
 
-    {{ include('avis/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('Back/avis/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('avis_index') }}">back to list</a>
+    <a href="{{ path("avis_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
 
-    {{ include('avis/_delete_form.html.twig') }}
+
 {% endblock %}

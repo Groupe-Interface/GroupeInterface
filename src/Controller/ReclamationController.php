@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mercure\HubInterface;
+use Symfony\Component\Mercure\Update;
+
 
 /**
  * @Route("/reclamation")
@@ -35,6 +38,8 @@ class ReclamationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reclamation->setDateReclamation(new \DateTime('now'));
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reclamation);
             $entityManager->flush();
@@ -90,5 +95,16 @@ class ReclamationController extends AbstractController
         }
 
         return $this->redirectToRoute('reclamation_index');
+    }
+    public function __invoke(HubInterface $hub): Response
+    {
+        $update = new Update(
+            'http://example.com/books/1',
+            json_encode(['status' => 'OutOfStock'])
+        );
+
+        $hub->publish($update);
+
+        return new Response('published!');
     }
 }

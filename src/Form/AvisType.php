@@ -14,8 +14,6 @@ class AvisType extends AbstractType
         $builder
             ->add('titleAvis')
             ->add('descriptionAvis')
-            ->add('dateAvis')
-            ->add('idAdmin')
         ;
     }
 

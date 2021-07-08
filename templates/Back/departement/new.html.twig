@@ -4,5 +4,9 @@
 
     {{ include('Back/departement/_form.html.twig') }}
 
-    <a href="{{ path('departement_index') }}">back to list</a>
+    <a href="{{ path("departement_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
 {% endblock %}

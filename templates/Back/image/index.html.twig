@@ -1,0 +1,47 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+    <h1>Image index</h1>
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>NomImage</th>
+                        <th>DateAjout</th>
+                        <th>NumImage</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for image in images %}
+                        <tr>
+                            <td>{{ image.id }}</td>
+                            <td>{{ image.nomImage }}</td>
+                            <td>{{ image.dateAjout ? image.dateAjout|date('Y-m-d') : '' }}</td>
+                            <td>{{ image.numImage }}</td>
+                            <td>
+                                <a href="{{ path('image_show', {'id': image.id}) }}"><i class="fa fa-eye"></i> </a>
+                                <a href="{{ path('image_edit', {'id': image.id}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('image_delete', {'id': image.id}) }}"><i class="fa fa-trash-o"></i></a>
+
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <div style="width: 100%; display:flex; justify-content: flex-end">
+                    <a href="{{ path('image_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
