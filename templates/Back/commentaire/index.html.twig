@@ -1,0 +1,42 @@
+{% extends 'Back/baseBack.html.twig' %}
+{% block content %}
+    <h1>Commentaire index</h1>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+
+            <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DescriptionCommentaire</th>
+                <th>DateCommentaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td>{{ commentaire.id }}</td>
+                <td>{{ commentaire.descriptionCommentaire }}</td>
+                <td>{{ commentaire.dateCommentaire ? commentaire.dateCommentaire|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('commentaire_show', {'id': commentaire.id}) }}"><i class="fa fa-eye"></i> </a>
+                    <a href="{{ path('commentaire_edit', {'id': commentaire.id}) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('commentaire_delete', {'id': commentaire.id}) }}"><i class="fa fa-trash-o"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            <div style="width: 100%; display:flex; justify-content: flex-end">
+                <a href="{{ path('commentaire_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -49,6 +49,11 @@ class Specialite
      */
     private $classes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Departement::class, inversedBy="specialites")
+     */
+    private $departement;
+
     public function __construct()
     {
         $this->semestres = new ArrayCollection();
@@ -186,4 +191,21 @@ class Specialite
 
         return $this;
     }
+
+    public function getDepartement(): ?Departement
+    {
+        return $this->departement;
+    }
+
+    public function setDepartement(?Departement $departement): self
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->nomSpecialite;
+    }
+
 }

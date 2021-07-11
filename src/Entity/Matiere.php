@@ -33,19 +33,20 @@ class Matiere
     private $coeffMatiere;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Enseignant::class, inversedBy="matieres")
-     */
-    private $idEnseignant;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Specialite::class, inversedBy="matieres")
      */
     private $idSpecialite;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity=Note::class, inversedBy="idMatiere")
+     * @ORM\Column(type="float")
      */
-    private $note;
+    private $noteExamen;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $noteTest;
 
     public function getId(): ?int
     {
@@ -88,17 +89,6 @@ class Matiere
         return $this;
     }
 
-    public function getIdEnseignant(): ?Enseignant
-    {
-        return $this->idEnseignant;
-    }
-
-    public function setIdEnseignant(?Enseignant $idEnseignant): self
-    {
-        $this->idEnseignant = $idEnseignant;
-
-        return $this;
-    }
 
     public function getIdSpecialite(): ?Specialite
     {
@@ -112,14 +102,26 @@ class Matiere
         return $this;
     }
 
-    public function getNote(): ?Note
+    public function getNoteExamen(): ?float
     {
-        return $this->note;
+        return $this->noteExamen;
     }
 
-    public function setNote(?Note $note): self
+    public function setNoteExamen(float $noteExamen): self
     {
-        $this->note = $note;
+        $this->noteExamen = $noteExamen;
+
+        return $this;
+    }
+
+    public function getNoteTest(): ?float
+    {
+        return $this->noteTest;
+    }
+
+    public function setNoteTest(float $noteTest): self
+    {
+        $this->noteTest = $noteTest;
 
         return $this;
     }

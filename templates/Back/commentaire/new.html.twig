@@ -1,0 +1,13 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+    <h1>Create new Commentaire</h1>
+
+    {{ include('Back/commentaire/_form.html.twig') }}
+
+    <a href="{{ path("commentaire_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}

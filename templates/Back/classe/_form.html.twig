@@ -3,18 +3,17 @@
 
 
         <div class="col-md-12 col-sm-12  form-group">
-            {{ form_start(form) }}
-            {{ form_widget(form.nomDepartement,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Département '}})}}
-            {{ form_widget(form.abDepartement,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Abréviation Département'}})}}
-
+{{ form_start(form) }}
+            {{ form_widget(form.niveauClasse,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Niveau Classe'}})}}
+            {{ form_widget(form.numClasse,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Num de classe'}})}}
+            {{ form_widget(form.idSpecialite,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Specialite'}})}}
 
             <div style="width: 100%; display:flex; justify-content: flex-end">
                 <button class="btn btn-primary btn-sm shadow-sm mt-2 mb-2">
                     <i class="fa fa-plus-square-o"></i>
                     {{ button_label|default('Save') }}</button>
             </div>
-            {{ form_end(form) }}
+{{ form_end(form) }}
         </div>
     </div>
 </div>
-

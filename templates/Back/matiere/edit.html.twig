@@ -1,0 +1,14 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content%}
+    <h1>Edit Matiere</h1>
+
+    {{ include('Back/matiere/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path("matiere_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+
+{% endblock %}

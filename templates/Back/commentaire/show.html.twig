@@ -1,0 +1,33 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+    <h1>Commentaire</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        <a href="{{ path('commentaire_edit', {'id': commentaire.id}) }}">
+            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                <i class="fa fa-edit"></i>
+            </button></a>
+        {{ include('Back/commentaire/_delete_form.html.twig') }}
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commentaire.id }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionCommentaire</th>
+                <td>{{ commentaire.descriptionCommentaire }}</td>
+            </tr>
+            <tr>
+                <th>DateCommentaire</th>
+                <td>{{ commentaire.dateCommentaire ? commentaire.dateCommentaire|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path("commentaire_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}

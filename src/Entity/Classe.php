@@ -147,7 +147,10 @@ class Classe
                 $cour->setIdClasse(null);
             }
         }
-
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->niveauClasse."_".$this->idSpecialite."_".$this->numClasse;
     }
 }

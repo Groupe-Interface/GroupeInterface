@@ -1,0 +1,30 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+    <h1>Cours</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        <a href="{{ path('cours_edit', {'id': cour.id}) }}">
+            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                <i class="fa fa-edit"></i>
+            </button></a>
+        {{ include('Back/cours/_delete_form.html.twig') }}
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cour.id }}</td>
+            </tr>
+            <tr>
+                <th>SupportCours</th>
+
+                <td> <a href="{{ asset('courUpload/' ~ cour.supportCours )}}">{{ cour.supportCours }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path("cours_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}

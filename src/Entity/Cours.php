@@ -34,6 +34,16 @@ class Cours
      */
     private $publications;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomCours;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $DateCours;
+
     public function __construct()
     {
         $this->publications = new ArrayCollection();
@@ -44,12 +54,12 @@ class Cours
         return $this->id;
     }
 
-    public function getSupportCours(): ?string
+    public function getSupportCours()
     {
         return $this->supportCours;
     }
 
-    public function setSupportCours(string $supportCours): self
+    public function setSupportCours($supportCours): self
     {
         $this->supportCours = $supportCours;
 
@@ -97,4 +107,33 @@ class Cours
 
         return $this;
     }
+
+    public function getNomCours(): ?string
+    {
+        return $this->nomCours;
+    }
+
+    public function setNomCours(string $nomCours): self
+    {
+        $this->nomCours = $nomCours;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->nomCours;
+    }
+
+    public function getDateCours(): ?\DateTimeInterface
+    {
+        return $this->DateCours;
+    }
+
+    public function setDateCours(\DateTimeInterface $DateCours): self
+    {
+        $this->DateCours = $DateCours;
+
+        return $this;
+    }
+
 }

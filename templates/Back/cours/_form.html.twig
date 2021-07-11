@@ -3,9 +3,10 @@
 
 
         <div class="col-md-12 col-sm-12  form-group">
-            {{ form_start(form) }}
-            {{ form_widget(form.nomDepartement,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Département '}})}}
-            {{ form_widget(form.abDepartement,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Abréviation Département'}})}}
+{{ form_start(form) }}
+            {{ form_widget(form.nomCours,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Cours'}})}}
+            {{ form_widget(form.supportCours,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Support Cours'}})}}
+            {{ form_widget(form.idClasse,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Classe'}})}}
 
 
             <div style="width: 100%; display:flex; justify-content: flex-end">
@@ -17,4 +18,3 @@
         </div>
     </div>
 </div>
-

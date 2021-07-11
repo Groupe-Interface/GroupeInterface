@@ -1,0 +1,51 @@
+{% extends 'Back/baseBack.html.twig' %}
+{% block content %}
+    <h1>Matiere index</h1>
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>NomMatiere</th>
+                        <th>MoyenneMatiere</th>
+                        <th>CoeffMatiere</th>
+                        <th>NoteExamen</th>
+                        <th>NoteTest</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for matiere in matieres %}
+                        <tr>
+                            <td>{{ matiere.id }}</td>
+                            <td>{{ matiere.nomMatiere }}</td>
+                            <td>{{ matiere.moyenneMatiere }}</td>
+                            <td>{{ matiere.coeffMatiere }}</td>
+                            <td>{{ matiere.noteExamen }}</td>
+                            <td>{{ matiere.noteTest }}</td>
+                            <td>
+                                <a href="{{ path('matiere_show', {'id': matiere.id}) }}"><i class="fa fa-eye"></i> </a>
+                                <a href="{{ path('matiere_edit', {'id': matiere.id}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('matiere_delete', {'id': matiere.id}) }}"><i class="fa fa-trash-o"></i></a>
+
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div style="width: 100%; display:flex; justify-content: flex-end">
+                    <a href="{{ path('matiere_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

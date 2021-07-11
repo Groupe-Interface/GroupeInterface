@@ -1,0 +1,21 @@
+<div class="x_panel">
+    <div class="x_content">
+
+
+        <div class="col-md-12 col-sm-12  form-group">
+            {{  form_start(form) }}
+            {{ form_widget(form.nomSpecialite,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Specialite'}})}}
+            {{ form_widget(form.dureeSpecialite,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Duree Specialite'}})}}
+            {{ form_widget(form.nbrSemestre,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nombre de semestre'}})}}
+            {{ form_widget(form.departement,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Departement'}})}}
+        </div>
+
+        <div style="width: 100%; display:flex; justify-content: flex-end">
+            <button class="btn btn-primary btn-sm shadow-sm mt-2 mb-2">
+                <i class="fa fa-plus-square-o"></i>
+                {{ button_label|default('Save') }}</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+

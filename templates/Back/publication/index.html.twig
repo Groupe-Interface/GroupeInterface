@@ -1,0 +1,48 @@
+{% extends 'Back/baseBack.html.twig' %}
+{% block content %}
+    <h1>Publication index</h1>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+
+            <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DescriptionPublication</th>
+                <th>DatePublication</th>
+                <th>NbComment</th>
+                <th>NbVue</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for publication in publications %}
+            <tr>
+                <td>{{ publication.id }}</td>
+                <td>{{ publication.descriptionPublication }}</td>
+                <td>{{ publication.datePublication ? publication.datePublication|date('Y-m-d') : '' }}</td>
+                <td>{{ publication.nbComment }}</td>
+                <td>{{ publication.nbVue }}</td>
+                <td>
+                    <a href="{{ path('publication_show', {'id': publication.id}) }}"><i class="fa fa-eye"></i> </a>
+                    <a href="{{ path('publication_edit', {'id': publication.id}) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('publication_delete', {'id': publication.id}) }}"><i class="fa fa-trash-o"></i></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            <div style="width: 100%; display:flex; justify-content: flex-end">
+                <a href="{{ path('publication_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
