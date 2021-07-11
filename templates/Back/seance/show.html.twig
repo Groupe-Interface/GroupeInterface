@@ -1,0 +1,42 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+    <h1>Seance</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        <a href="{{ path('seance_edit', {'id': seance.id}) }}">
+            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                <i class="fa fa-edit"></i>
+            </button></a>
+        {{ include('Back/seance/_delete_form.html.twig') }}
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ seance.id }}</td>
+            </tr>
+            <tr>
+                <th>DateSeance</th>
+                <td>{{ seance.dateSeance ? seance.dateSeance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureDebut</th>
+                <td>{{ seance.heureDebut ? seance.heureDebut|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureFin</th>
+                <td>{{ seance.heureFin ? seance.heureFin|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NbrMinute</th>
+                <td>{{ seance.nbrMinute }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path("seance_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+
+{% endblock %}

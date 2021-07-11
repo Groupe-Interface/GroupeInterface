@@ -38,6 +38,26 @@ class Reclamation
      */
     private $idUser;
 
+    protected $captchaCode;
+
+    /**
+     * @return mixed
+     */
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    /**
+     * @param mixed $captchaCode
+     * @return Reclamation
+     */
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
