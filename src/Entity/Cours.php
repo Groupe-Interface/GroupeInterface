@@ -59,7 +59,7 @@ class Cours
         return $this->supportCours;
     }
 
-    public function setSupportCours($supportCours): self
+    public function setSupportCours( $supportCours): self
     {
         $this->supportCours = $supportCours;
 
