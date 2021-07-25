@@ -1,42 +1,44 @@
 {% extends 'Back/baseBack.html.twig' %}
 
 {% block content %}
-    <h1>Matiere</h1>
-    <div style="width: 100%; display:flex; justify-content: flex-end">
-        <a href="{{ path('matiere_edit', {'id': matiere.id}) }}">
-            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
-                <i class="fa fa-edit"></i>
-            </button></a>
-        {{ include('Back/matiere/_delete_form.html.twig') }}
-    </div>
+    <h1>Matiere : {{ matiere.nomMatiere }} </h1>
+
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ matiere.id }}</td>
-            </tr>
-            <tr>
-                <th>NomMatiere</th>
-                <td>{{ matiere.nomMatiere }}</td>
-            </tr>
-            <tr>
-                <th>MoyenneMatiere</th>
-                <td>{{ matiere.moyenneMatiere }}</td>
-            </tr>
-            <tr>
-                <th>CoeffMatiere</th>
-                <td>{{ matiere.coeffMatiere }}</td>
-            </tr>
-            <tr>
-                <th>NoteExamen</th>
-                <td>{{ matiere.noteExamen }}</td>
-            </tr>
-            <tr>
-                <th>NoteTest</th>
-                <td>{{ matiere.noteTest }}</td>
-            </tr>
+        {{ include('Back/cours/_form.html.twig') }}
+        {% for cour in cours  %}
+            {% if cour.matiere.id == matiere.id %}
+
+                <tr>
+
+                    <th>Nom Cours</th>
+                    <td><a href="{{ path('cours_show', {'id': cour.id}) }}">{{ cour.nomCours }}</a></td>
+                </tr>
+        <tr>
+                <th>SupportCours</th>
+                <td> <a href="{{ asset('courUpload/' ~ cour.supportCours  )}}" >{{ cour.supportCours }}</a></td>
+                <td>{{ cour.DateCours ? cour.DateCours|date('Y-m-d') : '' }}</td>
+            <td>
+                <div style="width: 100%; display:flex; justify-content: flex-end">
+                    <a href="{{ path('cours_edit', {'id': cour.id}) }}">
+                        <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                            <i class="fa fa-edit"></i>
+                        </button></a>
+                    {{ include('Back/cours/_delete_form.html.twig') }}
+                </div>
+            </td>
+        </tr>
+
+
+            {% endif %}
+        {% endfor %}
+
+
+
+
         </tbody>
     </table>
+
 
     <a href="{{ path("matiere_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
         <button type="button" class="btn btn-dark">

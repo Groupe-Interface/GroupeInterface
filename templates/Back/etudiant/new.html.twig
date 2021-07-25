@@ -1,0 +1,12 @@
+{% extends 'Back/baseBack.html.twig' %}
+{% block content%}
+    <h1>Create new etudiant</h1>
+
+    {{ include('Back/etudiant/_form.html.twig') }}
+
+    <a href="{{ path("admin_etudiant_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}

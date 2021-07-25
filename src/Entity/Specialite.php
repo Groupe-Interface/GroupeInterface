@@ -54,6 +54,11 @@ class Specialite
      */
     private $departement;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $abrev_specialite;
+
     public function __construct()
     {
         $this->semestres = new ArrayCollection();
@@ -205,7 +210,19 @@ class Specialite
     }
     public function __toString()
     {
-        return $this->nomSpecialite;
+        return $this->nomSpecialite ;
+    }
+
+    public function getAbrevSpecialite(): ?string
+    {
+        return $this->abrev_specialite;
+    }
+
+    public function setAbrevSpecialite(string $abrev_specialite): self
+    {
+        $this->abrev_specialite = $abrev_specialite;
+
+        return $this;
     }
 
 }

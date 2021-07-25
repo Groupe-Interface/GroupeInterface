@@ -66,11 +66,11 @@ class CommentaireController extends AbstractController
     {
         $form = $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);
-
+$publication = $commentaire->getPublication();
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('commentaire_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('publication_show', array('id'=>$publication->getId()));
         }
 
         return $this->render('Back/commentaire/edit.html.twig', [
@@ -80,16 +80,19 @@ class CommentaireController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="commentaire_delete", methods={"POST"})
+     * @Route("/{id}", name="commentaire_delete",  methods={"DELETE"})
      */
     public function delete(Request $request, Commentaire $commentaire): Response
     {
+    $publication = $commentaire->getPublication();
         if ($this->isCsrfTokenValid('delete'.$commentaire->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $publication->setNbComment($publication->getNbComment()-1);
             $entityManager->remove($commentaire);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('commentaire_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('publication_show', array('id'=>$publication->getId()));
     }
 }

@@ -2,40 +2,49 @@
 
 {% block content %}
     <h1>Publication</h1>
-    <div style="width: 100%; display:flex; justify-content: flex-end">
-        <a href="{{ path('publication_edit', {'id': publication.id}) }}">
-            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
-                <i class="fa fa-edit"></i>
-            </button></a>
-        {{ include('Back/publication/_delete_form.html.twig') }}
-    </div>
+
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ publication.id }}</td>
-            </tr>
-            <tr>
-                <th>DescriptionPublication</th>
-                <td>{{ publication.descriptionPublication }}</td>
-            </tr>
-            <tr>
-                <th>DatePublication</th>
-                <td>{{ publication.datePublication ? publication.datePublication|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>NbComment</th>
-                <td>{{ publication.nbComment }}</td>
-            </tr>
-            <tr>
-                <th>NbVue</th>
-                <td>{{ publication.nbVue }}</td>
-            </tr>
-
+        <tr>
+            <td>{{ publication.descriptionPublication |raw }}</td>
+        <tr>
+            <td>
+                <i class="fa fa-comments-o"></i>{{ publication.nbComment }}
+                <i class="fa fa-eye"></i>{{ publication.nbVue }}
+            </td>
 
         </tbody>
     </table>
-    <a href="{{ path("publication_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+    <table class="table">
+        <tbody>
+        {{ include('Back/commentaire/_form.html.twig') }}
+        {% for commentaire in commentaires  %}
+            {% if commentaire.publication.id == publication.id %}
+                <tr>
+
+                    <td> {{ commentaire.descriptionCommentaire | raw}}</td>
+                    <td>{{ commentaire.dateCommentaire ? commentaire.dateCommentaire|date('Y-m-d') : ''   }}</td>
+                    <td>
+                        <div style="width: 100%; display:flex; justify-content: flex-end">
+                            <a href="{{ path('commentaire_edit', {'id': commentaire.id}) }}">
+                                <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                                    <i class="fa fa-edit"></i>
+                                </button></a>
+                            {{ include('Back/commentaire/_delete_form.html.twig') }}
+                        </div></td>
+                <tr>
+                <td></td>
+
+
+                </tr>
+
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('cours_show', {'id': cour.id}) }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
         <button type="button" class="btn btn-dark">
             <i class="fa fa-arrow-circle-left">  </i>  retour
         </button>

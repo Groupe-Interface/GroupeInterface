@@ -44,6 +44,11 @@ class Cours
      */
     private $DateCours;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Matiere::class, inversedBy="cours")
+     */
+    private $matiere;
+
     public function __construct()
     {
         $this->publications = new ArrayCollection();
@@ -132,6 +137,18 @@ class Cours
     public function setDateCours(\DateTimeInterface $DateCours): self
     {
         $this->DateCours = $DateCours;
+
+        return $this;
+    }
+
+    public function getMatiere(): ?Matiere
+    {
+        return $this->matiere;
+    }
+
+    public function setMatiere(?Matiere $matiere): self
+    {
+        $this->matiere = $matiere;
 
         return $this;
     }

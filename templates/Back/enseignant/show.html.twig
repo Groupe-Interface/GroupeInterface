@@ -1,0 +1,58 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content%}
+    <h1>Enseignant</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        <a href="{{ path('admin_enseignant_edit', {'id': enseignant.id}) }}">
+            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                <i class="fa fa-edit"></i>
+            </button></a>
+        {{ include('Back/enseignant/_delete_form.html.twig') }}
+    </div>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ enseignant.id }}</td>
+            </tr>
+            <tr>
+                <th>NomEnseignant</th>
+                <td>{{ enseignant.nomEnseignant }}</td>
+            </tr>
+            <tr>
+                <th>PrenomEnseignant</th>
+                <td>{{ enseignant.prenomEnseignant }}</td>
+            </tr>
+            <tr>
+                <th>AdresseEnseignant</th>
+                <td>{{ enseignant.adresseEnseignant }}</td>
+            </tr>
+            <tr>
+                <th>VilleEnseignant</th>
+                <td>{{ enseignant.villeEnseignant }}</td>
+            </tr>
+            <tr>
+                <th>EmailEnseignant</th>
+                <td>{{ enseignant.emailEnseignant }}</td>
+            </tr>
+            <tr>
+                <th>PhoneEnseignant</th>
+                <td>{{ enseignant.phoneEnseignant }}</td>
+            </tr>
+            <tr>
+                <th>PrixHeure</th>
+                <td>{{ enseignant.prixHeure }}</td>
+            </tr>
+            {% for classe in classes %}
+            <tr>
+                <th>classe</th>
+                {{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path("admin_enseignant_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}

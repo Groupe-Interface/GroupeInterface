@@ -56,18 +56,36 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <ul class="nav side-menu">
-                                <li><a href="{{ path("reclamation_index") }}"><i class="fa fa-pencil-square-o"></i> Réclamation </a>
+                                {% if is_granted ('ROLE_ADMIN') %}
+                                <li><a href="{{ path("admin_etudiant_index") }}"><i class="fa fa-pencil-square-o"></i> Etudiant </a>
+                                <li><a href="{{ path("admin_enseignant_index") }}"><i class="fa fa-pencil-square-o"></i> Enseignant </a>
+                                <li><a href="{{ path("admin_reclamation_index") }}"><i class="fa fa-pencil-square-o"></i>Réclamation </a>
+                                <li><a href="{{ path("admin_avis_index") }}"><i class="fa fa-bullhorn"></i> Avis </a>
+
                                 <li><a href="{{ path("departement_index") }}"><i class="fa fa-building-o"></i> Département </a>
-                                <li><a href="{{ path("avis_index") }}"><i class="fa fa-bullhorn"></i> Avis </a>
                                 <li><a href="{{ path("image_index") }}"><i class="fa fa-image"></i>Image </a>
                                 <li><a href="{{ path("specialite_index") }}"><i class="fa fa-wrench"></i> Specilite </a>
                                 <li><a href="{{ path("classe_index") }}"><i class="fa fa-book"></i> Classe </a>
-                                <li><a href="{{ path("cours_index") }}"><i class="fa fa-book"></i> Cours </a>
-                                <li><a href="{{ path("commentaire_index") }}"><i class="fa fa-comments-o"></i> Commentaire </a>
-                                <li><a href="{{ path("publication_index") }}"><i class="fa fa-comment-o"></i> Publication </a>
                                 <li><a href="{{ path("matiere_index") }}"><i class="fa fa-comment-o"></i> Matiere </a>
                                 <li><a href="{{ path("seance_index") }}"><i class="fa fa-comment-o"></i> Seance </a>
+                                    {% endif %}
+                                    {% if is_granted ('ROLE_ETUDIANT') %}
+                                <li><a href="{{ path("etudiant_reclamation_index") }}"><i class="fa fa-pencil-square-o"></i> Réclamation </a>
+                                <li><a href="{{ path("etudiant_avis_index") }}"><i class="fa fa-comment-o"></i> avis </a>
+                                <li><a href="#"><i class="fa fa-comment-o"></i> Matiere <span class="fa fa-chevron-down"></span></a>
+                                    {% block listeMatiere %}
+                                    {% endblock %}
+                                    {% endif %}
+                                    {% if is_granted ('ROLE_ENSEIGNANT') %}
+                                <li><a href="{{ path("enseignant_avis_index") }}"><i class="fa fa-comment-o"></i> avis </a>
+                                <li><a href="{{ path("enseignant_reclamation_index") }}"><i class="fa fa-comment-o"></i> Réclamation </a>
+                                <li><a href="#"><i class="fa fa-comment-o"></i> Classe <span class="fa fa-chevron-down"></span></a>
+                                    {% block listeClasse %}
+
+                                    {% endblock %}
                                 </li>
+                                {% endif %}
+
                             </ul>
                         </div>
                     </div>
@@ -105,13 +123,13 @@
                                     <img src="{{ asset('images/img.jpg')}}" alt="">John Doe
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item"  href="#"> Profile</a>
+                                    <a class="dropdown-item"  href="{{ path("dashboard") }}"> Profile</a>
                                     <a class="dropdown-item"  href="#">
                                         <span class="badge bg-red pull-right">50%</span>
                                         <span>Settings</span>
                                     </a>
                                     <a class="dropdown-item"  href="#">Help</a>
-                                    <a class="dropdown-item"  href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <a class="dropdown-item"  href="{{ path("app_logout") }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </div>
                             </li>
 

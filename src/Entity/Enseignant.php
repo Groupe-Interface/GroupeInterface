@@ -10,9 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=EnseignantRepository::class)
  */
-class Enseignant extends User
+class Enseignant
 {
-
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -49,15 +54,42 @@ class Enseignant extends User
      */
     private $prixHeure;
 
+
     /**
-     * @ORM\OneToMany(targetEntity=Matiere::class, mappedBy="idEnseignant")
+     * @ORM\ManyToOne(targetEntity=Matiere::class, inversedBy="enseignants")
      */
-    private $matieres;
+    private $matiere;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Classe::class, inversedBy="enseignants")
+     */
+    private $classe;
+
+
+
+
+
 
     public function __construct()
     {
-        parent::__construct();
         $this->matieres = new ArrayCollection();
+        $this->classe = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
 
@@ -146,33 +178,47 @@ class Enseignant extends User
         return $this;
     }
 
+    public function getMatiere(): ?Matiere
+    {
+        return $this->matiere;
+    }
+
+    public function setMatiere(?Matiere $matiere): self
+    {
+        $this->matiere = $matiere;
+
+        return $this;
+    }
+
     /**
-     * @return Collection|Matiere[]
+     * @return Collection|Classe[]
      */
-    public function getMatieres(): Collection
+    public function getClasse(): Collection
     {
-        return $this->matieres;
+        return $this->classe;
     }
 
-    public function addMatiere(Matiere $matiere): self
+    public function addClasse(Classe $classe): self
     {
-        if (!$this->matieres->contains($matiere)) {
-            $this->matieres[] = $matiere;
-            $matiere->setIdEnseignant($this);
+        if (!$this->classe->contains($classe)) {
+            $this->classe[] = $classe;
         }
 
         return $this;
     }
 
-    public function removeMatiere(Matiere $matiere): self
+    public function removeClasse(Classe $classe): self
     {
-        if ($this->matieres->removeElement($matiere)) {
-            // set the owning side to null (unless already changed)
-            if ($matiere->getIdEnseignant() === $this) {
-                $matiere->setIdEnseignant(null);
-            }
-        }
+        $this->classe->removeElement($classe);
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->nomEnseignant."  ".$this->prenomEnseignant;
+    }
+
+
+
 }

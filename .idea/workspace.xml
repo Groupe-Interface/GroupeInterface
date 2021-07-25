@@ -11,10 +11,96 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="936b7631-b38d-4fb6-b902-b8ddad55da59" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/ClasseEnseignant.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ClasseEnseignantRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/Back/Profil/profil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Groupe_interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Groupe_interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/mercure.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210703143836.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210703152830.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210703153011.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210703175819.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210703180157.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210703215932.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210704221618.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210705193849.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210705194932.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708112807.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708124942.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708134531.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708140628.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708180239.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708182315.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708182411.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708224637.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210708230655.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210709171623.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210709171840.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210709173112.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AvisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AvisController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClasseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClasseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommentaireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentaireController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CoursController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CoursController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MatiereController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MatiereController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PublicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Classe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Classe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaire.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Cours.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cours.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Enseignant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Enseignant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Etudiant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Etudiant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Matiere.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Matiere.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Publication.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Publication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reclamation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reclamation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Semestre.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Semestre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Specialite.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Specialite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CommentaireType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommentaireType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CoursType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CoursType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PublicationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PublicationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/SpecialiteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SpecialiteType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AdminRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ClasseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClasseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EnseignantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EnseignantRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/avis/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/avis/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/avis/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/avis/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/avis/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/avis/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/avis/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/avis/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/avis/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/avis/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/baseBack.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/classe/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/classe/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/classe/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/classe/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/commentaire/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/commentaire/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/commentaire/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/commentaire/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/cours/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/cours/_delete_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Back/cours/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/cours/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Back/cours/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/cours/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/matiere/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/matiere/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/matiere/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/matiere/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/matiere/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/matiere/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/publication/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publication/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/publication/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publication/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/publication/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publication/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/reclamation/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/reclamation/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/reclamation/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/reclamation/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/reclamation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/reclamation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/reclamation/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/reclamation/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/reclamation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/reclamation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/specialite/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/specialite/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/specialite/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/specialite/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/specialite/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/specialite/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Front/baseFront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/baseFront.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +254,7 @@
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/captcha-com/symfony-captcha-bundle" />
       <path value="$PROJECT_DIR$/vendor/captcha-com/captcha" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/ckeditor-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1u97uP9AibjgNu9Q91g10pcSNVq" />
@@ -179,13 +266,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\stage\2\webSymfony-Aziz\templates\Back\admin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="A:\stage\2\aaaaaa\webSymfony-Aziz - Copie (2)\templates\Back" />
       <recent name="A:\stage\2\webSymfony-Aziz\templates\Back" />
       <recent name="A:\stage\2\webSymfony-Aziz\templates\Front" />
     </key>
@@ -223,6 +313,22 @@
       <workItem from="1625999132315" duration="5723000" />
       <workItem from="1626027105934" duration="5220000" />
       <workItem from="1626079283257" duration="2379000" />
+      <workItem from="1626093710573" duration="1354000" />
+      <workItem from="1626166293484" duration="4061000" />
+      <workItem from="1626208015200" duration="3060000" />
+      <workItem from="1626259212088" duration="8764000" />
+      <workItem from="1626288475268" duration="6210000" />
+      <workItem from="1626349089639" duration="11658000" />
+      <workItem from="1626446076054" duration="7135000" />
+      <workItem from="1626512389360" duration="9643000" />
+      <workItem from="1626603137618" duration="19336000" />
+      <workItem from="1626643416175" duration="2445000" />
+      <workItem from="1626645903932" duration="49000" />
+      <workItem from="1626786518676" duration="1041000" />
+      <workItem from="1626886130623" duration="4922000" />
+      <workItem from="1626954998247" duration="15173000" />
+      <workItem from="1627044391778" duration="12110000" />
+      <workItem from="1627126343412" duration="31280000" />
     </task>
     <servers />
   </component>
@@ -242,27 +348,35 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="434" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1625593849732">
+    <state x="434" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1626984864230">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="434" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1625593849732" />
-    <state x="476" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1626032221401">
+    <state x="434" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1626984864230" />
+    <state x="476" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1627146474716">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="476" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1626032221401" />
-    <state x="492" y="147" width="424" height="491" key="FileChooserDialogImpl" timestamp="1625585828022">
+    <state x="476" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1627146474716" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1627166569509">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="147" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1625585828022" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1627166569509" />
+    <state x="492" y="147" width="424" height="491" key="FileChooserDialogImpl" timestamp="1626645935261">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="147" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1626645935261" />
     <state x="2412" y="155" width="424" height="491" key="FileChooserDialogImpl/1920.0.1366.768/0.27.1920.1053@1920.0.1366.768" timestamp="1624066382729" />
     <state x="537" y="303" width="284" height="151" key="NewPhpFileDialog" timestamp="1626030673730">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="537" y="303" width="284" height="151" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1626030673730" />
     <state x="755" y="465" width="399" height="156" key="NewPhpFileDialog/1920.0.1366.768/0.27.1920.1053@0.27.1920.1053" timestamp="1624067980543" />
-    <state width="557" height="446" key="SwitcherDM" timestamp="1625665025384">
+    <state width="557" height="446" key="SwitcherDM" timestamp="1626615268953">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="557" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1625665025384" />
+    <state width="557" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1626615268953" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1627078931598">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1627078931598" />
   </component>
 </project>

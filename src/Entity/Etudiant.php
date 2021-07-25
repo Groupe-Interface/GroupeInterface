@@ -10,9 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=EtudiantRepository::class)
  */
-class Etudiant extends User
+class Etudiant
 {
-
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -77,34 +82,20 @@ class Etudiant extends User
     /**
      * @ORM\Column(type="integer")
      */
-    private $phonoUrgence;
+    private $phoneUrgence;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\ManyToOne(targetEntity=Classe::class, inversedBy="etudiant")
      */
-    private $session;
+    private $classe;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Semestre::class, mappedBy="idUser")
-     */
-    private $semestres;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="idEtudiant")
-     */
-    private $notes;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Abscence::class, mappedBy="idEtudiant")
-     */
-    private $abscences;
 
     public function __construct()
     {
-        parent::__construct();
         $this->semestres = new ArrayCollection();
         $this->notes = new ArrayCollection();
         $this->abscences = new ArrayCollection();
+        $this->matiere = new ArrayCollection();
     }
 
 
@@ -253,114 +244,48 @@ class Etudiant extends User
         return $this;
     }
 
-    public function getPhonoUrgence(): ?int
+    public function getPhoneUrgence(): ?int
     {
-        return $this->phonoUrgence;
+        return $this->phoneUrgence;
     }
 
-    public function setPhonoUrgence(int $phonoUrgence): self
+    public function setPhoneUrgence(int $phoneUrgence): self
     {
-        $this->phonoUrgence = $phonoUrgence;
+        $this->phoneUrgence = $phoneUrgence;
 
         return $this;
     }
 
-    public function getSession(): ?\DateTimeInterface
-    {
-        return $this->session;
-    }
 
-    public function setSession(\DateTimeInterface $session): self
-    {
-        $this->session = $session;
 
-        return $this;
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
-     * @return Collection|Semestre[]
+     * @param mixed $id
+     * @return Etudiant
      */
-    public function getSemestres(): Collection
+    public function setId($id)
     {
-        return $this->semestres;
+        $this->id = $id;
+        return $this;
     }
 
-    public function addSemestre(Semestre $semestre): self
+    public function getClasse(): ?Classe
     {
-        if (!$this->semestres->contains($semestre)) {
-            $this->semestres[] = $semestre;
-            $semestre->addIdUser($this);
-        }
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
 
         return $this;
     }
 
-    public function removeSemestre(Semestre $semestre): self
-    {
-        if ($this->semestres->removeElement($semestre)) {
-            $semestre->removeIdUser($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Note[]
-     */
-    public function getNotes(): Collection
-    {
-        return $this->notes;
-    }
-
-    public function addNote(Note $note): self
-    {
-        if (!$this->notes->contains($note)) {
-            $this->notes[] = $note;
-            $note->setIdEtudiant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNote(Note $note): self
-    {
-        if ($this->notes->removeElement($note)) {
-            // set the owning side to null (unless already changed)
-            if ($note->getIdEtudiant() === $this) {
-                $note->setIdEtudiant(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Abscence[]
-     */
-    public function getAbscences(): Collection
-    {
-        return $this->abscences;
-    }
-
-    public function addAbscence(Abscence $abscence): self
-    {
-        if (!$this->abscences->contains($abscence)) {
-            $this->abscences[] = $abscence;
-            $abscence->setIdEtudiant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAbscence(Abscence $abscence): self
-    {
-        if ($this->abscences->removeElement($abscence)) {
-            // set the owning side to null (unless already changed)
-            if ($abscence->getIdEtudiant() === $this) {
-                $abscence->setIdEtudiant(null);
-            }
-        }
-
-        return $this;
-    }
 }

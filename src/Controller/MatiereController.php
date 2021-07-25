@@ -2,9 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Cours;
 use App\Entity\Matiere;
+use App\Entity\Publication;
+use App\Form\CoursType;
 use App\Form\MatiereType;
+use App\Form\PublicationType;
+use App\Repository\ClasseRepository;
+use App\Repository\CoursRepository;
+use App\Repository\EtudiantRepository;
 use App\Repository\MatiereRepository;
+use App\Repository\PublicationRepository;
+use App\Repository\SpecialiteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +27,27 @@ class MatiereController extends AbstractController
     /**
      * @Route("/", name="matiere_index", methods={"GET"})
      */
-    public function index(MatiereRepository $matiereRepository): Response
-    {
+    public function index(MatiereRepository $matiereRepository,EtudiantRepository $etudiantRepository,SpecialiteRepository $specialiteRepository, ClasseRepository  $classeRepository): Response
+    {   $classe=null;
+        $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+
+
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                  $classe= $service->getClasse();
+
+                }
+            }
+        }
+
         return $this->render('Back/matiere/index.html.twig', [
             'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
+            'specialites' => $specialiteRepository->findAll(),
         ]);
     }
 
@@ -52,12 +78,36 @@ class MatiereController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="matiere_show", methods={"GET"})
+     * @Route("/{id}", name="matiere_show", methods={"GET","POST"})
      */
-    public function show(Matiere $matiere): Response
+    public function show(Matiere $matiere,Request $request,CoursRepository $coursRepository): Response
     {
+        //form Ajout d'un cours
+        $cour = new Cours();
+        $formcour = $this->createForm(CoursType::class, $cour);
+        $formcour->handleRequest($request);
+        $entityManager = $this->getDoctrine()->getManager();
+
+        if ($formcour->isSubmitted() && $formcour->isValid()) {
+            $file = $cour->getSupportCours();
+            $fileName=md5(uniqid()).'.'.$file->guessExtension();
+            $matiere = $entityManager->getRepository(Matiere::class)->find($request->get('matiere'));
+            $cour->setMatiere($matiere) ;
+            $file->move($this->getParameter('upload_directory'),$fileName);
+            $cour->setSupportCours($fileName);
+            $cour->setDateCours(new \DateTime('now'));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($cour);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('matiere_show', array('id'=>$matiere->getId()));
+        }
+
         return $this->render('Back/matiere/show.html.twig', [
             'matiere' => $matiere,
+            'cours' => $coursRepository->findAll(),
+            'cour' => $cour,
+            'formcour' => $formcour->createView(),
         ]);
     }
 
@@ -82,7 +132,7 @@ class MatiereController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="matiere_delete", methods={"POST"})
+     * @Route("/{id}", name="matiere_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Matiere $matiere): Response
     {

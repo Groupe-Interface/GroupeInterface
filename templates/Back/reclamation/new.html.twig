@@ -1,16 +1,28 @@
 {% extends 'Back/baseBack.html.twig' %}
 
 {% block content %}
-
+    {% if is_granted ('ROLE_ETUDIANT') %}
     <h1>Create new Reclamation</h1>
 
 
     {{ include('Back/reclamation/_form.html.twig') }}
 
-    <a href="{{ path("reclamation_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+    <a href="{{ path("etudiant_reclamation_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
         <button type="button" class="btn btn-dark">
         <i class="fa fa-arrow-circle-left">  </i>  retour
         </button>
     </a>
+{% endif %}
+    {% if is_granted ('ROLE_ENSEIGNANT') %}
+        <h1>Create new Reclamation</h1>
 
+
+        {{ include('Back/reclamation/_form.html.twig') }}
+
+        <a href="{{ path("enseignant_reclamation_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+            <button type="button" class="btn btn-dark">
+                <i class="fa fa-arrow-circle-left">  </i>  retour
+            </button>
+        </a>
+    {% endif %}
 {% endblock %}

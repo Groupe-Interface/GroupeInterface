@@ -1,4 +1,16 @@
 {% extends 'Back/baseBack.html.twig' %}
+{% block listeMatiere %}
+<ul class="nav child_menu">
+
+    {% for matiere in matieres %}
+        {% if matiere.idSpecialite == classe.idSpecialite%}
+            <li><a href="{{ path('matiere_show', {'id': matiere.id}) }}">{{ matiere.nomMatiere }}</a></li>
+
+        {% endif %}
+    {% endfor %}
+
+</ul>
+{% endblock %}
 {% block content %}
     <h1>Matiere index</h1>
     <div class="right_col" role="main">
@@ -9,28 +21,25 @@
 
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>NomMatiere</th>
-                        <th>MoyenneMatiere</th>
-                        <th>CoeffMatiere</th>
-                        <th>NoteExamen</th>
-                        <th>NoteTest</th>
-                        <th>actions</th>
+                        <th>Nom du Matiére</th>
+                        <th>Coefficient du Matiére</th>
+                        <th>Nom du Spécialité</th>
+                        <th>Département</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for matiere in matieres %}
                         <tr>
-                            <td>{{ matiere.id }}</td>
                             <td>{{ matiere.nomMatiere }}</td>
-                            <td>{{ matiere.moyenneMatiere }}</td>
                             <td>{{ matiere.coeffMatiere }}</td>
-                            <td>{{ matiere.noteExamen }}</td>
-                            <td>{{ matiere.noteTest }}</td>
+                            <td>{{ matiere.idSpecialite }}</td>
+                            <td>{{ matiere.idSpecialite.departement }}</td>
                             <td>
                                 <a href="{{ path('matiere_show', {'id': matiere.id}) }}"><i class="fa fa-eye"></i> </a>
                                 <a href="{{ path('matiere_edit', {'id': matiere.id}) }}"><i class="fa fa-edit"></i></a>
-                                <a href="{{ path('matiere_delete', {'id': matiere.id}) }}"><i class="fa fa-trash-o"></i></a>
+                                {{ include('Back/matiere/_delete_form.html.twig') }}
+
 
                             </td>
                         </tr>

@@ -1,0 +1,38 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+{% if is_granted ('ROLE_ETUDIANT') %}
+    {% for etudiant in etudiants %}
+        {% if user.email == etudiant.emailEtudiant %}
+            <tbody>
+            <tr>
+                {{ etudiant.emailEtudiant }}
+                {{ etudiant.phoneEtudiant }}
+                {{ etudiant.phoneUrgence }}
+
+            </tr>
+
+            </tbody>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% if is_granted ('ROLE_ADMIN') %}
+    <h1>role admin</h1>
+    {{ user.email }}
+{% endif %}
+    {% if is_granted ('ROLE_ENSEIGNANT') %}
+        <h1>role enseignant</h1>
+        {% for enseignant in enseignants %}
+            {% if user.email == enseignant.emailEnseignant %}
+                <tbody>
+                <tr>
+                    {{ enseignant.nomEnseignant }}
+                    {{ enseignant.prenomEnseignant }}
+                    {{ enseignant.adresseEnseignant }}
+                </tr>
+                </tbody>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

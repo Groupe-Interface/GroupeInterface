@@ -1,0 +1,69 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+    <h1>La liste des département</h1>
+    </br>
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nationalite</th>
+                        <th>NumPassport</th>
+                        <th>Cin</th>
+                        <th>NomEtudiant</th>
+                        <th>PrenomEtudiant</th>
+                        <th>DateNaiss</th>
+                        <th>PayeNaiss</th>
+                        <th>PayeEtudiant</th>
+                        <th>VilleEtudiant</th>
+                        <th>PhotoEtudiant</th>
+                        <th>EmailEtudiant</th>
+                        <th>PhoneEtudiant</th>
+                        <th>PhoneUrgence</th>
+                        <th>Classe</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for etudiant in etudiants %}
+                        <tr>
+                            <td>{{ etudiant.id }}</td>
+                            <td>{{ etudiant.nationalite }}</td>
+                            <td>{{ etudiant.numPassport }}</td>
+                            <td>{{ etudiant.cin }}</td>
+                            <td>{{ etudiant.nomEtudiant }}</td>
+                            <td>{{ etudiant.prenomEtudiant }}</td>
+                            <td>{{ etudiant.dateNaiss ? etudiant.dateNaiss|date('Y-m-d') : '' }}</td>
+                            <td>{{ etudiant.payeNaiss }}</td>
+                            <td>{{ etudiant.payeEtudiant }}</td>
+                            <td>{{ etudiant.villeEtudiant }}</td>
+                            <td>{{ etudiant.photoEtudiant }}</td>
+                            <td>{{ etudiant.emailEtudiant }}</td>
+                            <td>{{ etudiant.phoneEtudiant }}</td>
+                            <td>{{ etudiant.phoneUrgence }}</td>
+                            <td>{{ etudiant.classe }}</td>
+                            <td>
+                                <a href="{{ path('admin_etudiant_show', {'id': etudiant.id}) }}"><i class="fa fa-eye"></i> </a>
+                                <a href="{{ path('admin_etudiant_edit', {'id': etudiant.id}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('admin_etudiant_delete', {'id': etudiant.id}) }}"><i class="fa fa-trash-o"></i></a>
+
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="15">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div style="width: 100%; display:flex; justify-content: flex-end">
+                    <a href="{{ path('admin_etudiant_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

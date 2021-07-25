@@ -24,10 +24,7 @@ class Semestre
      */
     private $payementSemestre;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Etudiant::class, inversedBy="semestres")
-     */
-    private $idUser;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialite::class, inversedBy="semestres")
@@ -35,10 +32,7 @@ class Semestre
      */
     private $idSpecialite;
 
-    public function __construct()
-    {
-        $this->idUser = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -57,29 +51,11 @@ class Semestre
         return $this;
     }
 
-    /**
-     * @return Collection|Etudiant[]
-     */
-    public function getIdUser(): Collection
-    {
-        return $this->idUser;
-    }
 
-    public function addIdUser(Etudiant $idUser): self
-    {
-        if (!$this->idUser->contains($idUser)) {
-            $this->idUser[] = $idUser;
-        }
 
-        return $this;
-    }
 
-    public function removeIdUser(Etudiant $idUser): self
-    {
-        $this->idUser->removeElement($idUser);
 
-        return $this;
-    }
+
 
     public function getIdSpecialite(): ?Specialite
     {

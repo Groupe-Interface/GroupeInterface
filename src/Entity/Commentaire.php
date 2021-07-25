@@ -30,12 +30,8 @@ class Commentaire
     /**
      * @ORM\ManyToOne(targetEntity=Publication::class, inversedBy="commentaires")
      */
-    private $idPublication;
+    private $publication;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commentaires")
-     */
-    private $idUser;
 
     public function getId(): ?int
     {
@@ -66,29 +62,18 @@ class Commentaire
         return $this;
     }
 
-    public function getIdPublication(): ?Publication
+    public function getPublication(): ?Publication
     {
-        return $this->idPublication;
+        return $this->publication;
     }
 
-    public function setIdPublication(?Publication $idPublication): self
+    public function setPublication(?Publication $publication): self
     {
-        $this->idPublication = $idPublication;
+        $this->publication = $publication;
 
         return $this;
     }
 
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?User $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
     public function __toString()
     {
         return $this->descriptionCommentaire;

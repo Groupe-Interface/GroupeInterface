@@ -14,6 +14,20 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class EnseignantRepository extends ServiceEntityRepository
 {
+    public function findOneByIdJoinedToClasse(int $ensignantId): ?Enseignant
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p, c
+            FROM App\Entity\Enseignant p
+            INNER JOIN p.classe c
+            WHERE p.id = :id'
+        )->setParameter('id', $ensignantId);
+
+        return $query->getOneOrNullResult();
+    }
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Enseignant::class);

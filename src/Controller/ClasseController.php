@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Classe;
+use App\Entity\Enseignant;
 use App\Form\ClasseType;
 use App\Repository\ClasseRepository;
+use App\Repository\EnseignantRepository;
+use App\Repository\EtudiantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +21,30 @@ class ClasseController extends AbstractController
     /**
      * @Route("/", name="classe_index", methods={"GET"})
      */
-    public function index(ClasseRepository $classeRepository): Response
-    {
+    public function index(ClasseRepository $classeRepository,EnseignantRepository $enseignantRepository,EtudiantRepository $etudiantRepository,Request $request): Response
+    {$classe= null;
+        $user= $this->getUser();
+        $email=$user->getEmail();
+
+
+        foreach($enseignantRepository->findAll() as $service)
+        {
+          if ($email == $service->getEmailEnseignant()){
+              $enseignant = $this->getDoctrine()
+                  ->getRepository(Enseignant::class)
+                  ->findOneByIdJoinedToClasse($service->getId());
+
+              $classe = $enseignant->getClasse();
+
+          }
+
+        }
+
         return $this->render('Back/classe/index.html.twig', [
-            'classes' => $classeRepository->findAll(),
+
+            'etudiants' => $etudiantRepository->findAll(),
+            'enseignants' => $enseignantRepository->findAll(),
+            'classes' => $classe
         ]);
     }
 
@@ -51,10 +74,11 @@ class ClasseController extends AbstractController
     /**
      * @Route("/{id}", name="classe_show", methods={"GET"})
      */
-    public function show(Classe $classe): Response
+    public function show(Classe $classe,EtudiantRepository $etudiantRepository): Response
     {
         return $this->render('Back/classe/show.html.twig', [
             'classe' => $classe,
+            'etudiants' => $etudiantRepository->findAll()
         ]);
     }
 

@@ -1,4 +1,11 @@
 {% extends 'Back/baseBack.html.twig' %}
+{% block listeClasse %}
+    <ul class="nav child_menu">
+{% for classe in classes %}
+        <li><a href="{{ path('classe_show', {'id': classe.id}) }}">{{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
 {% block content %}
     <h1>Classe index</h1>
 
@@ -11,7 +18,9 @@
             <tr>
                 <th>Id</th>
                 <th>NiveauClasse</th>
+                <th>Specialite</th>
                 <th>NumClasse</th>
+
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,7 +29,9 @@
             <tr>
                 <td>{{ classe.id }}</td>
                 <td>{{ classe.niveauClasse }}</td>
+                <td>{{ classe.idSpecialite }}</td>
                 <td>{{ classe.numClasse }}</td>
+
                 <td>
                     <a href="{{ path('classe_show', {'id': classe.id}) }}"><i class="fa fa-eye"></i> </a>
                     <a href="{{ path('classe_edit', {'id': classe.id}) }}"><i class="fa fa-edit"></i></a>

@@ -1,0 +1,59 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content %}
+<h1>La liste des enseignant</h1>
+</br>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomEnseignant</th>
+                <th>PrenomEnseignant</th>
+                <th>AdresseEnseignant</th>
+                <th>VilleEnseignant</th>
+                <th>EmailEnseignant</th>
+                <th>PhoneEnseignant</th>
+                <th>PrixHeure</th>
+                <th>matiere</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enseignant in enseignants %}
+            <tr>
+                <td>{{ enseignant.id }}</td>
+                <td>{{ enseignant.nomEnseignant }}</td>
+                <td>{{ enseignant.prenomEnseignant }}</td>
+                <td>{{ enseignant.adresseEnseignant }}</td>
+                <td>{{ enseignant.villeEnseignant }}</td>
+                <td>{{ enseignant.emailEnseignant }}</td>
+                <td>{{ enseignant.phoneEnseignant }}</td>
+                <td>{{ enseignant.prixHeure }}</td>
+                <td>{{ enseignant.matiere }}</td>
+
+                <td>
+                    <a href="{{ path('admin_enseignant_show', {'id': enseignant.id}) }}"><i class="fa fa-eye"></i> </a>
+                    <a href="{{ path('admin_enseignant_edit', {'id': enseignant.id}) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('admin_enseignant_delete', {'id': enseignant.id}) }}"><i class="fa fa-trash-o"></i></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            <div style="width: 100%; display:flex; justify-content: flex-end">
+                <a href="{{ path('admin_enseignant_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

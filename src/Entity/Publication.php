@@ -42,12 +42,8 @@ class Publication
     /**
      * @ORM\ManyToOne(targetEntity=Cours::class, inversedBy="publications")
      */
-    private $idCours;
+    private $cours;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="publications")
-     */
-    private $idUser;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="idPublication")
@@ -112,29 +108,18 @@ class Publication
         return $this;
     }
 
-    public function getIdCours(): ?Cours
+    public function getCours(): ?Cours
     {
-        return $this->idCours;
+        return $this->cours;
     }
 
-    public function setIdCours(?Cours $idCours): self
+    public function setCours(?Cours $cours): self
     {
-        $this->idCours = $idCours;
+        $this->cours = $cours;
 
         return $this;
     }
 
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?User $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Commentaire[]

@@ -12,6 +12,7 @@
                 <th>NomSpecialite</th>
                 <th>DureeSpecialite</th>
                 <th>NbrSemestre</th>
+                <th>abrev_specialite</th>
                 <th>Departement</th>
                 <th>actions</th>
             </tr>
@@ -23,6 +24,7 @@
                 <td>{{ specialite.nomSpecialite }}</td>
                 <td>{{ specialite.dureeSpecialite }}</td>
                 <td>{{ specialite.nbrSemestre }}</td>
+                <td>{{ specialite.abrevSpecialite }}</td>
                 <td>{{ specialite.departement }}</td>
                 <td>
                     <a href="{{ path('specialite_show', {'id': specialite.id}) }}"><i class="fa fa-eye"></i> </a>

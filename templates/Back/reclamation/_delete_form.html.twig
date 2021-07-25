@@ -1,7 +1,30 @@
-<form method="post" action="{{ path('reclamation_delete', {'id': reclamation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+{% if is_granted ('ROLE_ADMIN') %}
+<form method="post" action="{{ path('admin_reclamation_delete', {'id': reclamation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
     <button class="btn btn-danger d-none d-sm-inline-block btn-sm btn-primary shadow-sm mt-2 mb-2">
         <i class="fa fa-trash"></i>
 
     </button>
 </form>
+
+{% endif %}
+{% if is_granted ('ROLE_ETUDIANT') %}
+    <form method="post" action="{{ path('etudiant_reclamation_delete', {'id': reclamation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+        <button class="btn btn-danger d-none d-sm-inline-block btn-sm btn-primary shadow-sm mt-2 mb-2">
+            <i class="fa fa-trash"></i>
+
+        </button>
+    </form>
+
+{% endif %}
+{% if is_granted ('ROLE_ENSEIGNANT') %}
+    <form method="post" action="{{ path('enseignant_reclamation_delete', {'id': reclamation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+        <button class="btn btn-danger d-none d-sm-inline-block btn-sm btn-primary shadow-sm mt-2 mb-2">
+            <i class="fa fa-trash"></i>
+
+        </button>
+    </form>
+
+{% endif %}

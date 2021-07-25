@@ -1,47 +1,90 @@
 {% extends 'Back/baseBack.html.twig' %}
 {% block content %}
-    <h1>La  liste  des  avis </h1>
-    </br>
-    <div class="right_col" role="main">
-        <div class="">
-            <div class="page-title">
+    {% if is_granted ('ROLE_ADMIN') %}
+        <h1>La  liste  des  avis </h1>
+        </br>
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
 
-                <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
-                    <thead>
+                    <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+                        <thead>
 
-                    <tr>
-                        <th>Id</th>
-                        <th>TitleAvis</th>
-                        <th>DescriptionAvis</th>
-                        <th>DateAvis</th>
-                        <th>actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for avi in avis %}
                         <tr>
-                            <td>{{ avi.id }}</td>
-                            <td>{{ avi.titleAvis }}</td>
-                            <td>{{ avi.descriptionAvis }}</td>
-                            <td>{{ avi.dateAvis ? avi.dateAvis|date('Y-m-d') : '' }}</td>
-                            <td>
-                                <a href="{{ path('avis_show', {'id': avi.id}) }}"><i class="fa fa-eye"></i> </a>
-                                <a href="{{ path('avis_edit', {'id': avi.id}) }}"><i class="fa fa-edit"></i></a>
-                                <a href="{{ path('avis_delete', {'id': avi.id}) }}"><i class="fa fa-trash-o"></i></a>
-                            </td>
+                            <th>Id</th>
+                            <th>TitleAvis</th>
+                            <th>DescriptionAvis</th>
+                            <th>DateAvis</th>
+                            <th>actions</th>
                         </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="5">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                <div style="width: 100%; display:flex; justify-content: flex-end">
-                    <a href="{{ path('avis_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                        </thead>
+                        <tbody>
+                        {% for avi in avis %}
+                            <tr>
+                                <td>{{ avi.id }}</td>
+                                <td>{{ avi.titleAvis }}</td>
+                                <td>{{ avi.descriptionAvis }}</td>
+                                <td>{{ avi.dateAvis ? avi.dateAvis|date('Y-m-d') : '' }}</td>
+                                <td>
+                                    <a href="{{ path('admin_avis_show', {'id': avi.id}) }}"><i class="fa fa-eye"></i> </a>
+                                    <a href="{{ path('admin_avis_edit', {'id': avi.id}) }}"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ path('admin_avis_delete', {'id': avi.id}) }}"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div style="width: 100%; display:flex; justify-content: flex-end">
+                        <a href="{{ path('admin_avis_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
+    {% if is_granted ('ROLE_ETUDIANT') %}
+        <h1>La  liste  des  avis </h1>
+        </br>
+        <table class="table">
+            {% for avi in avis %}
+            <tr>
 
+
+                <th>{{ avi.titleAvis }}</th>
+            </tr>
+            <tr>
+
+                <td>{{ avi.descriptionAvis }}</td>
+                <td>{{ avi.dateAvis ? avi.dateAvis|date('Y-m-d') : '' }}</td>
+                <td>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% if is_granted ('ROLE_ENSEIGNANT') %}
+        <h1>La  liste  des  avis </h1>
+        </br>
+        <table class="table">
+            {% for avi in avis %}
+                <tr>
+
+
+                    <th>{{ avi.titleAvis }}</th>
+                </tr>
+                <tr>
+
+                    <td>{{ avi.descriptionAvis }}</td>
+                    <td>{{ avi.dateAvis ? avi.dateAvis|date('Y-m-d') : '' }}</td>
+                    <td>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    {% endif %}
 {% endblock %}

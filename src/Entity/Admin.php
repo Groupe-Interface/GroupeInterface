@@ -3,74 +3,73 @@
 namespace App\Entity;
 
 use App\Repository\AdminRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=AdminRepository::class)
  */
-class Admin extends User
+class Admin
 {
-
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomAdmin;
+    private $nom_admin;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenomAdmin;
+    private $prenom_admin;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $emailAdmin;
+    private $email_admin;
 
-
-
-
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getNomAdmin(): ?string
     {
-        return $this->nomAdmin;
+        return $this->nom_admin;
     }
 
-    public function setNomAdmin(string $nomAdmin): self
+    public function setNomAdmin(string $nom_admin): self
     {
-        $this->nomAdmin = $nomAdmin;
+        $this->nom_admin = $nom_admin;
 
         return $this;
     }
 
     public function getPrenomAdmin(): ?string
     {
-        return $this->prenomAdmin;
+        return $this->prenom_admin;
     }
 
-    public function setPrenomAdmin(string $prenomAdmin): self
+    public function setPrenomAdmin(string $prenom_admin): self
     {
-        $this->prenomAdmin = $prenomAdmin;
+        $this->prenom_admin = $prenom_admin;
 
         return $this;
     }
 
     public function getEmailAdmin(): ?string
     {
-        return $this->emailAdmin;
+        return $this->email_admin;
     }
 
-    public function setEmailAdmin(string $emailAdmin): self
+    public function setEmailAdmin(string $email_admin): self
     {
-        $this->emailAdmin = $emailAdmin;
+        $this->email_admin = $email_admin;
 
         return $this;
     }
-
-
-
-
-
 }

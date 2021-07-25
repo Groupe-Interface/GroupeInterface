@@ -16,6 +16,7 @@ class SpecialiteType extends AbstractType
             ->add('dureeSpecialite')
             ->add('nbrSemestre')
             ->add('departement')
+            ->add('abrev_specialite')
         ;
     }
 

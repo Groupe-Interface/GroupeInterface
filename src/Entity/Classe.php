@@ -29,10 +29,7 @@ class Classe
      */
     private $numClasse;
 
-    /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="classe")
-     */
-    private $idUser;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialite::class, inversedBy="classes")
@@ -44,10 +41,25 @@ class Classe
      */
     private $cours;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Etudiant::class, mappedBy="classe")
+     */
+    private $etudiant;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Enseignant::class, mappedBy="classe")
+     */
+    private $enseignants;
+
+
+
+
     public function __construct()
     {
-        $this->idUser = new ArrayCollection();
+
         $this->cours = new ArrayCollection();
+        $this->etudiant = new ArrayCollection();
+        $this->enseignants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,36 +87,6 @@ class Classe
     public function setNumClasse(int $numClasse): self
     {
         $this->numClasse = $numClasse;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getIdUser(): Collection
-    {
-        return $this->idUser;
-    }
-
-    public function addIdUser(User $idUser): self
-    {
-        if (!$this->idUser->contains($idUser)) {
-            $this->idUser[] = $idUser;
-            $idUser->setClasse($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdUser(User $idUser): self
-    {
-        if ($this->idUser->removeElement($idUser)) {
-            // set the owning side to null (unless already changed)
-            if ($idUser->getClasse() === $this) {
-                $idUser->setClasse(null);
-            }
-        }
 
         return $this;
     }
@@ -153,4 +135,62 @@ class Classe
     {
         return $this->niveauClasse."_".$this->idSpecialite."_".$this->numClasse;
     }
+
+    /**
+     * @return Collection|Etudiant[]
+     */
+    public function getEtudiant(): Collection
+    {
+        return $this->etudiant;
+    }
+
+    public function addEtudiant(Etudiant $etudiant): self
+    {
+        if (!$this->etudiant->contains($etudiant)) {
+            $this->etudiant[] = $etudiant;
+            $etudiant->setClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtudiant(Etudiant $etudiant): self
+    {
+        if ($this->etudiant->removeElement($etudiant)) {
+            // set the owning side to null (unless already changed)
+            if ($etudiant->getClasse() === $this) {
+                $etudiant->setClasse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Enseignant[]
+     */
+    public function getEnseignants(): Collection
+    {
+        return $this->enseignants;
+    }
+
+    public function addEnseignant(Enseignant $enseignant): self
+    {
+        if (!$this->enseignants->contains($enseignant)) {
+            $this->enseignants[] = $enseignant;
+            $enseignant->addClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnseignant(Enseignant $enseignant): self
+    {
+        if ($this->enseignants->removeElement($enseignant)) {
+            $enseignant->removeClasse($this);
+        }
+
+        return $this;
+    }
+
 }

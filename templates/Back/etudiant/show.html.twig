@@ -1,0 +1,78 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content%}
+    <h1>Etudiant</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        <a href="{{ path('admin_etudiant_edit', {'id': etudiant.id}) }}">
+            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                <i class="fa fa-edit"></i>
+            </button></a>
+        {{ include('Back/etudiant/_delete_form.html.twig') }}
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ etudiant.id }}</td>
+            </tr>
+            <tr>
+                <th>Nationalite</th>
+                <td>{{ etudiant.nationalite }}</td>
+            </tr>
+            <tr>
+                <th>NumPassport</th>
+                <td>{{ etudiant.numPassport }}</td>
+            </tr>
+            <tr>
+                <th>Cin</th>
+                <td>{{ etudiant.cin }}</td>
+            </tr>
+            <tr>
+                <th>NomEtudiant</th>
+                <td>{{ etudiant.nomEtudiant }}</td>
+            </tr>
+            <tr>
+                <th>PrenomEtudiant</th>
+                <td>{{ etudiant.prenomEtudiant }}</td>
+            </tr>
+            <tr>
+                <th>DateNaiss</th>
+                <td>{{ etudiant.dateNaiss ? etudiant.dateNaiss|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PayeNaiss</th>
+                <td>{{ etudiant.payeNaiss }}</td>
+            </tr>
+            <tr>
+                <th>PayeEtudiant</th>
+                <td>{{ etudiant.payeEtudiant }}</td>
+            </tr>
+            <tr>
+                <th>VilleEtudiant</th>
+                <td>{{ etudiant.villeEtudiant }}</td>
+            </tr>
+            <tr>
+                <th>PhotoEtudiant</th>
+                <td>{{ etudiant.photoEtudiant }}</td>
+            </tr>
+            <tr>
+                <th>EmailEtudiant</th>
+                <td>{{ etudiant.emailEtudiant }}</td>
+            </tr>
+            <tr>
+                <th>PhoneEtudiant</th>
+                <td>{{ etudiant.phoneEtudiant }}</td>
+            </tr>
+            <tr>
+                <th>PhoneUrgence</th>
+                <td>{{ etudiant.phoneUrgence }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path("admin_etudiant_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}
+

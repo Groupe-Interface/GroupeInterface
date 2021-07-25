@@ -1,0 +1,29 @@
+<div class="x_panel">
+    <div class="x_content">
+
+
+        <div class="col-md-12 col-sm-12  form-group">
+{{ form_start(form) }}
+
+
+            {{ form_widget(form.nomEnseignant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Enseignant '}})}}
+            {{ form_widget(form.prenomEnseignant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Prenom Enseignant '}})}}
+            {{ form_widget(form.adresseEnseignant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Adresse Enseignant '}})}}
+            {{ form_widget(form.villeEnseignant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Ville Enseignant '}})}}
+            {{ form_widget(form.emailEnseignant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Email Enseignant '}})}}
+            {{ form_widget(form.phoneEnseignant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'phone Enseignant '}})}}
+            {{ form_widget(form.prixHeure,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'prix Heure '}})}}
+             {{ form_widget(form.matiere,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'prix Heure '}})}}
+             {{ form_widget(form.classe,{'attr': {'class': 'form-control w-100 mt-3 mb-2','placeholder': 'prix Heure '}})}}
+
+
+
+            <div style="width: 100%; display:flex; justify-content: flex-end">
+                <button class="btn btn-primary btn-sm shadow-sm mt-2 mb-2">
+                    <i class="fa fa-plus-square-o"></i>
+                    {{ button_label|default('Save') }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

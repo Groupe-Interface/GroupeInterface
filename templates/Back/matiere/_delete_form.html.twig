@@ -1,7 +1,9 @@
-<form method="post" action="{{ path('matiere_delete', {'id': matiere.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ matiere.id) }}">
-        <button class="btn btn-danger d-none d-sm-inline-block btn-sm btn-primary shadow-sm mt-2 mb-2">
-            <i class="fa fa-trash"></i>
+<form style="display: inline-block" method="post" action="{{ path('matiere_delete', {'id': matiere.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
 
-        </button>
-    </form>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ matiere.id) }}">
+    <button >
+        <i class="fa fa-trash"></i>
+
+    </button>
+</form>

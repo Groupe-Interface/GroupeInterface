@@ -10,15 +10,31 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/avis")
- */
+
 class AvisController extends AbstractController
 {
     /**
-     * @Route("/", name="avis_index", methods={"GET"})
+     * @Route("/etudiant/avis/", name="etudiant_avis_index", methods={"GET"})
      */
-    public function index(AvisRepository $avisRepository): Response
+    public function indexEtudiant(AvisRepository $avisRepository): Response
+    {
+        return $this->render('Back/avis/index.html.twig', [
+            'avis' => $avisRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/enseignant/avis/", name="enseignant_avis_index", methods={"GET"})
+     */
+    public function indexEnseignant(AvisRepository $avisRepository): Response
+    {
+        return $this->render('Back/avis/index.html.twig', [
+            'avis' => $avisRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/admin/avis/", name="admin_avis_index", methods={"GET"})
+     */
+    public function indexAdmin(AvisRepository $avisRepository): Response
     {
         return $this->render('Back/avis/index.html.twig', [
             'avis' => $avisRepository->findAll(),
@@ -26,7 +42,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="avis_new", methods={"GET","POST"})
+     * @Route("/admin/avis/new", name="admin_avis_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -40,7 +56,7 @@ class AvisController extends AbstractController
             $entityManager->persist($avi);
             $entityManager->flush();
 
-            return $this->redirectToRoute('avis_index');
+            return $this->redirectToRoute('admin_avis_index');
         }
 
         return $this->render('Back/avis/new.html.twig', [
@@ -50,7 +66,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="avis_show", methods={"GET"})
+     * @Route("/admin/avis/{id}", name="admin_avis_show", methods={"GET"})
      */
     public function show(Avis $avi): Response
     {
@@ -60,7 +76,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="avis_edit", methods={"GET","POST"})
+     * @Route("/admin/avis/{id}/edit", name="admin_avis_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Avis $avi): Response
     {
@@ -70,7 +86,7 @@ class AvisController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('avis_index');
+            return $this->redirectToRoute('admin_avis_index');
         }
 
         return $this->render('Back/avis/edit.html.twig', [
@@ -80,7 +96,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="avis_delete", methods={"POST"})
+     * @Route("/admin/avis/{id}", name="admin_avis_delete", methods={"POST"})
      */
     public function delete(Request $request, Avis $avi): Response
     {
@@ -90,6 +106,6 @@ class AvisController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('avis_index');
+        return $this->redirectToRoute('admin_avis_index');
     }
 }

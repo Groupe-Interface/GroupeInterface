@@ -32,13 +32,15 @@ class Reclamation
      */
     private $dateReclamation;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reclamations")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $idUser;
+
+
 
     protected $captchaCode;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="reclamation")
+     */
+    private $users;
 
     /**
      * @return mixed
@@ -98,20 +100,20 @@ class Reclamation
 
         return $this;
     }
-
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?User $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
     public function __toString()
     {
         return $this->titleReclamation;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
+
+        return $this;
     }
 }

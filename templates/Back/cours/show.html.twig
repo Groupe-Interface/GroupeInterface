@@ -2,27 +2,69 @@
 
 {% block content %}
     <h1>Cours</h1>
-    <div style="width: 100%; display:flex; justify-content: flex-end">
-        <a href="{{ path('cours_edit', {'id': cour.id}) }}">
-            <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
-                <i class="fa fa-edit"></i>
-            </button></a>
-        {{ include('Back/cours/_delete_form.html.twig') }}
-    </div>
+
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cour.id }}</td>
-            </tr>
-            <tr>
-                <th>SupportCours</th>
+        <tr>
+            <th>SupportCours</th>
+            <td> <a href="{{ asset('courUpload/' ~ cour.supportCours  )}}" >{{ cour.supportCours }}</a></td>
+            <td>{{ cour.DateCours ? cour.DateCours|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Nom cours</th>
+            <td>{{ cour.nomCours }}</td>
 
-                <td> <a href="{{ asset('courUpload/' ~ cour.supportCours  )}}" >{{ cour.supportCours }}</a></td>
-            </tr>
+        </tr>
+
+
         </tbody>
     </table>
-    <a href="{{ path("cours_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+    <table class="table">
+        <tbody>
+        {{ include('Back/publication/_form.html.twig') }}
+        {% for publication in publications  %}
+            {% if publication.cours.id == cour.id %}
+                <tr>
+
+
+                    <td><a href="{{ path('publication_show', {'id': publication.id}) }}"> {{ publication.descriptionPublication |raw }}</a></td>
+                <tr>
+                    <td>
+                        <i class="fa fa-comments-o"></i>{{ publication.nbComment }}
+                        <i class="fa fa-eye"></i>{{ publication.nbVue }}
+                    </td>
+                    <td></td>
+                    <td>
+
+                        <div style="width: 100%; display:flex; justify-content: flex-end">
+                            <a href="{{ path('publication_edit', {'id': publication.id}) }}">
+                                <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
+                                    <i class="fa fa-edit"></i>
+                                </button></a>
+                            {{ include('Back/publication/_delete_form.html.twig') }}
+                        </div>
+                    </td>
+            </tr>
+
+
+
+
+
+            {% endif %}
+        {% endfor %}
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('matiere_show', {'id': matiere.id}) }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
         <button type="button" class="btn btn-dark">
             <i class="fa fa-arrow-circle-left">  </i>  retour
         </button>

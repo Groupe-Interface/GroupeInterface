@@ -1,7 +1,7 @@
 {% extends 'Back/baseBack.html.twig' %}
 
 {% block content %}
-    <h1>Classe</h1>
+    <h1>Classe : {{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }} </h1>
     <div style="width: 100%; display:flex; justify-content: flex-end">
         <a href="{{ path('classe_edit', {'id': classe.id}) }}">
             <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
@@ -9,23 +9,23 @@
             </button></a>
         {{ include('Back/classe/_delete_form.html.twig') }}
     </div>
+    {% for etudiant in etudiants  %}
+    {% if etudiant.classe.id == classe.id %}
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ classe.id }}</td>
+                <th>Nom </th>
+                <th> Prenom</th>
+
             </tr>
             <tr>
-                <th>NiveauClasse</th>
-                <td>{{ classe.niveauClasse }}</td>
-            </tr>
-            <tr>
-                <th>NumClasse</th>
-                <td>{{ classe.numClasse }}</td>
+                <td>{{ etudiant.nomEtudiant }}</td>
+                <td>{{ etudiant.prenomEtudiant }}</td>
             </tr>
         </tbody>
     </table>
-
+{% endif %}
+    {% endfor %}
     <a href="{{ path("classe_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
         <button type="button" class="btn btn-dark">
             <i class="fa fa-arrow-circle-left">  </i>  retour

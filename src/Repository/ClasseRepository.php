@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Classe;
+use App\Entity\Enseignant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +15,20 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ClasseRepository extends ServiceEntityRepository
 {
+    public function findOneByIdJoinedToEnseignant(int $classeId): ?Classe
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p, c
+            FROM App\Entity\Classe p
+            INNER JOIN p.enseignants c
+            WHERE p.id = :id'
+        )->setParameter('id', $classeId);
+
+        return $query->getOneOrNullResult();
+    }
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Classe::class);

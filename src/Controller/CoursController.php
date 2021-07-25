@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Cours;
+use App\Entity\Matiere;
+use App\Entity\Publication;
 use App\Form\CoursType;
+use App\Form\PublicationType;
 use App\Repository\CoursRepository;
+use App\Repository\PublicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,12 +58,38 @@ class CoursController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="cours_show", methods={"GET"})
+     * @Route("/{id}", name="cours_show", methods={"GET","POST"})
      */
-    public function show(Cours $cour): Response
+    public function show(Cours $cour,Request $request,PublicationRepository  $publicationRepository): Response
     {
+        //$entityManager = $this->getDoctrine()->getManager();
+        $publication = new Publication();
+        $formpub = $this->createForm(PublicationType::class, $publication);
+        $formpub->handleRequest($request);
+       $matiere=$cour->getMatiere();
+
+
+        if ($formpub->isSubmitted() && $formpub->isValid()) {
+            $publication->setCours($cour);
+
+            $publication->setDatePublication(new \DateTime('now'));
+            $publication->setNbComment(0);
+            $publication->setNbVue(0);
+            $entityManager = $this->getDoctrine()->getManager();
+
+           // $cour = $entityManager->getRepository(Cours::class)->find($request->get('Cours'));
+            $entityManager->persist($publication);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('cours_show', array('id'=>$cour->getId()));
+        }
+
         return $this->render('Back/cours/show.html.twig', [
             'cour' => $cour,
+            'formpub' => $formpub->createView(),
+            'publications'=>$publicationRepository->findAll(),
+            'publication'=>$publication,
+            'matiere'=>$matiere,
         ]);
     }
 
@@ -70,11 +100,11 @@ class CoursController extends AbstractController
     {
         $form = $this->createForm(CoursType::class, $cour);
         $form->handleRequest($request);
-
+$matiere = $cour->getMatiere();
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('cours_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('matiere_show', array('id'=>$matiere->getId()));
         }
 
         return $this->render('Back/cours/edit.html.twig', [
@@ -84,16 +114,17 @@ class CoursController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="cours_delete", methods={"POST"})
+     * @Route("/{id}", name="cours_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Cours $cour): Response
     {
+        $matiere = $cour->getMatiere();
         if ($this->isCsrfTokenValid('delete'.$cour->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($cour);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('cours_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('matiere_show', array('id'=>$matiere->getId()));
     }
 }

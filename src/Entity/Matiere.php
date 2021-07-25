@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MatiereRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +49,28 @@ class Matiere
      * @ORM\Column(type="float")
      */
     private $noteTest;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Etudiant::class, mappedBy="matiere")
+     */
+    private $etudiants;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Cours::class, mappedBy="matiere")
+     */
+    private $cours;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Enseignant::class, mappedBy="matiere")
+     */
+    private $enseignants;
+
+    public function __construct()
+    {
+        $this->etudiants = new ArrayCollection();
+        $this->cours = new ArrayCollection();
+        $this->enseignants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -122,6 +146,97 @@ class Matiere
     public function setNoteTest(float $noteTest): self
     {
         $this->noteTest = $noteTest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Etudiant[]
+     */
+    public function getEtudiants(): Collection
+    {
+        return $this->etudiants;
+    }
+
+    public function addEtudiant(Etudiant $etudiant): self
+    {
+        if (!$this->etudiants->contains($etudiant)) {
+            $this->etudiants[] = $etudiant;
+            $etudiant->addMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtudiant(Etudiant $etudiant): self
+    {
+        if ($this->etudiants->removeElement($etudiant)) {
+            $etudiant->removeMatiere($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cours[]
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Cours $cour): self
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours[] = $cour;
+            $cour->setMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Cours $cour): self
+    {
+        if ($this->cours->removeElement($cour)) {
+            // set the owning side to null (unless already changed)
+            if ($cour->getMatiere() === $this) {
+                $cour->setMatiere(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->nomMatiere;
+    }
+
+    /**
+     * @return Collection|Enseignant[]
+     */
+    public function getEnseignants(): Collection
+    {
+        return $this->enseignants;
+    }
+
+    public function addEnseignant(Enseignant $enseignant): self
+    {
+        if (!$this->enseignants->contains($enseignant)) {
+            $this->enseignants[] = $enseignant;
+            $enseignant->setMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnseignant(Enseignant $enseignant): self
+    {
+        if ($this->enseignants->removeElement($enseignant)) {
+            // set the owning side to null (unless already changed)
+            if ($enseignant->getMatiere() === $this) {
+                $enseignant->setMatiere(null);
+            }
+        }
 
         return $this;
     }
