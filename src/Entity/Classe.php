@@ -51,6 +51,11 @@ class Classe
      */
     private $enseignants;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Seance::class, mappedBy="classe")
+     */
+    private $seances;
+
 
 
 
@@ -60,6 +65,7 @@ class Classe
         $this->cours = new ArrayCollection();
         $this->etudiant = new ArrayCollection();
         $this->enseignants = new ArrayCollection();
+        $this->seances = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -188,6 +194,36 @@ class Classe
     {
         if ($this->enseignants->removeElement($enseignant)) {
             $enseignant->removeClasse($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Seance[]
+     */
+    public function getSeances(): Collection
+    {
+        return $this->seances;
+    }
+
+    public function addSeance(Seance $seance): self
+    {
+        if (!$this->seances->contains($seance)) {
+            $this->seances[] = $seance;
+            $seance->setClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeance(Seance $seance): self
+    {
+        if ($this->seances->removeElement($seance)) {
+            // set the owning side to null (unless already changed)
+            if ($seance->getClasse() === $this) {
+                $seance->setClasse(null);
+            }
         }
 
         return $this;

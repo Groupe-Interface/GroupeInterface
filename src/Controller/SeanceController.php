@@ -4,19 +4,19 @@ namespace App\Controller;
 
 use App\Entity\Seance;
 use App\Form\SeanceType;
+use App\Repository\ClasseRepository;
+use App\Repository\EtudiantRepository;
 use App\Repository\SeanceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/seance")
- */
+
 class SeanceController extends AbstractController
 {
     /**
-     * @Route("/", name="seance_index", methods={"GET"})
+     * @Route("/seance/admin", name="admin_seance_index", methods={"GET"})
      */
     public function index(SeanceRepository $seanceRepository): Response
     {
@@ -26,7 +26,7 @@ class SeanceController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="seance_new", methods={"GET","POST"})
+     * @Route("/seance/new/admin", name="admin_seance_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class SeanceController extends AbstractController
             $entityManager->persist($seance);
             $entityManager->flush();
 
-            return $this->redirectToRoute('seance_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_seance_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Back/seance/new.html.twig', [
@@ -49,7 +49,7 @@ class SeanceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="seance_show", methods={"GET"})
+     * @Route("/seance/{id}/admin", name="admin_seance_show", methods={"GET"})
      */
     public function show(Seance $seance): Response
     {
@@ -57,9 +57,21 @@ class SeanceController extends AbstractController
             'seance' => $seance,
         ]);
     }
+    /**
+     * @Route("/seance/{id}/enseignant", name="enseignant_seance_show", methods={"GET"})
+     */
+    public function showEnseignant(Seance $seance,ClasseRepository $classeRepository,EtudiantRepository $etudiantRepository): Response
+    {
+
+        return $this->render('Back/seance/show.html.twig', [
+            'seance' => $seance,
+            'etudiants'=>$etudiantRepository->findAll(),
+            'classes'=>$classeRepository->findAll()
+        ]);
+    }
 
     /**
-     * @Route("/{id}/edit", name="seance_edit", methods={"GET","POST"})
+     * @Route("/seance/{id}/edit/admin", name="admin_seance_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Seance $seance): Response
     {
@@ -69,7 +81,7 @@ class SeanceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('seance_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_seance_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Back/seance/edit.html.twig', [
@@ -79,7 +91,7 @@ class SeanceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="seance_delete", methods={"POST"})
+     * @Route("/seance/{id}/admin", name="admin_seance_delete", methods={"POST"})
      */
     public function delete(Request $request, Seance $seance): Response
     {
@@ -89,6 +101,6 @@ class SeanceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('seance_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_seance_index', [], Response::HTTP_SEE_OTHER);
     }
 }

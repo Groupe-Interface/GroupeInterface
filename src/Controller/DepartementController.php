@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/departement")
- */
+
 class DepartementController extends AbstractController
 {
     /**
-     * @Route("/", name="departement_index", methods={"GET"})
+     * @Route("/departement/admin", name="admin_departement_index", methods={"GET"})
      */
     public function index(DepartementRepository $departementRepository): Response
     {
@@ -26,7 +24,7 @@ class DepartementController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="departement_new", methods={"GET","POST"})
+     * @Route("/departement/new/admin", name="admin_departement_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +37,7 @@ class DepartementController extends AbstractController
             $entityManager->persist($departement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('departement_index');
+            return $this->redirectToRoute('admin_departement_index');
         }
 
         return $this->render('Back/departement/new.html.twig', [
@@ -49,7 +47,7 @@ class DepartementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="departement_show", methods={"GET"})
+     * @Route("/departement/{id}/admin", name="admin_departement_show", methods={"GET"})
      */
     public function show(Departement $departement): Response
     {
@@ -59,7 +57,7 @@ class DepartementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="departement_edit", methods={"GET","POST"})
+     * @Route("/departement/{id}/edit/admin", name="admin_departement_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Departement $departement): Response
     {
@@ -69,7 +67,7 @@ class DepartementController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('departement_index');
+            return $this->redirectToRoute('admin_departement_index');
         }
 
         return $this->render('Back/departement/edit.html.twig', [
@@ -79,7 +77,7 @@ class DepartementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="departement_delete", methods={"POST"})
+     * @Route("/departement/{id}/admin", name="admin_departement_delete", methods={"POST"})
      */
     public function delete(Request $request, Departement $departement): Response
     {
@@ -89,6 +87,6 @@ class DepartementController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('departement_index');
+        return $this->redirectToRoute('admin_departement_index');
     }
 }

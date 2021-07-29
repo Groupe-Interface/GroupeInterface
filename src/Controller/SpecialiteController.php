@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/specialite")
- */
+
 class SpecialiteController extends AbstractController
 {
     /**
-     * @Route("/", name="specialite_index", methods={"GET"})
+     * @Route("/specialite/admin", name="admin_specialite_index", methods={"GET"})
      */
     public function index(SpecialiteRepository $specialiteRepository): Response
     {
@@ -26,7 +24,7 @@ class SpecialiteController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="specialite_new", methods={"GET","POST"})
+     * @Route("/specialite/new/admin", name="admin_specialite_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +37,7 @@ class SpecialiteController extends AbstractController
             $entityManager->persist($specialite);
             $entityManager->flush();
 
-            return $this->redirectToRoute('specialite_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_specialite_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Back/specialite/new.html.twig', [
@@ -49,7 +47,7 @@ class SpecialiteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="specialite_show", methods={"GET"})
+     * @Route("/specialite/{id}/admin", name="admin_specialite_show", methods={"GET"})
      */
     public function show(Specialite $specialite): Response
     {
@@ -59,7 +57,7 @@ class SpecialiteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="specialite_edit", methods={"GET","POST"})
+     * @Route("/specialite/{id}/edit/admin", name="admin_specialite_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Specialite $specialite): Response
     {
@@ -69,7 +67,7 @@ class SpecialiteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('specialite_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_specialite_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Back/specialite/edit.html.twig', [
@@ -79,7 +77,7 @@ class SpecialiteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="specialite_delete", methods={"POST"})
+     * @Route("/specialite/{id}/admin", name="admin_specialite_delete", methods={"POST"})
      */
     public function delete(Request $request, Specialite $specialite): Response
     {
@@ -89,6 +87,6 @@ class SpecialiteController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('specialite_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_specialite_index', [], Response::HTTP_SEE_OTHER);
     }
 }

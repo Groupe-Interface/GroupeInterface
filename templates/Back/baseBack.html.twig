@@ -23,6 +23,9 @@
 
         <!-- Custom Theme Style -->
         <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+
     {% endblock %}
 </head>
 
@@ -33,7 +36,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                        <a href="#" class="site_title"><span>  Interface !</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -44,8 +47,12 @@
                             <img src="{{ asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>John Doe</h2>
+                            <span>bienvenue,</span>
+                            <h2>
+                                {% block User %}
+
+                                {% endblock %}
+                            </h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -61,13 +68,13 @@
                                 <li><a href="{{ path("admin_enseignant_index") }}"><i class="fa fa-pencil-square-o"></i> Enseignant </a>
                                 <li><a href="{{ path("admin_reclamation_index") }}"><i class="fa fa-pencil-square-o"></i>Réclamation </a>
                                 <li><a href="{{ path("admin_avis_index") }}"><i class="fa fa-bullhorn"></i> Avis </a>
+                                <li><a href="{{ path("admin_departement_index") }}"><i class="fa fa-building-o"></i> Département </a>
+                                <li><a href="{{ path("admin_classe_index") }}"><i class="fa fa-book"></i> Classe </a>
+                                <li><a href="{{ path("admin_specialite_index") }}"><i class="fa fa-wrench"></i> Specilite </a>
+                                <li><a href="{{ path("admin_matiere_index") }}"><i class="fa fa-comment-o"></i> Matiere </a>
+                                <li><a href="{{ path("admin_seance_index") }}"><i class="fa fa-comment-o"></i> Seance </a>
 
-                                <li><a href="{{ path("departement_index") }}"><i class="fa fa-building-o"></i> Département </a>
                                 <li><a href="{{ path("image_index") }}"><i class="fa fa-image"></i>Image </a>
-                                <li><a href="{{ path("specialite_index") }}"><i class="fa fa-wrench"></i> Specilite </a>
-                                <li><a href="{{ path("classe_index") }}"><i class="fa fa-book"></i> Classe </a>
-                                <li><a href="{{ path("matiere_index") }}"><i class="fa fa-comment-o"></i> Matiere </a>
-                                <li><a href="{{ path("seance_index") }}"><i class="fa fa-comment-o"></i> Seance </a>
                                     {% endif %}
                                     {% if is_granted ('ROLE_ETUDIANT') %}
                                 <li><a href="{{ path("etudiant_reclamation_index") }}"><i class="fa fa-pencil-square-o"></i> Réclamation </a>
@@ -271,6 +278,19 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('build/js/custom.min.js') }}"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+{% endblock %}
+{% block JsCsslogin %}
+
+{% endblock %}
+{% block login %}
+{% endblock %}
+
+{% block JsCssProfile %}
+
+{% endblock %}
+{% block Profile %}
 {% endblock %}
 </body>
 </html>

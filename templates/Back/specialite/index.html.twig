@@ -1,7 +1,7 @@
 {% extends 'Back/baseBack.html.twig' %}
 
 {% block content %}
-    <h1>Specialite index</h1>
+    <h1>La liste des spécialites</h1>
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
@@ -27,9 +27,9 @@
                 <td>{{ specialite.abrevSpecialite }}</td>
                 <td>{{ specialite.departement }}</td>
                 <td>
-                    <a href="{{ path('specialite_show', {'id': specialite.id}) }}"><i class="fa fa-eye"></i> </a>
-                    <a href="{{ path('specialite_edit', {'id': specialite.id}) }}"><i class="fa fa-edit"></i></a>
-                    <a href="{{ path('specialite_delete', {'id': specialite.id}) }}"><i class="fa fa-trash-o"></i></a>
+                    <a href="{{ path('admin_specialite_show', {'id': specialite.id}) }}"><i class="fa fa-eye"></i> </a>
+                    <a href="{{ path('admin_specialite_edit', {'id': specialite.id}) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('admin_specialite_delete', {'id': specialite.id}) }}"><i class="fa fa-trash-o"></i></a>
 
                 </td>
             </tr>
@@ -41,10 +41,14 @@
         </tbody>
     </table>
             <div style="width: 100%; display:flex; justify-content: flex-end">
-                <a href="{{ path('specialite_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                <a href="{{ path('admin_specialite_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
             </div>
 
         </div>
     </div>
 </div>
+    <script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+    } );</script>
 {% endblock %}

@@ -1,23 +1,28 @@
 <div class="x_panel">
     <div class="x_content">
+
+
         <div class="col-md-12 col-sm-12  form-group">
+
+
             {{ form_start(form) }}
-            {{ form_widget(form.nationalite,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'nationalite '}})}}
-            {{ form_widget(form.num_passport,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Numero de passport '}})}}
-            {{ form_widget(form.cin,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Numero CIN'}})}}
-            {{ form_widget(form.nom_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Etudiant '}})}}
-            {{ form_widget(form.prenom_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Etudiant '}})}}
+        {{ form_widget(form.nom_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Etudiant '}})}}
+        {{ form_widget(form.prenom_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Etudiant '}})}}
+        {{ form_widget(form.email_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Email Etudiant'}})}}
+        {{ form_widget(form.nationalite,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'nationalite '}})}}
+
+        {{ form_widget(form.num_passport,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Numero de passport '}})}}
+        {{ form_widget(form.cin,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Numero CIN'}})}}
 
 
+        {{ form_widget(form.paye_naiss,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Paye naissance'}})}}
+        {{ form_widget(form.paye_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Paye etudiant'}})}}
+        {{ form_widget(form.ville_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Ville Etudiant'}})}}
 
-            {{ form_widget(form.paye_naiss,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Paye naissance'}})}}
-            {{ form_widget(form.paye_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Paye etudiant'}})}}
-            {{ form_widget(form.ville_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Ville Etudiant'}})}}
-            {{ form_widget(form.photo_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Photo Etudiant'}})}}
-            {{ form_widget(form.email_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Email Etudiant'}})}}
-            {{ form_widget(form.phone_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Phone Etudiant'}})}}
-            {{ form_widget(form.phone_urgence,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Phone urgent '}})}}
-            {{ form_widget(form.classe,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Etudiant '}})}}
+        {{ form_widget(form.photo_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Photo Etudiant'}})}}
+        {{ form_widget(form.phone_etudiant,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Phone Etudiant'}})}}
+        {{ form_widget(form.phone_urgence,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Phone urgent '}})}}
+        {{ form_widget(form.classe,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nom Etudiant '}})}}
 
 
             <div style="width: 100%; display:flex; justify-content: flex-end">
@@ -29,4 +34,5 @@
         </div>
     </div>
 </div>
+
 

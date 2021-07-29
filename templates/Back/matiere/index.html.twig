@@ -1,10 +1,11 @@
 {% extends 'Back/baseBack.html.twig' %}
+
 {% block listeMatiere %}
 <ul class="nav child_menu">
 
     {% for matiere in matieres %}
         {% if matiere.idSpecialite == classe.idSpecialite%}
-            <li><a href="{{ path('matiere_show', {'id': matiere.id}) }}">{{ matiere.nomMatiere }}</a></li>
+            <li><a href="{{ path('etudiant_matiere_show', {'id': matiere.id}) }}">{{ matiere.nomMatiere }}</a></li>
 
         {% endif %}
     {% endfor %}
@@ -36,8 +37,8 @@
                             <td>{{ matiere.idSpecialite }}</td>
                             <td>{{ matiere.idSpecialite.departement }}</td>
                             <td>
-                                <a href="{{ path('matiere_show', {'id': matiere.id}) }}"><i class="fa fa-eye"></i> </a>
-                                <a href="{{ path('matiere_edit', {'id': matiere.id}) }}"><i class="fa fa-edit"></i></a>
+                               <!-- <a href="{ path('matiere_show', {'id': matiere.id}) }}"><i class="fa fa-eye"></i> </a>-->
+                                <a href="{{ path('admin_matiere_edit', {'id': matiere.id}) }}"><i class="fa fa-edit"></i></a>
                                 {{ include('Back/matiere/_delete_form.html.twig') }}
 
 
@@ -51,10 +52,13 @@
                     </tbody>
                 </table>
                 <div style="width: 100%; display:flex; justify-content: flex-end">
-                    <a href="{{ path('matiere_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                    <a href="{{ path('admin_matiere_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
                 </div>
             </div>
         </div>
     </div>
-
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );</script>
 {% endblock %}

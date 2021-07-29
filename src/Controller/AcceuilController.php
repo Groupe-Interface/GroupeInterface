@@ -13,6 +13,8 @@ class AcceuilController extends AbstractController
      */
     public function index(): Response
     {
+        //$date=new \DateTime('now');
+       // $date('h:i');
         return $this->render('Front/acceuil/index.html.twig', [
             'controller_name' => 'AcceuilController',
         ]);

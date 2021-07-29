@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<title>Abscence index</title>
+
+{% block body %}
+    <h1>Abscence index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Justifee</th>
+                <th>CommentaireAbscence</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abscence in abscences %}
+            <tr>
+                <td>{{ abscence.id }}</td>
+                <td>{{ abscence.justifee ? 'Yes' : 'No' }}</td>
+                <td>{{ abscence.commentaireAbscence }}</td>
+                <td>
+                    <a href="{{ path('abscence_show', {'id': abscence.id}) }}">show</a>
+                    <a href="{{ path('abscence_edit', {'id': abscence.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <!-- <a href="{ path('abscence_new') }}">Create new</a>-->
+{% endblock %}

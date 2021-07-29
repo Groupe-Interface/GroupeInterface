@@ -1,5 +1,5 @@
-<form method="post" action="{{ path('seance_delete', {'id': seance.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ publication.id) }}">
+<form method="post" action="{{ path('admin_seance_delete', {'id': seance.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ seance.id) }}">
     <button class="btn btn-danger d-none d-sm-inline-block btn-sm btn-primary shadow-sm mt-2 mb-2">
         <i class="fa fa-trash"></i>
 

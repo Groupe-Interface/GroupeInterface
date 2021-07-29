@@ -65,6 +65,21 @@ class Enseignant
      */
     private $classe;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="enseignant")
+     */
+    private $publications;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="enseignant")
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Seance::class, mappedBy="enseignant")
+     */
+    private $seances;
+
 
 
 
@@ -74,6 +89,9 @@ class Enseignant
     {
         $this->matieres = new ArrayCollection();
         $this->classe = new ArrayCollection();
+        $this->publications = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+        $this->seances = new ArrayCollection();
     }
 
     /**
@@ -216,7 +234,97 @@ class Enseignant
 
     public function __toString()
     {
-        return $this->nomEnseignant."  ".$this->prenomEnseignant;
+        return $this->nomEnseignant."  ".$this->prenomEnseignant." : ".$this->getMatiere()->getNomMatiere();
+    }
+
+    /**
+     * @return Collection|Publication[]
+     */
+    public function getPublications(): Collection
+    {
+        return $this->publications;
+    }
+
+    public function addPublication(Publication $publication): self
+    {
+        if (!$this->publications->contains($publication)) {
+            $this->publications[] = $publication;
+            $publication->setEnseignant($this);
+        }
+
+        return $this;
+    }
+
+    public function removePublication(Publication $publication): self
+    {
+        if ($this->publications->removeElement($publication)) {
+            // set the owning side to null (unless already changed)
+            if ($publication->getEnseignant() === $this) {
+                $publication->setEnseignant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setEnseignant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getEnseignant() === $this) {
+                $commentaire->setEnseignant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Seance[]
+     */
+    public function getSeances(): Collection
+    {
+        return $this->seances;
+    }
+
+    public function addSeance(Seance $seance): self
+    {
+        if (!$this->seances->contains($seance)) {
+            $this->seances[] = $seance;
+            $seance->setEnseignant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeance(Seance $seance): self
+    {
+        if ($this->seances->removeElement($seance)) {
+            // set the owning side to null (unless already changed)
+            if ($seance->getEnseignant() === $this) {
+                $seance->setEnseignant(null);
+            }
+        }
+
+        return $this;
     }
 
 

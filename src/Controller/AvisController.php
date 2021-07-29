@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Avis;
+use App\Entity\Enseignant;
 use App\Form\AvisType;
 use App\Repository\AvisRepository;
+use App\Repository\EnseignantRepository;
+use App\Repository\EtudiantRepository;
+use App\Repository\MatiereRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,25 +18,56 @@ use Symfony\Component\Routing\Annotation\Route;
 class AvisController extends AbstractController
 {
     /**
-     * @Route("/etudiant/avis/", name="etudiant_avis_index", methods={"GET"})
+     * @Route("/avis/etudiant/", name="etudiant_avis_index", methods={"GET"})
      */
-    public function indexEtudiant(AvisRepository $avisRepository): Response
-    {
+    public function indexEtudiant(AvisRepository $avisRepository,EtudiantRepository $etudiantRepository,MatiereRepository $matiereRepository): Response
+    {$roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $classe= $service->getClasse();
+
+                }
+            }
+        }
         return $this->render('Back/avis/index.html.twig', [
             'avis' => $avisRepository->findAll(),
+            'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
         ]);
     }
     /**
-     * @Route("/enseignant/avis/", name="enseignant_avis_index", methods={"GET"})
+     * @Route("/avis/enseignant/", name="enseignant_avis_index", methods={"GET"})
      */
-    public function indexEnseignant(AvisRepository $avisRepository): Response
+    public function indexEnseignant(AvisRepository $avisRepository,EnseignantRepository $enseignantRepository): Response
     {
+        $classe= null;
+        $user= $this->getUser();
+        $email=$user->getEmail();
+
+
+        foreach($enseignantRepository->findAll() as $service)
+        {
+            if ($email == $service->getEmailEnseignant()){
+                $enseignant = $this->getDoctrine()
+                    ->getRepository(Enseignant::class)
+                    ->findOneByIdJoinedToClasse($service->getId());
+
+                $classe = $enseignant->getClasse();
+
+            }
+
+        }
         return $this->render('Back/avis/index.html.twig', [
             'avis' => $avisRepository->findAll(),
+            'classes' => $classe
         ]);
     }
     /**
-     * @Route("/admin/avis/", name="admin_avis_index", methods={"GET"})
+     * @Route("/avis/admin/", name="admin_avis_index", methods={"GET"})
      */
     public function indexAdmin(AvisRepository $avisRepository): Response
     {
@@ -42,7 +77,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/admin/avis/new", name="admin_avis_new", methods={"GET","POST"})
+     * @Route("/avis/new/admin", name="admin_avis_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -66,7 +101,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/admin/avis/{id}", name="admin_avis_show", methods={"GET"})
+     * @Route("/avis/{id}/admin", name="admin_avis_show", methods={"GET"})
      */
     public function show(Avis $avi): Response
     {
@@ -76,7 +111,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/admin/avis/{id}/edit", name="admin_avis_edit", methods={"GET","POST"})
+     * @Route("/avis/{id}/edit/admin", name="admin_avis_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Avis $avi): Response
     {
@@ -96,7 +131,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/admin/avis/{id}", name="admin_avis_delete", methods={"POST"})
+     * @Route("/avis/{id}/admin", name="admin_avis_delete", methods={"POST"})
      */
     public function delete(Request $request, Avis $avi): Response
     {

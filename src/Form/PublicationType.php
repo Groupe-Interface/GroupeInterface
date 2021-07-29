@@ -14,7 +14,6 @@ class PublicationType extends AbstractType
     {
         $builder
             ->add('descriptionPublication',CKEditorType::class)
-            ->add('idUser')
         ;
     }
 

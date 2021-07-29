@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Admin;
 use App\Entity\Users;
 use App\Form\RegistrationFormType;
+use App\Repository\UsersRepository;
 use App\Security\UsersAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,10 +19,11 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UsersAuthenticator $authenticator): Response
+    public function register(Request $request,UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UsersAuthenticator $authenticator): Response
     {
 
         $user = new Users();
+        $admin = new Admin();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -33,9 +36,18 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setRoles(["ROLE_ADMIN"]);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+            $admin->setPassword($user->getPassword());
+            $admin->setNomAdmin($form->get('nom')->getData());
+            $admin->setPrenomAdmin($form->get('prenom')->getData());
+            $admin->setEmailAdmin($user->getEmail());
+            $entityManager1 = $this->getDoctrine()->getManager();
+            $entityManager1->persist($admin);
+            $entityManager1->flush();
             // do anything else you need here, like send an email
 
             return $guardHandler->authenticateUserAndHandleSuccess(

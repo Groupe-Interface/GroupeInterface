@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<title>Admin index</title>
+
+{% block body %}
+    <h1>Admin index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_admin</th>
+                <th>Prenom_admin</th>
+                <th>Email_admin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for admin in admins %}
+            <tr>
+                <td>{{ admin.id }}</td>
+                <td>{{ admin.nomAdmin }}</td>
+                <td>{{ admin.prenomAdmin }}</td>
+                <td>{{ admin.emailAdmin }}</td>
+                <td>
+                    <a href="{{ path('admin_show', {'id': admin.id}) }}">show</a>
+                    <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_new') }}">Create new</a>
+{% endblock %}

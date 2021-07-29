@@ -10,12 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class EtudiantController extends AbstractController
 {
     /**
-     * @Route("/admin/etudiant/", name="admin_etudiant_index", methods={"GET"})
+     * @Route("/etudiant/admin", name="admin_etudiant_index", methods={"GET"})
      */
     public function index(EtudiantRepository $etudiantRepository): Response
     {
@@ -26,9 +27,9 @@ class EtudiantController extends AbstractController
 
     /**
      * @
-     * @Route("/admin/etudiant/new", name="admin_etudiant_new", methods={"GET","POST"})
+     * @Route("/etudiant/new/admin", name="admin_etudiant_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $etudiant = new Etudiant();
         $user =new Users();
@@ -37,11 +38,17 @@ class EtudiantController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setEmail($etudiant->getEmailEtudiant());
-            $user->setPassword($etudiant->getCin());
+            //$user->setPassword($etudiant->getCin());
 
 
 
             $user->setRoles(["ROLE_ETUDIANT"]);
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('cin')->getData()
+                )
+            );
             $entityManager1 = $this->getDoctrine()->getManager();
             $entityManager = $this->getDoctrine()->getManager();
 
@@ -61,7 +68,7 @@ class EtudiantController extends AbstractController
     }
 
     /**
-     * @Route("/admin/etudiant/{id}", name="admin_etudiant_show", methods={"GET"})
+     * @Route("/etudiant/{id}/admin", name="admin_etudiant_show", methods={"GET"})
      */
     public function show(Etudiant $etudiant): Response
     {
@@ -71,7 +78,7 @@ class EtudiantController extends AbstractController
     }
 
     /**
-     * @Route("/admin/etudiant/{id}/edit", name="admin_etudiant_edit", methods={"GET","POST"})
+     * @Route("/etudiant/{id}/edit/admin", name="admin_etudiant_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Etudiant $etudiant): Response
     {
@@ -91,7 +98,7 @@ class EtudiantController extends AbstractController
     }
 
     /**
-     * @Route("/admin/etudiant/{id}", name="admin_etudiant_delete", methods={"POST"})
+     * @Route("/etudiant/{id}/admin", name="admin_etudiant_delete", methods={"POST"})
      */
     public function delete(Request $request, Etudiant $etudiant): Response
     {

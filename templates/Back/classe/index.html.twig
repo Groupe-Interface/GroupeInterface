@@ -1,12 +1,14 @@
 {% extends 'Back/baseBack.html.twig' %}
+
 {% block listeClasse %}
     <ul class="nav child_menu">
 {% for classe in classes %}
-        <li><a href="{{ path('classe_show', {'id': classe.id}) }}">{{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}</a></li>
+        <li><a href="{{ path('enseignant_classe_show', {'id': classe.id}) }}">{{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}</a></li>
     {% endfor %}
     </ul>
 {% endblock %}
 {% block content %}
+    {% if is_granted ('ROLE_ADMIN') %}
     <h1>Classe index</h1>
 
 <div class="right_col" role="main">
@@ -33,9 +35,9 @@
                 <td>{{ classe.numClasse }}</td>
 
                 <td>
-                    <a href="{{ path('classe_show', {'id': classe.id}) }}"><i class="fa fa-eye"></i> </a>
-                    <a href="{{ path('classe_edit', {'id': classe.id}) }}"><i class="fa fa-edit"></i></a>
-                    <a href="{{ path('classe_delete', {'id': classe.id}) }}"><i class="fa fa-trash-o"></i></a>
+                    <a href="{{ path('admin_classe_show', {'id': classe.id}) }}"><i class="fa fa-eye"></i> </a>
+                    <a href="{{ path('admin_classe_edit', {'id': classe.id}) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('admin_classe_delete', {'id': classe.id}) }}"><i class="fa fa-trash-o"></i></a>
 
                 </td>
             </tr>
@@ -47,9 +49,14 @@
         </tbody>
     </table>
             <div style="width: 100%; display:flex; justify-content: flex-end">
-                <a href="{{ path('classe_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                <a href="{{ path('admin_classe_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
             </div>
         </div>
     </div>
 </div>
+    {% endif %}
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );</script>
 {% endblock %}

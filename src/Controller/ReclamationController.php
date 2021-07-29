@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Enseignant;
 use App\Entity\Reclamation;
 use App\Form\ReclamationType;
 use App\Repository\EnseignantRepository;
 use App\Repository\EtudiantRepository;
+use App\Repository\MatiereRepository;
 use App\Repository\ReclamationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,21 +23,48 @@ class ReclamationController extends AbstractController
 
     //******************* etudiant
     /**
-     * @Route("/etudiant/reclamation/", name="etudiant_reclamation_index", methods={"GET"})
+     * @Route("/reclamation/etudiant/", name="etudiant_reclamation_index", methods={"GET"})
      */
-    public function indexEtudiant(ReclamationRepository $reclamationRepository,EtudiantRepository $etudiantRepository): Response
-    {$user=$this->getUser();
+    public function indexEtudiant(ReclamationRepository $reclamationRepository,MatiereRepository $matiereRepository,EtudiantRepository $etudiantRepository): Response
+    {
+        $user=$this->getUser();
+        $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $classe= $service->getClasse();
+
+                }
+            }
+        }
         return $this->render('Back/reclamation/index.html.twig', [
             'user'=>$user,
             'etudiants'=>$etudiantRepository->findAll(),
             'reclamations' => $reclamationRepository->findAll(),
+            'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
         ]);
     }
     /**
-     * @Route("/etudiant/reclamation/new", name="etudiant_reclamation_new", methods={"GET","POST"})
+     * @Route("/reclamation/new/etudiant", name="etudiant_reclamation_new", methods={"GET","POST"})
      */
-    public function newEtudiant(Request $request,EtudiantRepository $etudiantRepository): Response
+    public function newEtudiant(Request $request,MatiereRepository $matiereRepository,EtudiantRepository $etudiantRepository): Response
     {
+        $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $classe= $service->getClasse();
+
+                }
+            }
+        }
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
@@ -55,22 +84,49 @@ class ReclamationController extends AbstractController
             'reclamation' => $reclamation,
             'etudiants'=>$etudiantRepository->findAll(),
             'form' => $form->createView(),
+            'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
         ]);
     }
     /**
-     * @Route("/etudiant/reclamation/{id}", name="etudiant_reclamation_show", methods={"GET"})
+     * @Route("/reclamation/{id}/etudiant", name="etudiant_reclamation_show", methods={"GET"})
      */
-    public function showEtudiant(Reclamation $reclamation): Response
-    {
+    public function showEtudiant(Reclamation $reclamation,EtudiantRepository $etudiantRepository,MatiereRepository $matiereRepository): Response
+    { $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $classe= $service->getClasse();
+
+                }
+            }
+        }
         return $this->render('Back/reclamation/show.html.twig', [
             'reclamation' => $reclamation,
+            'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
         ]);
     }
     /**
-     * @Route("/etudiant/{id}/edit", name="etudiant_reclamation_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit/etudiant", name="etudiant_reclamation_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Reclamation $reclamation): Response
+    public function edit(Request $request, Reclamation $reclamation,EtudiantRepository $etudiantRepository,MatiereRepository $matiereRepository): Response
     {
+        $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $classe= $service->getClasse();
+
+                }
+            }
+        }
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
 
@@ -83,11 +139,13 @@ class ReclamationController extends AbstractController
         return $this->render('Back/reclamation/edit.html.twig', [
             'reclamation' => $reclamation,
             'form' => $form->createView(),
+            'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
         ]);
     }
 
     /**
-     * @Route("/etudiant/reclamation/{id}", name="etudiant_reclamation_delete", methods={"POST"})
+     * @Route("/reclamation/{id}/etudiant", name="etudiant_reclamation_delete", methods={"POST"})
      */
     public function delete(Request $request, Reclamation $reclamation): Response
     {
@@ -102,21 +160,54 @@ class ReclamationController extends AbstractController
 
     //*****************enseignant
     /**
-     * @Route("/enseignant/reclamation/", name="enseignant_reclamation_index", methods={"GET"})
+     * @Route("/reclamation/enseignant", name="enseignant_reclamation_index", methods={"GET"})
      */
     public function indexEnseignant(ReclamationRepository $reclamationRepository,EnseignantRepository $enseignantRepository): Response
-    {$user=$this->getUser();
+    {   $classe= null;
+        $user= $this->getUser();
+        $email=$user->getEmail();
+        foreach($enseignantRepository->findAll() as $service)
+        {
+            if ($email == $service->getEmailEnseignant()){
+                $enseignant = $this->getDoctrine()
+                    ->getRepository(Enseignant::class)
+                    ->findOneByIdJoinedToClasse($service->getId());
+
+                $classe = $enseignant->getClasse();
+
+            }
+
+        }
+
         return $this->render('Back/reclamation/index.html.twig', [
             'user'=>$user,
             'enseignants'=>$enseignantRepository->findAll(),
             'reclamations' => $reclamationRepository->findAll(),
+            'classes' => $classe
         ]);
     }
     /**
-     * @Route("/enseignant/reclamation/new", name="enseignant_reclamation_new", methods={"GET","POST"})
+     * @Route("/reclamation/new/enseignant", name="enseignant_reclamation_new", methods={"GET","POST"})
      */
     public function newEnseignant(Request $request,EnseignantRepository $enseignantRepository): Response
     {
+        $classe= null;
+        $user= $this->getUser();
+        $email=$user->getEmail();
+
+
+        foreach($enseignantRepository->findAll() as $service)
+        {
+            if ($email == $service->getEmailEnseignant()){
+                $enseignant = $this->getDoctrine()
+                    ->getRepository(Enseignant::class)
+                    ->findOneByIdJoinedToClasse($service->getId());
+
+                $classe = $enseignant->getClasse();
+
+            }
+
+        }
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
@@ -136,24 +227,57 @@ class ReclamationController extends AbstractController
             'reclamation' => $reclamation,
             'enseignants'=>$enseignantRepository->findAll(),
             'form' => $form->createView(),
+            'classes' => $classe
         ]);
     }
     /**
-     * @Route("/enseignant/reclamation/{id}", name="enseignant_reclamation_show", methods={"GET"})
+     * @Route("/reclamation/{id}/enseignant", name="enseignant_reclamation_show", methods={"GET"})
      */
-    public function showEnseignant(Reclamation $reclamation): Response
+    public function showEnseignant(Reclamation $reclamation, EnseignantRepository $enseignantRepository): Response
     {
+        $classe= null;
+        $user= $this->getUser();
+        $email=$user->getEmail();
+
+
+        foreach($enseignantRepository->findAll() as $service)
+        {
+            if ($email == $service->getEmailEnseignant()){
+                $enseignant = $this->getDoctrine()
+                    ->getRepository(Enseignant::class)
+                    ->findOneByIdJoinedToClasse($service->getId());
+
+                $classe = $enseignant->getClasse();
+
+            }
+
+        }
         return $this->render('Back/reclamation/show.html.twig', [
             'reclamation' => $reclamation,
+            'classes' => $classe
         ]);
     }
 
 
     /**
-     * @Route("/enseignant/{id}/edit", name="enseignant_reclamation_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit/enseignant", name="enseignant_reclamation_edit", methods={"GET","POST"})
      */
-    public function editEnseignant(Request $request, Reclamation $reclamation): Response
+    public function editEnseignant(Request $request, Reclamation $reclamation,EnseignantRepository $enseignantRepository): Response
     {
+        $user= $this->getUser();
+        $email=$user->getEmail();
+        foreach($enseignantRepository->findAll() as $service)
+        {
+            if ($email == $service->getEmailEnseignant()){
+                $enseignant = $this->getDoctrine()
+                    ->getRepository(Enseignant::class)
+                    ->findOneByIdJoinedToClasse($service->getId());
+
+                $classe = $enseignant->getClasse();
+
+            }
+
+        }
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
 
@@ -166,11 +290,12 @@ class ReclamationController extends AbstractController
         return $this->render('Back/reclamation/edit.html.twig', [
             'reclamation' => $reclamation,
             'form' => $form->createView(),
+            'classes' => $classe
         ]);
     }
 
     /**
-     * @Route("/enseignant/reclamation/{id}", name="enseignant_reclamation_delete", methods={"POST"})
+     * @Route("/reclamation/{id}/enseignant", name="enseignant_reclamation_delete", methods={"POST"})
      */
     public function deleteEnseignant(Request $request, Reclamation $reclamation): Response
     {
@@ -184,7 +309,7 @@ class ReclamationController extends AbstractController
     }
     //************ admin
     /**
-     * @Route("/admin/reclamation/", name="admin_reclamation_index", methods={"GET"})
+     * @Route("/reclamation/admin/", name="admin_reclamation_index", methods={"GET"})
      */
     public function indexAdmin(ReclamationRepository $reclamationRepository,EnseignantRepository $enseignantRepository,EtudiantRepository $etudiantRepository): Response
     {
@@ -195,7 +320,7 @@ class ReclamationController extends AbstractController
         ]);
     }
     /**
-     * @Route("/admin/reclamation/{id}", name="admin_reclamation_show", methods={"GET"})
+     * @Route("/reclamation/{id}/admin", name="admin_reclamation_show", methods={"GET"})
      */
         public function showAdmin(Reclamation $reclamation): Response
     {
@@ -204,7 +329,7 @@ class ReclamationController extends AbstractController
         ]);
     }
     /**
-     * @Route("/admin/reclamation/{id}", name="admin_reclamation_delete", methods={"POST"})
+     * @Route("/reclamation/{id}/admin", name="admin_reclamation_delete", methods={"POST"})
      */
     public function deleteAdmin(Request $request, Reclamation $reclamation): Response
     {

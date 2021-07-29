@@ -16,7 +16,6 @@ class CoursType extends AbstractType
             ->add('supportCours', FileType::class, array(
                 'label' => 'Choisissez votre fichier'
             ))
-            ->add('idClasse')
             ->add('nomCours')
         ;
     }

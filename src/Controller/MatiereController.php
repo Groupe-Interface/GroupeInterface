@@ -19,13 +19,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/matiere")
- */
+
 class MatiereController extends AbstractController
 {
     /**
-     * @Route("/", name="matiere_index", methods={"GET"})
+     * @Route("/matiere/admin", name="admin_matiere_index", methods={"GET"})
+     */
+    public function indexAdmin(MatiereRepository $matiereRepository): Response
+    {
+        return $this->render('Back/matiere/index.html.twig', [
+            'matieres' => $matiereRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/matiere", name="matiere_index", methods={"GET"})
      */
     public function index(MatiereRepository $matiereRepository,EtudiantRepository $etudiantRepository,SpecialiteRepository $specialiteRepository, ClasseRepository  $classeRepository): Response
     {   $classe=null;
@@ -33,8 +40,6 @@ class MatiereController extends AbstractController
         if ($roles[0] == 'ROLE_ETUDIANT')
         {   $user= $this->getUser();
             $email=$user->getEmail();
-
-
             foreach($etudiantRepository->findAll() as $service)
             {
                 if ($email == $service->getEmailEtudiant()){
@@ -52,7 +57,7 @@ class MatiereController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="matiere_new", methods={"GET","POST"})
+     * @Route("/matiere/new/admin", name="admin_matiere_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -68,7 +73,7 @@ class MatiereController extends AbstractController
             $entityManager->persist($matiere);
             $entityManager->flush();
 
-            return $this->redirectToRoute('matiere_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_matiere_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Back/matiere/new.html.twig', [
@@ -77,9 +82,9 @@ class MatiereController extends AbstractController
         ]);
     }
 
-    /**
+    /*/**
      * @Route("/{id}", name="matiere_show", methods={"GET","POST"})
-     */
+
     public function show(Matiere $matiere,Request $request,CoursRepository $coursRepository): Response
     {
         //form Ajout d'un cours
@@ -109,10 +114,36 @@ class MatiereController extends AbstractController
             'cour' => $cour,
             'formcour' => $formcour->createView(),
         ]);
-    }
-
+    }*/
     /**
-     * @Route("/{id}/edit", name="matiere_edit", methods={"GET","POST"})
+     * @Route("/matiere/{id}/etudiant", name="etudiant_matiere_show", methods={"GET","POST"})
+     */
+    public function showEtudiant(Matiere $matiere,Request $request,CoursRepository $coursRepository,EtudiantRepository $etudiantRepository): Response
+    {$etudiant=null;
+        $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+
+
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $etudiant= $service;
+
+                }
+            }
+        }
+
+        return $this->render('Back/matiere/show.html.twig', [
+            'matiere' => $matiere,
+            'cours' => $coursRepository->findAll(),
+            'etudiant'=>$etudiant
+
+        ]);
+    }
+    /**
+     * @Route("/matiere/{id}/edit/admin", name="admin_matiere_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Matiere $matiere): Response
     {
@@ -122,7 +153,7 @@ class MatiereController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('matiere_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_matiere_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('Back/matiere/edit.html.twig', [
@@ -132,7 +163,7 @@ class MatiereController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="matiere_delete", methods={"DELETE"})
+     * @Route("/matiere/{id}/admin", name="admin_matiere_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Matiere $matiere): Response
     {
@@ -142,6 +173,6 @@ class MatiereController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('matiere_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_matiere_index', [], Response::HTTP_SEE_OTHER);
     }
 }

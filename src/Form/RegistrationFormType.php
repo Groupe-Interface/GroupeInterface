@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Admin;
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -43,6 +44,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('nom')
+            ->add('prenom')
         ;
     }
 
@@ -50,6 +53,6 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Users::class,
-        ]);
+         ]);
     }
 }

@@ -16,6 +16,10 @@ class SeanceType extends AbstractType
             ->add('heureDebut')
             ->add('heureFin')
             ->add('nbrMinute')
+            ->add('enseignant')
+            ->add('classe')
+
+
         ;
     }
 

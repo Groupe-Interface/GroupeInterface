@@ -1,9 +1,11 @@
 {% extends 'Back/baseBack.html.twig' %}
 
 {% block content %}
+    {% if is_granted ('ROLE_ADMIN') %}
     <h1>Seance</h1>
+
     <div style="width: 100%; display:flex; justify-content: flex-end">
-        <a href="{{ path('seance_edit', {'id': seance.id}) }}">
+        <a href="{{ path('admin_seance_edit', {'id': seance.id}) }}">
             <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
                 <i class="fa fa-edit"></i>
             </button></a>
@@ -33,10 +35,25 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ path("seance_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+    <a href="{{ path("admin_seance_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+    {% endif %}
+    {% if is_granted ('ROLE_ENSEIGNANT') %}
+{% for etudiant in etudiants %}
+
+{% if etudiant.classe.id == seance.classe.id %}
+   {{ etudiant.nomEtudiant }}
+   {{ etudiant.prenomEtudiant }}
+    <a href="{{ path('abscence_new' , {'ide': etudiant.id,'id': seance.id }) }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
         <button type="button" class="btn btn-dark">
             <i class="fa fa-arrow-circle-left">  </i>  retour
         </button>
     </a>
 
+    {% endif %}
+        {% endfor %}
+    {% endif  %}
 {% endblock %}

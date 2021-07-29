@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Repository\AdminRepository;
 use App\Repository\AvisRepository;
 use App\Repository\EnseignantRepository;
 use App\Repository\ReclamationRepository;
@@ -18,7 +19,7 @@ class DashboardController extends AbstractController
     /**
      * @Route("/dashboard", name="dashboard", methods={"GET"})
      */
-    public function indexAdmin(EtudiantRepository $etudiantRepository,Request $request,EnseignantRepository  $enseignantRepository): Response
+    public function indexAdmin(EtudiantRepository $etudiantRepository,AdminRepository $adminRepository,Request $request,EnseignantRepository  $enseignantRepository): Response
     {
         $user=$this->getUser();
 
@@ -27,7 +28,8 @@ class DashboardController extends AbstractController
             return $this->render('Back/Profil/profil.html.twig', [
                 'user' => $user,
                 'etudiants'=>$etudiantRepository->findAll(),
-                'enseignants'=>$enseignantRepository->findAll()
+                'enseignants'=>$enseignantRepository->findAll(),
+                'admins'=>$adminRepository->findAll()
             ]);
 
 

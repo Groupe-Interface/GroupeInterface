@@ -44,6 +44,16 @@ class Seance
      */
     private $abscences;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Enseignant::class, inversedBy="seances")
+     */
+    private $enseignant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Classe::class, inversedBy="seances")
+     */
+    private $classe;
+
     public function __construct()
     {
         $this->abscences = new ArrayCollection();
@@ -128,6 +138,30 @@ class Seance
                 $abscence->setIdSeance(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEnseignant(): ?Enseignant
+    {
+        return $this->enseignant;
+    }
+
+    public function setEnseignant(?Enseignant $enseignant): self
+    {
+        $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
 
         return $this;
     }

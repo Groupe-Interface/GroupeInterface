@@ -1,8 +1,29 @@
 {% extends 'Back/baseBack.html.twig' %}
 
+{% block listeClasse %}
+    <ul class="nav child_menu">
+        {% for classe in classes %}
+            <li><a href="{{ path('enseignant_classe_show', {'id': classe.id}) }}">{{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+    {% block listeMatiere %}
+        <ul class="nav child_menu">
+
+            {% for matiere in matieres %}
+                {% if matiere.idSpecialite == classe.idSpecialite%}
+                    <li><a href="{{ path('etudiant_matiere_show', {'id': matiere.id}) }}">{{ matiere.nomMatiere }}</a></li>
+
+                {% endif %}
+            {% endfor %}
+
+        </ul>
+    {% endblock %}
+
 {% block content %}
     {% if is_granted ('ROLE_ADMIN') %}
-        <h1>Reclamation index</h1>
+        <h1>La liste des réclamations </h1>
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
@@ -155,5 +176,9 @@
             </div>
         </div>
     {% endif %}
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );</script>
 {% endblock %}
 

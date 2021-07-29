@@ -50,6 +50,11 @@ class Publication
      */
     private $commentaires;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Enseignant::class, inversedBy="publications")
+     */
+    private $enseignant;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -153,5 +158,17 @@ class Publication
     public function __toString()
     {
         return $this->descriptionPublication;
+    }
+
+    public function getEnseignant(): ?Enseignant
+    {
+        return $this->enseignant;
+    }
+
+    public function setEnseignant(?Enseignant $enseignant): self
+    {
+        $this->enseignant = $enseignant;
+
+        return $this;
     }
 }

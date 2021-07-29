@@ -32,6 +32,11 @@ class Commentaire
      */
     private $publication;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Enseignant::class, inversedBy="commentaires")
+     */
+    private $enseignant;
+
 
     public function getId(): ?int
     {
@@ -77,5 +82,17 @@ class Commentaire
     public function __toString()
     {
         return $this->descriptionCommentaire;
+    }
+
+    public function getEnseignant(): ?Enseignant
+    {
+        return $this->enseignant;
+    }
+
+    public function setEnseignant(?Enseignant $enseignant): self
+    {
+        $this->enseignant = $enseignant;
+
+        return $this;
     }
 }

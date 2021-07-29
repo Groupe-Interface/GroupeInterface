@@ -1,11 +1,29 @@
 {% extends 'Back/baseBack.html.twig' %}
+{% block listeClasse %}
+    <ul class="nav child_menu">
+        {% for classe in classes %}
+            <li><a href="{{ path('enseignant_classe_show', {'id': classe.id}) }}">{{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block listeMatiere %}
+    <ul class="nav child_menu">
 
+        {% for matiere in matieres %}
+            {% if matiere.idSpecialite == classe.idSpecialite%}
+                <li><a href="{{ path('etudiant_matiere_show', {'id': matiere.id}) }}">{{ matiere.nomMatiere }}</a></li>
+
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+{% endblock %}
 {% block content%}
     <h1>Edit Publication</h1>
 
     {{ include('Back/publication/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path("publication_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+    <a href="{{  path("publication_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
         <button type="button" class="btn btn-dark">
             <i class="fa fa-arrow-circle-left">  </i>  retour
         </button>

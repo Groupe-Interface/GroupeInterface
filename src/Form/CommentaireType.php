@@ -14,7 +14,6 @@ class CommentaireType extends AbstractType
     {
         $builder
             ->add('descriptionCommentaire',CKEditorType::class)
-            ->add('idUser')
         ;
     }
 

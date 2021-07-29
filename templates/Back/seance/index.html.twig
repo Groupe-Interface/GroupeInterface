@@ -1,6 +1,7 @@
 {% extends 'Back/baseBack.html.twig' %}
+
 {% block content %}
-    <h1>Seance index</h1>
+    <h1>La liste des Séances </h1>
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
@@ -25,9 +26,9 @@
                 <td>{{ seance.heureFin ? seance.heureFin|date('H:i:s') : '' }}</td>
                 <td>{{ seance.nbrMinute }}</td>
                 <td>
-                    <a href="{{ path('seance_show', {'id': seance.id}) }}"><i class="fa fa-eye"></i> </a>
-                    <a href="{{ path('seance_edit', {'id': seance.id}) }}"><i class="fa fa-edit"></i></a>
-                    <a href="{{ path('seance_delete', {'id': seance.id}) }}"><i class="fa fa-trash-o"></i></a>
+                    <a href="{{ path('admin_seance_show', {'id': seance.id}) }}"><i class="fa fa-eye"></i> </a>
+                    <a href="{{ path('admin_seance_edit', {'id': seance.id}) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('admin_seance_delete', {'id': seance.id}) }}"><i class="fa fa-trash-o"></i></a>
 
                 </td>
             </tr>
@@ -39,9 +40,13 @@
         </tbody>
     </table>
             <div style="width: 100%; display:flex; justify-content: flex-end">
-                <a href="{{ path('seance_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
+                <a href="{{ path('admin_seance_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
             </div>
         </div>
     </div>
 </div>
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );</script>
 {% endblock %}

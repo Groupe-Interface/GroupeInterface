@@ -4,10 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Commentaire;
 use App\Entity\Cours;
+use App\Entity\Enseignant;
 use App\Entity\Publication;
 use App\Form\CommentaireType;
 use App\Form\PublicationType;
 use App\Repository\CommentaireRepository;
+use App\Repository\EnseignantRepository;
+use App\Repository\EtudiantRepository;
+use App\Repository\MatiereRepository;
 use App\Repository\PublicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,10 +59,24 @@ class PublicationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="publication_show",methods={"GET","POST"})
+     * @Route("/{id}/enseignant", name="publication_show",methods={"GET","POST"})
      */
-    public function show(Publication $publication,Request $request ,CommentaireRepository $commentaireRepository): Response
+    public function show(EnseignantRepository $enseignantRepository,Publication $publication,Request $request ,CommentaireRepository $commentaireRepository): Response
     {
+        $user= $this->getUser();
+        $email=$user->getEmail();
+
+        foreach($enseignantRepository->findAll() as $service)
+        {
+            if ($email == $service->getEmailEnseignant()){
+                $enseignantUser=$service;
+                $enseignant = $this->getDoctrine()
+                    ->getRepository(Enseignant::class)
+                    ->findOneByIdJoinedToClasse($service->getId());
+                $classeEnseignant = $enseignant->getClasse();
+            }
+
+        }
         $entityManager = $this->getDoctrine()->getManager();
         $commentaire = new Commentaire();
         $form = $this->createForm(CommentaireType::class, $commentaire);
@@ -73,6 +91,7 @@ class PublicationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $publication = $entityManager->getRepository(Publication::class)->find($request->get('publication'));
             $commentaire->setPublication($publication) ;
+            $commentaire->setEnseignant($enseignantUser);
             $entityManager->persist($commentaire);
             $entityManager->flush();
            
@@ -85,18 +104,83 @@ class PublicationController extends AbstractController
             'commentaires'=>$commentaireRepository->findAll(),
             'form' => $form->createView(),
             'cour'=>$cour,
+            'classes'=>$classeEnseignant
         ]);
     }
-
     /**
-     * @Route("/{id}/edit", name="publication_edit", methods={"GET","POST"})
+     * @Route("/{id}/etudiant", name="etudiant_publication_show",methods={"GET","POST"})
      */
-    public function edit(Request $request, Publication $publication): Response
+    public function showEtudiant(EtudiantRepository $etudiantRepository,MatiereRepository $matiereRepository,Publication $publication,Request $request ,CommentaireRepository $commentaireRepository): Response
+    {
+        $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $classe= $service->getClasse();
+
+                }
+            }
+        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $commentaire = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+        $form->handleRequest($request);
+        $publication->setNbVue($publication->getNbVue()+1);
+        $cour=$publication->getCours();
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $commentaire->setDateCommentaire(new \DateTime('now'));
+            $publication->setNbComment($publication->getNbComment()+1);
+            $entityManager = $this->getDoctrine()->getManager();
+            $publication = $entityManager->getRepository(Publication::class)->find($request->get('publication'));
+            $commentaire->setPublication($publication) ;
+            //$commentaire->setEnseignant($enseignantUser);
+            $entityManager->persist($commentaire);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('etudiant_publication_show', array('id'=>$publication->getId()));
+        }
+        $entityManager->flush();
+        return $this->render('Back/publication/show.html.twig', [
+            'publication' => $publication,
+            'commentaire' => $commentaire,
+            'commentaires'=>$commentaireRepository->findAll(),
+            'form' => $form->createView(),
+            'cour'=>$cour,
+            'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
+
+        ]);
+    }
+    /**
+     * @Route("/{id}/edit/enseignant", name="enseignant_publication_edit", methods={"GET","POST"})
+     */
+    public function editEnseignant(Request $request, Publication $publication , EnseignantRepository $enseignantRepository): Response
     {
         $formpub = $this->createForm(PublicationType::class, $publication);
         $formpub->handleRequest($request);
         $cour =$publication->getCours();
 
+        $user= $this->getUser();
+        $email=$user->getEmail();
+
+
+        foreach($enseignantRepository->findAll() as $service)
+        {
+            if ($email == $service->getEmailEnseignant()){
+                $enseignant = $this->getDoctrine()
+                    ->getRepository(Enseignant::class)
+                    ->findOneByIdJoinedToClasse($service->getId());
+
+                $classeEnseignant = $enseignant->getClasse();
+
+            }
+
+        }
         if ($formpub->isSubmitted() && $formpub->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
@@ -106,6 +190,40 @@ class PublicationController extends AbstractController
         return $this->render('Back/publication/edit.html.twig', [
             'publication' => $publication,
             'formpub' => $formpub->createView(),
+            'classes'=>$classeEnseignant
+        ]);
+    }
+    /**
+     * @Route("/{id}/edit/etudiant", name="etudiant_publication_edit", methods={"GET","POST"})
+     */
+    public function editEtudiant(Request $request,MatiereRepository $matiereRepository,Publication $publication , EtudiantRepository $etudiantRepository): Response
+    {
+        $formpub = $this->createForm(PublicationType::class, $publication);
+        $formpub->handleRequest($request);
+        $cour =$publication->getCours();
+        $roles = $this->getUser()->getRoles();
+        if ($roles[0] == 'ROLE_ETUDIANT')
+        {   $user= $this->getUser();
+            $email=$user->getEmail();
+            foreach($etudiantRepository->findAll() as $service)
+            {
+                if ($email == $service->getEmailEtudiant()){
+                    $classe= $service->getClasse();
+
+                }
+            }
+        }
+        if ($formpub->isSubmitted() && $formpub->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('etudiant_cours_show', array('id'=>$cour->getId()));
+        }
+
+        return $this->render('Back/publication/edit.html.twig', [
+            'publication' => $publication,
+            'formpub' => $formpub->createView(),
+            'matieres' => $matiereRepository->findAll(),
+            'classe'=>$classe,
         ]);
     }
 

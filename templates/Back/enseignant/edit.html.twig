@@ -1,16 +1,4 @@
-<!DOCTYPE html>
 
-<title>Edit Enseignant</title>
-
-{% block body %}
-    <h1>Edit Enseignant</h1>
-
-    {{ include('enseignant/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('enseignant_index') }}">back to list</a>
-
-    {{ include('enseignant/_delete_form.html.twig') }}
-{% endblock %}
 {% extends 'Back/baseBack.html.twig' %}
 
 {% block content%}
