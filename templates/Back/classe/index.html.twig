@@ -2,21 +2,18 @@
 
 {% block listeClasse %}
     <ul class="nav child_menu">
-{% for classe in classes %}
-        <li><a href="{{ path('enseignant_classe_show', {'id': classe.id}) }}">{{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}</a></li>
-    {% endfor %}
+        {% for classe in classes %}
+            <li><a href="{{ path('enseignant_classe_show', {'id': classe.id}) }}">{{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}
 {% block content %}
     {% if is_granted ('ROLE_ADMIN') %}
-    <h1>Classe index</h1>
+        <h1>La  Liste  des  classes  : </h1>
+        <br/>
 
-<div class="right_col" role="main">
-    <div class="">
-        <div class="page-title">
-
-            <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
-        <thead>
+        <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>NiveauClasse</th>
@@ -25,35 +22,34 @@
 
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for classe in classes %}
-            <tr>
-                <td>{{ classe.id }}</td>
-                <td>{{ classe.niveauClasse }}</td>
-                <td>{{ classe.idSpecialite }}</td>
-                <td>{{ classe.numClasse }}</td>
+            </thead>
+            <tbody>
+            {% for classe in classes %}
+                <tr>
+                    <td>{{ classe.id }}</td>
+                    <td>{{ classe.niveauClasse }}</td>
+                    <td>{{ classe.idSpecialite }}</td>
+                    <td>{{ classe.numClasse }}</td>
 
-                <td>
-                    <a href="{{ path('admin_classe_show', {'id': classe.id}) }}"><i class="fa fa-eye"></i> </a>
-                    <a href="{{ path('admin_classe_edit', {'id': classe.id}) }}"><i class="fa fa-edit"></i></a>
-                    <a href="{{ path('admin_classe_delete', {'id': classe.id}) }}"><i class="fa fa-trash-o"></i></a>
+                    <td>
+                        <a href="{{ path('admin_classe_show', {'id': classe.id}) }}"><i class="fa fa-eye"></i> </a>
+                        <a href="{{ path('admin_classe_edit', {'id': classe.id}) }}"><i class="fa fa-edit"></i></a>
+                        <a href="{{ path('admin_classe_delete', {'id': classe.id}) }}"><i class="fa fa-trash-o"></i></a>
 
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-            <div style="width: 100%; display:flex; justify-content: flex-end">
-                <a href="{{ path('admin_classe_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
-            </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div style="width: 100%; display:flex; justify-content: flex-end">
+            <a href="{{ path('admin_classe_new') }}"><button type="button" class="btn  btn-success btn-sm shadow-sm mt-2 mb-2"><i class="fa fa-plus-square-o">   </i>  Ajouter</button></a>
         </div>
-    </div>
-</div>
+
+
     {% endif %}
     <script>
         $(document).ready( function () {

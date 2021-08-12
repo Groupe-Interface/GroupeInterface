@@ -28,7 +28,7 @@ class EnseignantRepository extends ServiceEntityRepository
         return $query->getOneOrNullResult();
     }
 
-    public function __construct(ManagerRegistry $registry)
+        public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Enseignant::class);
     }

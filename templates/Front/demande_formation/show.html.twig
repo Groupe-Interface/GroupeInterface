@@ -1,0 +1,47 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content%}
+    <h1>DemandeFormation</h1>
+<div style="width: 100%; display:flex; justify-content: flex-end">
+    {{ include('Front/demande_formation/_delete_form.html.twig') }}
+</div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demande_formation.id }}</td>
+            </tr>
+            <tr>
+                <th>NomPrenom</th>
+                <td>{{ demande_formation.NomPrenom }}</td>
+            </tr>
+            <tr>
+                <th>NumTel</th>
+                <td>{{ demande_formation.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ demande_formation.email }}</td>
+            </tr>
+            <tr>
+                <th>Nationalite</th>
+                <td>{{ demande_formation.Nationalite }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ demande_formation.ville }}</td>
+            </tr>
+            <tr>
+                <th>FormationDemande</th>
+                <td>{{ demande_formation.FormationDemande }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('demande_formation_index') }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+
+
+{% endblock %}

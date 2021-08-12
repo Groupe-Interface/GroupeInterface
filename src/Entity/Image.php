@@ -9,7 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
- * @Vich\Uploadable
+ * @Vich\Uploadable()
  */
 class Image
 {
@@ -36,11 +36,12 @@ class Image
     private $numImage;
 
     /**
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="property_image", fileNameProperty="filename")
      * @var File|null
      */
     private $imageFile;
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
      */
     private $fileName;
@@ -49,6 +50,11 @@ class Image
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Type;
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +146,18 @@ class Image
         {
             $this->updated_at=new \DateTime('now');
         }
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->Type;
+    }
+
+    public function setType(?string $Type): self
+    {
+        $this->Type = $Type;
+
         return $this;
     }
 

@@ -12,6 +12,7 @@ use App\Repository\ClasseRepository;
 use App\Repository\CoursRepository;
 use App\Repository\EnseignantRepository;
 use App\Repository\EtudiantRepository;
+use App\Repository\MatiereRepository;
 use App\Repository\SeanceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -136,8 +137,9 @@ class ClasseController extends AbstractController
 
             return $this->redirectToRoute('enseignant_classe_show',array('id'=>$classe->getId()));
         }
-        /*$date= new \DateTime::$Years()('now');
-        dd($date);
+       /* $date=new \DateTime('now');
+        $H= $date->format('H')+1;
+        dd($H);
         die();*/
         return $this->render('Back/classe/show.html.twig', [
             'matiere'=>$matiere,
@@ -155,11 +157,13 @@ class ClasseController extends AbstractController
     /**
      * @Route("/show/{id}/admin", name="admin_classe_show", methods={"GET"})
      */
-    public function showEtudiant(Classe $classe,EtudiantRepository $etudiantRepository): Response
+    public function showEtudiant(Classe $classe,EtudiantRepository $etudiantRepository,EnseignantRepository $enseignantRepository,MatiereRepository $matiereRepository): Response
     {
         return $this->render('Back/classe/show.html.twig', [
             'classe' => $classe,
-            'etudiants' => $etudiantRepository->findAll()
+            'etudiants' => $etudiantRepository->findAll(),
+            'matieres'=>$matiereRepository->findAll(),
+            'enseignants'=>$enseignantRepository->findAll()
         ]);
     }
     /**

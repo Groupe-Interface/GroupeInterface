@@ -1,10 +1,10 @@
 {% extends 'Front/baseFront.html.twig' %}
 
-{% block title %}Hello FormationGenieCivilController!{% endblock %}
+{% block title %}formation génie civil (batiment ) en tunisie {% endblock %}
 {% block menu %}
     <div class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a href="index.html" class="navbar-brand">Interface</a>
+            <a href="{{ path('acceuil') }}" class="navbar-brand">Interface</a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -16,25 +16,25 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Formations</a>
                         <div class="dropdown-menu">
-                            <a href="{{ path('formation_initiale')}}" class="dropdown-item ">FORMATION INITIALE (BTS-BTP-CAP)</a>
-                            <a href="{{ path('formation_accelere')}}" class="dropdown-item">FORMATION ACCÉLÉRÉE</a>
-                            <a href="{{ path('formation_langue')}}" class="dropdown-item">FORMATION LANGUE</a>
-                            <a href="{{ path('formation_continue')}}" class="dropdown-item">FORMATION CONTINUE</a>
+                            <a href="{{ path('formation_initiale')}}" class="dropdown-item " title="formation initiale"><b><i>FORMATION INITIALE (BTS-BTP-CAP)</i></b></a>
+                            <a href="{{ path('formation_accelere')}}" class="dropdown-item" title="formation accélerée"><b><i>FORMATION ACCÉLÉRÉE</i></b></a>
+                            <a href="{{ path('formation_langue')}}" class="dropdown-item" title="formation langue"><b><i>FORMATION LANGUE</i></b></a>
+                            <a href="{{ path('formation_continue')}}" class="dropdown-item" title="formation continue"><b><i>FORMATION CONTINUE</i></b></a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="{{ path('diplome')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Diplômes</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Diplômes</a>
                         <div class="dropdown-menu">
-                            <a href="{{ path('bts')}}" class="dropdown-item ">DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</a>
-                            <a href="{{ path('btp')}}" class="dropdown-item">DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</a>
-                            <a href="{{ path('cap')}}" class="dropdown-item">DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</a>
+                            <a href="{{ path('bts')}}" class="dropdown-item " title="diplome bts en tunisie"><b><i>DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</i></b></a>
+                            <a href="{{ path('btp')}}" class="dropdown-item" title="diplome btp en tunisie"><b><i>DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</i></b></a>
+                            <a href="{{ path('cap')}}" class="dropdown-item" title="diplome cap en tunisie"><b><i>DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</i></b></a>
                         </div>
                     </div>
 
 
                     <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
                     <a href="{{ path('pre_inscription')}}" class="nav-item nav-link">Pré-Inscription</a>
-                    <a href="{{ path('contact')}}" class="nav-item nav-link">Contact</a>
+                    <a href="{{ path('contact_new')}}" class="nav-item nav-link">Contact</a>
                 </div>
             </div>
         </div>
@@ -45,8 +45,8 @@
         <div class="container">
             <div class="section-header">
 
-                <p>Formation Génie Civil : Bâtiment et Dérivés</p>
-                <h2>Diplômes Homologués en Bâtiment et Dérivés - Génie Civil</h2>
+                <p> <a  title="Formation génie civil en tunisie"><b><i>Formation Génie Civil : Bâtiment et Dérivés</i></b></a></p>
+                <h2><b>Diplômes Homologués en Bâtiment et Dérivés - Génie Civil</b></h2>
                 <div style="text-align: right" class="col-1"><img src="{{ asset('img/icon/diplomes-homologues-Tunisie.jpg')}}" width="20" height="50"
                                                                   title="interface Formation Tunisie - Diplomes Homologués"
                                                                   alt="Diplomes Homologués - centre  formation Tunis"> </div></h2>
@@ -55,40 +55,65 @@
             <div class="row">
                 <div class="col-12">
                     <img src="{{ asset('img/interface-Formation-diplome.jpg') }}" alt="Image">
-
-                    <p>
-                        Le centre de formation de Tunis INTERFACE Formation offre des formations professionnelles en Génie Civil - Bâtiment et Dérivés (BTS-BTP-CAP):
-                    </p>
-                    <div class="section-header">
-
-                        <h2>Formation BTS Bâtiments et dérives (2 ans)</h2>
-                        <h3> Filière</h3>
-
-                        <h3> BTS Conducteur de travaux en bâtiment</h3>
-
-                        <h3>BTS Conducteur de travaux publics</h3>
-
-                        <h3>BTS Magasinier de matériels</h3>
+                    <p>Le <a  title="centre de formation de Tunis">centre de formation de Tunis</a> INTERFACE Formation offre des <a  title="formations professionnelles en Génie Civil Bâtiment et Dérivés">formations professionnelles en Génie Civil - Bâtiment et Dérivés (BTS-BTP-CAP):</a></p>
+                    <div class="feature">
+                        <div class="container">
+                            <div class="row align-items-end">
+                                <div class="section-header">
+                                    <h2><a  title="Formation BTS Bâtiments et dérives">Formation BTS Bâtiments et dérives (2 ans)</a></h2>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3><a  title="formation BTS Conducteur de travaux en bâtiment"><b><i>BTS Conducteur de travaux en bâtiment</i></b></a></h3>
+                                    <h3><a  title="formation BTS Conducteur de travaux publics"><b><i>BTS Conducteur de travaux publics</i></b></a></h3>
+                                    <h3><a  title="formation BTS Magasinier de matériels"><b><i>BTS Magasinier de matériels</i></b></a></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="width:100px; height:100px;">
+                                        <img src="{{ asset('img/Batiment.jpg') }}" alt="Image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="section-header">
-
-                        <h2>Formation BTP Bâtiments et dérives (2 ans)</h2>
-                        <h3> Filière</h3>
-                        <h3>BTP Dessinateur Projeteur en Architecture</h3>
-
-                        <h3>BTP Métreur Vérificateur en Bâtiment</h3>
-
-                        <h3>BTP CHEF Chantier en Bâtiment</h3>
-
-                        <h3>BTP Froid et Climatisation</h3>
-
+                    <!-- Feature End -->
+                    <div class="feature">
+                        <div class="container">
+                            <div class="row align-items-end">
+                                <div class="section-header">
+                                    <h2><a  title="Formation BTP Bâtiments et dérives">Formation BTP Bâtiments et dérives (2 ans)</a></h2>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3><a  title="formation BTP Dessinateur Projeteur en Architecture"><b><i>BTP Dessinateur Projeteur en Architecture</i></b></a></h3>
+                                    <h3><a  title="formation BTP Métreur Vérificateur en Bâtiment"><b><i>BTP Métreur Vérificateur en Bâtiment</i></b></a></h3>
+                                    <h3><a  title="formation BTP CHEF Chantier en Bâtiment"><b><i>BTP CHEF Chantier en Bâtiment</i></b></a></h3>
+                                    <h3><a  title="formation BTP Froid et Climatisation"><b><i>BTP Froid et Climatisation</i></b></a></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="width:100px; height:100px;">
+                                        <img src="{{ asset('img/Batiment.jpg') }}" alt="Image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="section-header">
-
-                        <h2>Formation CAP Bâtiments et dérives (1 an)</h2>
-                        <h3> Filière</h3>
-                        <h3>CAP Froid et Climatisation</h3>
+                    <div class="feature">
+                        <div class="container">
+                            <div class="row align-items-end">
+                                <div class="section-header">
+                                    <h2><a title="Formation CAP Bâtiments et dérives">Formation CAP Bâtiments et dérives (1 an)</a></h2>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3><a  title="CAP Froid et Climatisation"><b><i>CAP Froid et Climatisation</i></b></a></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="width:100px; height:100px;">
+                                        <img src="{{ asset('img/climatisation.png') }}" alt="Image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="contact">
                         <div class="container">
                             <div class="contact-form">
@@ -107,7 +132,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
 
     <!-- Single Page End -->

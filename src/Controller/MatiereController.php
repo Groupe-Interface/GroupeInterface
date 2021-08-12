@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cours;
+use App\Entity\Enseignant;
 use App\Entity\Matiere;
 use App\Entity\Publication;
 use App\Form\CoursType;
@@ -10,6 +11,7 @@ use App\Form\MatiereType;
 use App\Form\PublicationType;
 use App\Repository\ClasseRepository;
 use App\Repository\CoursRepository;
+use App\Repository\EnseignantRepository;
 use App\Repository\EtudiantRepository;
 use App\Repository\MatiereRepository;
 use App\Repository\PublicationRepository;
@@ -19,6 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MatiereController extends AbstractController
 {
@@ -43,7 +47,7 @@ class MatiereController extends AbstractController
             foreach($etudiantRepository->findAll() as $service)
             {
                 if ($email == $service->getEmailEtudiant()){
-                  $classe= $service->getClasse();
+                    $classe= $service->getClasse();
 
                 }
             }
@@ -66,9 +70,6 @@ class MatiereController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $matiere->setMoyenneMatiere(0);
-            $matiere->setNoteExamen(0);
-            $matiere->setNoteTest(0);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($matiere);
             $entityManager->flush();
@@ -141,6 +142,82 @@ class MatiereController extends AbstractController
             'etudiant'=>$etudiant
 
         ]);
+    }
+    /**
+     * @Route("/matiere/{id}/admin", name="admin_matiere_show", methods={"GET","POST"})
+     */
+    public function showadmin(Matiere $matiere, NormalizerInterface $Normalizer ,MatiereRepository $matiereRepository,Request $request,CoursRepository $coursRepository,EnseignantRepository $enseignantRepository): Response
+    {
+
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $matiere = $entityManager->getRepository(Matiere::class)->find($request->get('matiere'));
+
+      $em=$this->getDoctrine()->getManager();
+        $query = $em->createQuery('SELECT p FROM App\Entity\Enseignant p WHERE p.matiere = :id  ');
+        //$query = $em->createQuery('SELECT p FROM App\Entity\Enseignant p INNER JOIN p.classe c
+          //  WHERE p.id = :id AND p.matiere =  :matiere ');
+        $query->setParameter('id',$matiere->getId());
+        //$query->setParameter('id',$matiere->getId());
+        $enseignants = $query->getResult();
+
+        foreach($enseignants as $service)
+        {$em1=$this->getDoctrine()->getManager();
+            $query1 = $em1->createQuery('SELECT p, c
+            FROM App\Entity\Enseignant p
+            INNER JOIN p.classe c
+            WHERE p.id = :id  ');
+
+            $query1->setParameter('id',$service);
+            //$query->setParameter('id',$matiere->getId());
+            $classes = $query1->getResult();
+            dd($classes);
+            die();
+            //    $enseignant = $this->getDoctrine()
+                //    ->getRepository(Enseignant::class)
+               //     ->findOneByIdJoinedToClasse($service->getId());
+
+               // $classeEnseignant = $enseignant->getClasse();
+           // dd($classeEnseignant);
+
+
+
+        }
+       // echo($service->getId());
+        die();
+
+        //dd($service->getId());
+        die();
+        //dd($classeEnseignant);
+        die();
+       /* $a=arry(NULL);
+        foreach ($matieres as $a) {
+            $em1=$this->getDoctrine()->getManager();
+            $query1 = $em1->createQuery('SELECT p,c
+            FROM App\Entity\Classe p
+            INNER JOIN p.enseignants c
+            WHERE c.id = :id');
+            $query1->setParameter('id',$s->getId());
+
+            $m = $query1->getResult();
+            foreach ($m as $s) {
+                echo($s->getId());
+                // dd($s->getId());
+            }
+
+        }
+        die();
+
+        return $this->render('Back/matiere/show.html.twig', [
+            'matiere' => $matiere,
+            'cours' => $coursRepository->findAll(),
+            'enseignants'=>$enseignantRepository->findAll(),
+            'matieres'=>$matiereRepository->findAll(),
+            'classes' => $m
+
+
+        ]);*/
+
     }
     /**
      * @Route("/matiere/{id}/edit/admin", name="admin_matiere_edit", methods={"GET","POST"})

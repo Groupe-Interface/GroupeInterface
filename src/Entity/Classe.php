@@ -56,6 +56,11 @@ class Classe
      */
     private $seances;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Matiere::class, mappedBy="classe")
+     */
+    private $matieres;
+
 
 
 
@@ -66,6 +71,7 @@ class Classe
         $this->etudiant = new ArrayCollection();
         $this->enseignants = new ArrayCollection();
         $this->seances = new ArrayCollection();
+        $this->matieres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -224,6 +230,33 @@ class Classe
             if ($seance->getClasse() === $this) {
                 $seance->setClasse(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Matiere[]
+     */
+    public function getMatieres(): Collection
+    {
+        return $this->matieres;
+    }
+
+    public function addMatiere(Matiere $matiere): self
+    {
+        if (!$this->matieres->contains($matiere)) {
+            $this->matieres[] = $matiere;
+            $matiere->addClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMatiere(Matiere $matiere): self
+    {
+        if ($this->matieres->removeElement($matiere)) {
+            $matiere->removeClasse($this);
         }
 
         return $this;

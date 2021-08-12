@@ -37,7 +37,7 @@
                             <td>{{ matiere.idSpecialite }}</td>
                             <td>{{ matiere.idSpecialite.departement }}</td>
                             <td>
-                               <!-- <a href="{ path('matiere_show', {'id': matiere.id}) }}"><i class="fa fa-eye"></i> </a>-->
+                               <a href="{{ path('admin_matiere_show', {'id': matiere.id}) }}"><i class="fa fa-eye"></i> </a>
                                 <a href="{{ path('admin_matiere_edit', {'id': matiere.id}) }}"><i class="fa fa-edit"></i></a>
                                 {{ include('Back/matiere/_delete_form.html.twig') }}
 

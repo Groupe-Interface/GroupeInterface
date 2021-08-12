@@ -1,0 +1,46 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content%}
+    <h1>Contact</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        {{ include('Front/contact/_delete_form.html.twig') }}
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contact.id }}</td>
+            </tr>
+            <tr>
+                <th>NomPrenom</th>
+                <td>{{ contact.nomPrenom }}</td>
+            </tr>
+            <tr>
+                <th>NumTel</th>
+                <td>{{ contact.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contact.email }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ contact.pays }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ contact.ville }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ contact.message }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contact_index') }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}

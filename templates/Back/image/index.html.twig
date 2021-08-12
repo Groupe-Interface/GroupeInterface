@@ -12,6 +12,7 @@
                         <th>NomImage</th>
                         <th>DateAjout</th>
                         <th>NumImage</th>
+                        <th>Image</th>
                         <th>actions</th>
                     </tr>
                     </thead>
@@ -22,6 +23,10 @@
                             <td>{{ image.nomImage }}</td>
                             <td>{{ image.dateAjout ? image.dateAjout|date('Y-m-d') : '' }}</td>
                             <td>{{ image.numImage }}</td>
+                            <td>{% if image.filename %}
+                                <img src="/properties/{{ image.filename}}" style="width: 50px">
+                                {%endif%}
+                            </td>
                             <td>
                                 <a href="{{ path('image_show', {'id': image.id}) }}"><i class="fa fa-eye"></i> </a>
                                 <a href="{{ path('image_edit', {'id': image.id}) }}"><i class="fa fa-edit"></i></a>

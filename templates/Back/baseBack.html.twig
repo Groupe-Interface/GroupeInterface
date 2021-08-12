@@ -64,15 +64,18 @@
                         <div class="menu_section">
                             <ul class="nav side-menu">
                                 {% if is_granted ('ROLE_ADMIN') %}
-                                <li><a href="{{ path("admin_etudiant_index") }}"><i class="fa fa-pencil-square-o"></i> Etudiant </a>
-                                <li><a href="{{ path("admin_enseignant_index") }}"><i class="fa fa-pencil-square-o"></i> Enseignant </a>
-                                <li><a href="{{ path("admin_reclamation_index") }}"><i class="fa fa-pencil-square-o"></i>Réclamation </a>
-                                <li><a href="{{ path("admin_avis_index") }}"><i class="fa fa-bullhorn"></i> Avis </a>
-                                <li><a href="{{ path("admin_departement_index") }}"><i class="fa fa-building-o"></i> Département </a>
-                                <li><a href="{{ path("admin_classe_index") }}"><i class="fa fa-book"></i> Classe </a>
-                                <li><a href="{{ path("admin_specialite_index") }}"><i class="fa fa-wrench"></i> Specilite </a>
-                                <li><a href="{{ path("admin_matiere_index") }}"><i class="fa fa-comment-o"></i> Matiere </a>
-                                <li><a href="{{ path("admin_seance_index") }}"><i class="fa fa-comment-o"></i> Seance </a>
+                             <!--   <li><a href="{ path("admin_etudiant_index") }}"><i class="fa fa-pencil-square-o"></i> Etudiant </a>
+                                <li><a href="{path("admin_enseignant_index") }}"><i class="fa fa-pencil-square-o"></i> Enseignant </a>
+                                <li><a href="{ path("admin_reclamation_index") }}"><i class="fa fa-pencil-square-o"></i>Réclamation </a>
+                                <li><a href="{ path("admin_avis_index") }}"><i class="fa fa-bullhorn"></i> Avis </a>
+                                <li><a href="{ path("admin_departement_index") }}"><i class="fa fa-building-o"></i> Département </a>
+                                <li><a href="{ path("admin_classe_index") }}"><i class="fa fa-book"></i> Classe </a>
+                                <li><a href="{ path("admin_specialite_index") }}"><i class="fa fa-wrench"></i> Specilite </a>
+                                <li><a href="{ path("admin_matiere_index") }}"><i class="fa fa-comment-o"></i> Matiere </a>
+                                <li><a href="{ path("admin_seance_index") }}"><i class="fa fa-comment-o"></i> Seance </a>-->
+                                <li><a href="{{ path("demande_formation_index") }}"><i class="fa fa-comment-o"></i> Demande De Formation  </a>
+                                <li><a href="{{ path("demande_formation_initiale_index") }}"><i class="fa fa-comment-o"></i> Formation Initiale  </a>
+                                <li><a href="{{ path("contact_index") }}"><i class="fa fa-comment-o"></i> Message Contact  </a>
 
                                 <li><a href="{{ path("image_index") }}"><i class="fa fa-image"></i>Image </a>
                                     {% endif %}

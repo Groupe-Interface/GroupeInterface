@@ -26,6 +26,21 @@
         </table>
     {% endif %}
     {% if is_granted('ROLE_ADMIN') %}
+        <table class="table">
+            <tbody>
+            <tr>
+              <th>classe</th>
+            </tr>
+            <tr>
+
+                        {% for classe in classes  %}
+                            {{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }}
+                        {% endfor %}
+
+            </tr>
+
+            </tbody>
+        </table>
         <a href="{{ path("matiere_index") }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
             <button type="button" class="btn btn-dark">
                 <i class="fa fa-arrow-circle-left">  </i>  retour

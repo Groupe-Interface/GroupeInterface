@@ -10,31 +10,29 @@
     <h1>Classe : {{ classe.niveauClasse }}--{{ classe.idSpecialite }}--{{ classe.numClasse }} </h1>
     {% if is_granted ('ROLE_ADMIN') %}
         <div style="width: 100%; display:flex; justify-content: flex-end">
-            <a href="{{ path('classe_edit', {'id': classe.id}) }}">
+            <a href="{{ path('admin_classe_edit', {'id': classe.id}) }}">
                 <button type="button" class="btn-sm shadow-sm btn btn-primary mt-2 mb-2 mr-2">
                     <i class="fa fa-edit"></i>
                 </button></a>
             {{ include('Back/classe/_delete_form.html.twig') }}
         </div>
+        <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom </th>
+            <th> Prenom</th>
+        </tr>
         {% for etudiant in etudiants  %}
             {% if etudiant.classe.id == classe.id %}
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <th>Nom </th>
-                        <th> Prenom</th>
-
-                    </tr>
                     <tr>
                         <td>{{ etudiant.nomEtudiant }}</td>
                         <td>{{ etudiant.prenomEtudiant }}</td>
                     </tr>
-                    </tbody>
-                </table>
+
             {% endif %}
-
-
         {% endfor %}
+        </tbody>
+        </table>
     {% endif %}
     {% if is_granted ('ROLE_ENSEIGNANT') %}
         {% for seance in seances  %}

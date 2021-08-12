@@ -1,3 +1,4 @@
+
 {% extends 'Front/baseFront.html.twig' %}
 
 {% block title %}Hello PreInscriptionController!{% endblock %}
@@ -34,7 +35,7 @@
 
                     <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
                     <a href="{{ path('pre_inscription')}}" class="nav-item nav-link active">Pré-Inscription</a>
-                    <a href="{{ path('contact')}}" class="nav-item nav-link">Contact</a>
+                    <a href="{{ path('contact_new')}}" class="nav-item nav-link">Contact</a>
                 </div>
             </div>
         </div>
@@ -56,9 +57,9 @@
                     <br>
                     <ul style="text-align: center;" class="ul-group">
                         <hr>
-                        <li><a href="{{ path('demande_formation_initiale')}}"> BTS-BTP-CAP</a></li><br><hr>
-                        <li><a href="{{ path('demande_formation')}}"> FORMATION ACCÉLÉRÉE</a></li><br><hr>
-                        <li><a href="{{ path('demande_formation')}}"> FORMATION CONTINUE</a></li><br>
+                        <li><a href="{{ path('demande_formation_initiale_new')}}"> BTS-BTP-CAP</a></li><br><hr>
+                        <li><a href="{{ path('demande_formation_new')}}"> FORMATION ACCÉLÉRÉE</a></li><br><hr>
+                        <li><a href="{{ path('demande_formation_new')}}"> FORMATION CONTINUE</a></li><br>
                     </ul>
 
                 </div>

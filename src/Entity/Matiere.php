@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=MatiereRepository::class)
  */
@@ -16,21 +18,19 @@ class Matiere
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("matiere")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("matiere")
      */
     private $nomMatiere;
 
     /**
      * @ORM\Column(type="float")
-     */
-    private $moyenneMatiere;
-
-    /**
-     * @ORM\Column(type="float")
+     * @Groups("matiere")
      */
     private $coeffMatiere;
 
@@ -38,17 +38,6 @@ class Matiere
      * @ORM\ManyToOne(targetEntity=Specialite::class, inversedBy="matieres")
      */
     private $idSpecialite;
-
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $noteExamen;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $noteTest;
 
     /**
      * @ORM\ManyToMany(targetEntity=Etudiant::class, mappedBy="matiere")
@@ -65,11 +54,23 @@ class Matiere
      */
     private $enseignants;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="matiere")
+     */
+    private $notes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Classe::class, inversedBy="matieres")
+     */
+    private $classe;
+
     public function __construct()
     {
         $this->etudiants = new ArrayCollection();
         $this->cours = new ArrayCollection();
         $this->enseignants = new ArrayCollection();
+        $this->notes = new ArrayCollection();
+        $this->classe = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,18 +86,6 @@ class Matiere
     public function setNomMatiere(string $nomMatiere): self
     {
         $this->nomMatiere = $nomMatiere;
-
-        return $this;
-    }
-
-    public function getMoyenneMatiere(): ?float
-    {
-        return $this->moyenneMatiere;
-    }
-
-    public function setMoyenneMatiere(float $moyenneMatiere): self
-    {
-        $this->moyenneMatiere = $moyenneMatiere;
 
         return $this;
     }
@@ -126,29 +115,6 @@ class Matiere
         return $this;
     }
 
-    public function getNoteExamen(): ?float
-    {
-        return $this->noteExamen;
-    }
-
-    public function setNoteExamen(float $noteExamen): self
-    {
-        $this->noteExamen = $noteExamen;
-
-        return $this;
-    }
-
-    public function getNoteTest(): ?float
-    {
-        return $this->noteTest;
-    }
-
-    public function setNoteTest(float $noteTest): self
-    {
-        $this->noteTest = $noteTest;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Etudiant[]
@@ -237,6 +203,60 @@ class Matiere
                 $enseignant->setMatiere(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Note[]
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): self
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes[] = $note;
+            $note->setMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Note $note): self
+    {
+        if ($this->notes->removeElement($note)) {
+            // set the owning side to null (unless already changed)
+            if ($note->getMatiere() === $this) {
+                $note->setMatiere(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Classe[]
+     */
+    public function getClasse(): Collection
+    {
+        return $this->classe;
+    }
+
+    public function addClasse(Classe $classe): self
+    {
+        if (!$this->classe->contains($classe)) {
+            $this->classe[] = $classe;
+        }
+
+        return $this;
+    }
+
+    public function removeClasse(Classe $classe): self
+    {
+        $this->classe->removeElement($classe);
 
         return $this;
     }

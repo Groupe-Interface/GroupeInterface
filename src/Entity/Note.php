@@ -44,6 +44,11 @@ class Note
      */
     private $idMatiere;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Matiere::class, inversedBy="notes")
+     */
+    private $matiere;
+
     public function __construct()
     {
         $this->idMatiere = new ArrayCollection();
@@ -128,6 +133,18 @@ class Note
                 $idMatiere->setNote(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMatiere(): ?Matiere
+    {
+        return $this->matiere;
+    }
+
+    public function setMatiere(?Matiere $matiere): self
+    {
+        $this->matiere = $matiere;
 
         return $this;
     }

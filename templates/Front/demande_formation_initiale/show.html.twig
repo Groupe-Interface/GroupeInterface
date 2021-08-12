@@ -1,0 +1,49 @@
+{% extends 'Back/baseBack.html.twig' %}
+
+{% block content%}
+    <h1>DemandeFormationInitiale</h1>
+    <div style="width: 100%; display:flex; justify-content: flex-end">
+        {{ include('Front/demande_formation_initiale/_delete_form.html.twig') }}
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demande_formation_initiale.id }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ demande_formation_initiale.Niveau }}</td>
+            </tr>
+            <tr>
+                <th>FormationDemandee</th>
+                <td>{{ demande_formation_initiale.FormationDemandee }}</td>
+            </tr>
+            <tr>
+                <th>NomPrenom</th>
+                <td>{{ demande_formation_initiale.nomPrenom }}</td>
+            </tr>
+            <tr>
+                <th>NumTel</th>
+                <td>{{ demande_formation_initiale.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ demande_formation_initiale.email }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ demande_formation_initiale.Pays }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ demande_formation_initiale.Ville }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('demande_formation_initiale_index') }}" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+        <button type="button" class="btn btn-dark">
+            <i class="fa fa-arrow-circle-left">  </i>  retour
+        </button>
+    </a>
+{% endblock %}

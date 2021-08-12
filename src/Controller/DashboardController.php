@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Enseignant;
 use App\Entity\Users;
 use App\Repository\AdminRepository;
 use App\Repository\AvisRepository;
@@ -21,7 +22,7 @@ class DashboardController extends AbstractController
      */
     public function indexAdmin(EtudiantRepository $etudiantRepository,AdminRepository $adminRepository,Request $request,EnseignantRepository  $enseignantRepository): Response
     {
-        $user=$this->getUser();
+        $user= $this->getUser();
 
         //$forum = $entityManager->getRepository(Forum::class)->find($request->get('forum_id'));
       //  return $this->redirectToRoute('home_forum_show',array('id'=>$forum->getId()));
@@ -29,7 +30,8 @@ class DashboardController extends AbstractController
                 'user' => $user,
                 'etudiants'=>$etudiantRepository->findAll(),
                 'enseignants'=>$enseignantRepository->findAll(),
-                'admins'=>$adminRepository->findAll()
+                'admins'=>$adminRepository->findAll(),
+
             ]);
 
 

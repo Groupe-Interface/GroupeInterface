@@ -1,10 +1,10 @@
 {% extends 'Front/baseFront.html.twig' %}
 
-{% block title %}Hello FormationInitialController!{% endblock %}
+{% block title %}formation initiale en tunisie{% endblock %}
 {% block menu %}
     <div class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a href="index.html" class="navbar-brand">Interface</a>
+            <a href="{{ path('acceuil') }}" class="navbar-brand">Interface</a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -16,25 +16,25 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Formations</a>
                         <div class="dropdown-menu">
-                            <a href="{{ path('formation_initiale')}}" class="dropdown-item ">FORMATION INITIALE (BTS-BTP-CAP)</a>
-                            <a href="{{ path('formation_accelere')}}" class="dropdown-item">FORMATION ACCÉLÉRÉE</a>
-                            <a href="{{ path('formation_langue')}}" class="dropdown-item">FORMATION LANGUE</a>
-                            <a href="{{ path('formation_continue')}}" class="dropdown-item">FORMATION CONTINUE</a>
+                            <a href="{{ path('formation_initiale')}}" class="dropdown-item " title="formation initiale"><b><i>FORMATION INITIALE (BTS-BTP-CAP)</i></b></a>
+                            <a href="{{ path('formation_accelere')}}" class="dropdown-item" title="formation accélerée"><b><i>FORMATION ACCÉLÉRÉE</i></b></a>
+                            <a href="{{ path('formation_langue')}}" class="dropdown-item" title="formation langue"><b><i>FORMATION LANGUE</i></b></a>
+                            <a href="{{ path('formation_continue')}}" class="dropdown-item" title="formation continue"><b><i>FORMATION CONTINUE</i></b></a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="{{ path('diplome')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Diplômes</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Diplômes</a>
                         <div class="dropdown-menu">
-                            <a href="{{ path('bts')}}" class="dropdown-item ">DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</a>
-                            <a href="{{ path('btp')}}" class="dropdown-item">DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</a>
-                            <a href="{{ path('cap')}}" class="dropdown-item">DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</a>
+                            <a href="{{ path('bts')}}" class="dropdown-item " title="diplome bts en tunisie"><b><i>DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</i></b></a>
+                            <a href="{{ path('btp')}}" class="dropdown-item" title="diplome btp en tunisie"><b><i>DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</i></b></a>
+                            <a href="{{ path('cap')}}" class="dropdown-item" title="diplome cap en tunisie"><b><i>DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</i></b></a>
                         </div>
                     </div>
 
 
                     <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
                     <a href="{{ path('pre_inscription')}}" class="nav-item nav-link">Pré-Inscription</a>
-                    <a href="{{ path('contact')}}" class="nav-item nav-link">Contact</a>
+                    <a href="{{ path('contact_new')}}" class="nav-item nav-link">Contact</a>
                 </div>
             </div>
         </div>
@@ -53,7 +53,9 @@
                     <img src="{{ asset('img/interface-formations-Tunisie.jpg') }}" alt="Image">
 
                     <p>
-                        Interface Formation offre des formations diplomantes, continues et accélérées qui vous garantis
+                        <a title="Formation en tunisie"><b><i>Interface Formation </i></b></a>
+                        offre des formations diplomantes,<a title="Formation continue en tunisie"><b><i> continues </i></b></a>
+                        et <a title="Formation accélérée en tunisie"><b><i>accélérées</i></b></a> qui vous garantis
                         des nouvelles perspectives de croissance. Le programme de la formation comporte plusieurs choix
                         de cours du jour mais aussi du soir ouverts à tous, dans différents domaines. </p>
                     <div class="service mt-125">
@@ -61,69 +63,66 @@
                             <div class="section-header">
                                 <h2>Nos Formations </h2>
                             </div>
+
                             <div class="row">
                                 <div class="col-lg-3 col-md-6">
                                     <div class="service-item">
-                                        <h3>FORMATION GENIE CIVILE <br> </h3>
-                                        <p>
-                                            (BATIMENTS ET DERIVES)
-                                        </p>
-                                        <a href="{{ path('formation_genie_civil')}}">Read More</a>
+                                        <h3><a href="{{ path('formation_genie_civil')}}" title="Formation genie civile en tunisie"><b><i>FORMATION GENIE CIVILE</i></b></a>
+                                            <br> </h3>
+                                        <div style="width:100px; clip-path:ellipse(50% 50%);   margin-left: auto; margin-right: auto;">
+                                            <img src="{{ asset('img/genieCivil.jpg') }}" alt="Image">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="service-item">
-                                        <h3>FORMATION INFORMATIQUE</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit.
-                                        </p>
-                                        <a href="{{ path('formation_informatique')}}">Read More</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="service-item">
-                                        <h3>FORMATION </br>GESTION</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit.
-                                        </p>
-                                        <a href="{{ path('formation_gestion')}}">Read More</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="service-item">
-                                        <h3>FORMATION COMMERCE</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit.
-                                        </p>
-                                        <a href="{{ path('formation_commerce')}}">Read More</a>
-                                    </div>
-                                </div>
 
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="service-item">
-                                        <h3>FORMATION COMPTABILITE</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit.
-                                        </p>
-                                        <a href="{{ path('formation_comptabilite')}}">Read More</a>
+                                        <h3><a href="{{ path('formation_informatique')}}" title="Formation informatique en tunisie"><b><i>FORMATION INFORMATIQUE</i></b></a></h3>
+                                        <div style="width:100px; clip-path:ellipse(50% 50%);   margin-left: auto; margin-right: auto;">
+                                            <img src="{{ asset('img/informatique.jpg') }}" alt="Image">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="service-item">
-                                        <h3>FORMATION TOURISME</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit.
-                                        </p>
-                                        <a href="{{ path('formation_tourisme')}}">Read More</a>
+                                        <h3><a href="{{ path('formation_gestion')}}" title="Formation genie civile en tunisie"><b><i>FORMATION GESTION</i></b></a></h3>
+                                        <div style="width:100px; clip-path:ellipse(50% 50%);   margin-left: auto; margin-right: auto;">
+                                            <img src="{{ asset('img/formation gestion.jpg') }}" alt="Image">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="service-item">
-                                        <h3>FORMATION ART ET DESIGN</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit.
-                                        </p>
-                                        <a href="{{ path('formation_art_design')}}">Read More</a>
+                                        <h3><a href="{{ path('formation_commerce')}}" title="Formation commerce en tunisie"><b><i>FORMATION COMMERCE</i></b></a></h3>
+                                        <div style="width:100px; clip-path:ellipse(50% 50%);   margin-left: auto; margin-right: auto;">
+                                            <img src="{{ asset('img/commercial.jpg') }}" alt="Image">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 100%; display:flex; justify-content: center">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="service-item">
+                                            <h3><a href="{{ path('formation_comptabilite')}}" title="Formation comptabilité en tunisie"><b><i>FORMATION COMPTABILITE</i></b></a></h3>
+                                            <div style="width:100px; clip-path:ellipse(50% 50%);   margin-left: auto; margin-right: auto;">
+                                                <img src="{{ asset('img/compable.jpg') }}" alt="Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="service-item">
+                                            <h3><a href="{{ path('formation_tourisme')}}" title="Formation tourisme en tunisie"><b><i>FORMATION TOURISME</i></b></a></h3>
+                                            <div style="width:100px; clip-path:ellipse(50% 50%);   margin-left: auto; margin-right: auto;">
+                                                <img src="{{ asset('img/tourisme.jpg') }}" alt="Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="service-item">
+                                            <h3><a href="{{ path('formation_art_design')}}" title="Formation art et design en tunisie"><b><i>FORMATION ART ET DESIGN</i></b></a></h3>
+                                            <div style="width:100px; clip-path:ellipse(50% 50%);   margin-left: auto; margin-right: auto;">
+                                                <img src="{{ asset('img/arts.jpg') }}" alt="Image">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

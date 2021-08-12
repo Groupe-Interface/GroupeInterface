@@ -1,106 +1,45 @@
-{% extends 'Front/baseFront.html.twig' %}
+{% extends 'Back/baseBack.html.twig' %}
 
-{% block title %}Hello DemandeFormationController!{% endblock %}
-{% block menu %}
-    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div class="container-fluid">
-            <a href="index.html" class="navbar-brand">Interface</a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav ml-auto">
-                    <a href="{{ path('acceuil')}}" class="nav-item nav-link">Accueil</a>
-                    <a href="{{path('groupe_interface')}}" class="nav-item nav-link">Groupe Interface</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Formations</a>
-                        <div class="dropdown-menu">
-                            <a href="{{ path('formation_initiale')}}" class="dropdown-item ">FORMATION INITIALE (BTS-BTP-CAP)</a>
-                            <a href="{{ path('formation_accelere')}}" class="dropdown-item">FORMATION ACCÉLÉRÉE</a>
-                            <a href="{{ path('formation_langue')}}" class="dropdown-item">FORMATION LANGUE</a>
-                            <a href="{{ path('formation_continue')}}" class="dropdown-item">FORMATION CONTINUE</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="{{ path('diplome')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">Diplômes</a>
-                        <div class="dropdown-menu">
-                            <a href="{{ path('bts')}}" class="dropdown-item ">DIPLOMES BTS - BREVET DE TECHNICIEN SUPÉRIEUR</a>
-                            <a href="{{ path('btp')}}" class="dropdown-item">DIPLOMES BTP - BREVET DE TECHNICIEN PROFESSIONNEL</a>
-                            <a href="{{ path('cap')}}" class="dropdown-item">DIPLOMES CAP - CERTIFICAT D'APTITUDE PROFESSIONNELLE</a>
-                        </div>
-                    </div>
-
-
-                    <a href="{{ path('galerie_photos')}}" class="nav-item nav-link">Galerie Photos</a>
-                    <a href="{{ path('pre_inscription')}}" class="nav-item nav-link">Pré-Inscription</a>
-                    <a href="{{ path('contact')}}" class="nav-item nav-link">Contact</a>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
 {% block content %}
-    <div class="carousel">
-        <div class="container-fluid">
-            <div class="carousel-item">
-                <div class="carousel-img">
-                    <img src="{{ asset('img/carousel-2.jpg') }}" alt="Image">
-                </div>
-                <div class="carousel-text">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <h1>Demander une Formation</h1>
-                    <div class="col-md-12">
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                            <div class="control-group">
-                                <input type="text" class="form-control" id="name" placeholder="Nom et Prénom"
-                                       required="required" data-validation-required-message="Il faut saisir le Nom" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <input type="text" class="form-control" id="email" placeholder="Téléphone"
-                                       required="required"
-                                       data-validation-required-message="Il faut saisir le num de telephone" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <input type="email" class="form-control" id="subject" placeholder="Email"
-                                       required="required" data-validation-required-message="Il faut saisir l'email" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <input type="text" class="form-control" id="pays" placeholder="Pays"
-                                       required="required"
-                                       data-validation-required-message="Il faut saisir une pays" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <input type="text" class="form-control" id="pays" placeholder="ville"
-                                       required="required"
-                                       data-validation-required-message="Il faut saisir une pays" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                    <input type="text" class="form-control" id="message" placeholder="Formation Demandee"
-                                              required="required"
-                                              data-validation-required-message="Il faut saisir le Message"/>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div style="text-align: center;">
-                                <button class="btn" type="submit" id="sendMessageButton">Envoyer</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h1>DemandeFormation index</h1>
+
+    <table id="datatable" class="table table-striped table-bordered" style="width:100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomPrenom</th>
+                <th>NumTel</th>
+                <th>Email</th>
+                <th>Nationalite</th>
+                <th>Ville</th>
+                <th>FormationDemande</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande_formation in demande_formations %}
+            <tr>
+                <td>{{ demande_formation.id }}</td>
+                <td>{{ demande_formation.NomPrenom }}</td>
+                <td>{{ demande_formation.numTel }}</td>
+                <td>{{ demande_formation.email }}</td>
+                <td>{{ demande_formation.Nationalite }}</td>
+                <td>{{ demande_formation.ville }}</td>
+                <td>{{ demande_formation.FormationDemande }}</td>
+                <td>
+                    <a href="{{ path('demande_formation_show', {'id': demande_formation.id}) }}"><i class="fa fa-eye"></i></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );</script>
 {% endblock %}
